@@ -4,70 +4,37 @@ Lista viva. Marque conforme for entregando.
 
 ---
 
-## A. CONTEÚDO — você escreve ou me passa a matéria-prima
+## A. CONTEÚDO — feito
 
-Este é o gargalo do projeto. Comece por aqui.
+- [x] **A1.** 12 cenas essenciais + [x] **A2.** 6 aprofundamentos → `docs/conteudo/modulo-*.md`, já convertidos pra código em `src/content/modules/`
+- [x] **A3.** Instrumento — forma A e forma B, 12 itens cada → `docs/conteudo/quiz-diagnostico-mapeamento.md` e `avaliacao-final.md`, já em `src/content/quiz/`
+- [x] **A4.** Introdução, perguntas abertas, mensagem de fechamento → `docs/conteudo/intro.md`, já em código
+- [ ] Texto de assentimento — o que está em `ConsentGate.tsx` é um rascunho meu; **precisa sair da conversa com o orientador** antes de ser definitivo
 
-### A1. Os 6 módulos (12 cenas essenciais + 6 aprofundamentos)
-
-Para **cada** uma das 12 cenas essenciais eu preciso de:
-
-- [ ] A situação (2-4 falas de diálogo, quem fala)
-- [ ] A pergunta
-- [ ] 3 ou 4 alternativas **plausíveis** — mais de uma tem que parecer razoável
-- [ ] Qual é a melhor (`best`), qual é aceitável (`ok`), qual é arriscada (`risky`)
-- [ ] Um feedback curto para **cada** alternativa
-- [ ] O princípio da cena (1-2 frases)
-
-Distribuição: 2 cenas por módulo. Módulos e temas estão no spec, seção 5.
-
-> Se preferir, me dê só a situação e a ideia central de cada cena — eu escrevo as
-> alternativas e os feedbacks, e você revisa. É mais rápido assim.
-
-### A2. Aprofundamentos opcionais
-- [ ] 6 blocos curtos (um por módulo), 1 parágrafo cada
-
-### A3. Instrumento — 24 questões
-- [ ] Forma A (diagnóstico): 12 itens, 2 por módulo
-- [ ] Forma B (avaliação final): 12 itens, pares isomórficos da forma A
-- [ ] As 15 questões que você já tem servem de base — eu reaproveito e reorganizo
-
-### A4. Textos avulsos
-- [ ] Introdução (curta, sem parede de texto)
-- [ ] Texto de assentimento — precisa sair da conversa com o orientador
-- [ ] As 3 perguntas abertas do final
-- [ ] Mensagem de fechamento
+**Ainda vale revisar:** o tom das 12 cenas e os contextos fictícios (loja, app de fotos) — ninguém confirmou isso ainda, só eu escrevi e seguimos.
 
 ---
 
 ## B. IMAGENS
 
-### B1. Fundos — 4 ambientes
-- [ ] Caverna
-- [ ] Cidade
-- [ ] Planície
-- [ ] Subaquático
-- [ ] Mirante (pode ser variação da planície)
-
-Formato ideal: camadas separadas para parallax (céu / fundo / meio / frente).
-Se vierem em imagem única, funciona — o parallax fica mais simples.
-
-**Se você não tiver:** me avise e eu seleciono de packs com licença livre
-(Kenney é CC0, ansimuz tem parallax bom). Preciso da sua confirmação antes,
-porque a licença precisa constar no relatório.
+### B1. Fundos — feito
+- [x] Caverna, Cidade (2 tons), Planície, Subaquático, Mirante — todos em
+      `public/assets/backgrounds/`, pixel art real (itch.io), licenças em
+      `docs/CREDITOS-ASSETS.md`
+- [ ] **Confirmar autor exato dos pacotes de Planície e Subaquático** — os
+      arquivos baixados não trazem o nome do criador nos metadados. Ver
+      `docs/CREDITOS-ASSETS.md` para o que falta.
 
 ### B2. Personagem
-- [ ] Sprite sheet de caminhada (4-8 quadros, vista lateral)
-- [ ] Sprite parado (1 quadro)
+- [ ] Ainda é uma silhueta CSS (`WalkingCharacter.tsx`). O pacote SunnyLand que
+      você baixou (`sunny-land-phaser-project.zip`) tem um personagem animado
+      de verdade (idle/walk) — posso integrar quando você quiser.
 
 ### B3. NPCs
-- [ ] 3 a 6 personagens, 1 quadro cada (só precisam ficar parados e falar)
+- [ ] Nenhum ainda. Os diálogos não mostram um personagem específico por enquanto.
 
-### B4. Interface
-- [ ] Logo do ConectaSeguro, se houver
-- [x] ~~Ícones de celular/mensagem/cadeado~~ — resolvido: pacote Lucide (`lucide-react`,
-      licença ISC), ícones de linha monocromáticos tingidos com o neon do tema.
-      Sem emoji em lugar nenhum da interface.
+### B4. Interface — feito
+- [x] Ícones: pacote Lucide, sem emoji em lugar nenhum da interface.
 
 ### B5. Áudio (opcional, baixa prioridade)
 - [ ] Som ambiente por ambiente
@@ -80,7 +47,7 @@ porque a licença precisa constar no relatório.
 - [ ] **Falar com o orientador sobre consentimento** — bloqueia a coleta, não o código
 - [ ] Criar conta no Supabase e me passar as chaves (vão no `.env.local`, nunca no Git)
 - [ ] Criar conta na Vercel
-- [ ] Confirmar a licença dos assets que forem usados
+- [ ] Confirmar autor dos 2 pacotes de imagem pendentes (ver seção B1)
 - [ ] Data do encontro presencial na igreja
 - [ ] Nome da instituição como deve aparecer na declaração
 
@@ -95,8 +62,8 @@ porque a licença precisa constar no relatório.
 
 ---
 
-## Por onde começar
+## Por onde começar agora
 
-1. Falar com o orientador (destrava tudo o mais)
-2. Escrever as 12 cenas essenciais — ou me passar as ideias para eu escrever
-3. Decidir os assets: você tem, ou eu busco em packs livres?
+1. Falar com o orientador (destrava a coleta)
+2. Olhar o app rodando e dar retorno de visual/tom
+3. Quando quiser, decidir sobre o personagem animado (B2) e o backend (fase própria, ver `docs/PROXIMOS-PASSOS.md`)

@@ -8,23 +8,30 @@ interface ParallaxBackgroundProps {
   pace?: Pace;
 }
 
-interface StageBgStyle extends CSSProperties {
-  '--pace-duration'?: string;
-  '--accent': string;
+interface LayerStyle extends CSSProperties {
+  '--layer-duration': string;
 }
 
 export function ParallaxBackground({ env, pace }: ParallaxBackgroundProps) {
   const def = environments[env];
-  const style: StageBgStyle = {
-    '--pace-duration': pace?.duration,
-    '--accent': def.accent,
-  };
+  const baseDuration = pace ? Number.parseFloat(pace.duration) : 1.4;
 
   return (
-    <div className="stage-bg" style={style}>
-      <div className="stage-bg-gradient" style={{ background: def.gradient }} />
-      <div className="stage-bg-stars" />
-      <div className="stage-bg-glow" />
+    <div className="stage-bg" style={{ backgroundColor: def.baseColor }}>
+      {def.layers.map((layer, index) => {
+        const duration = layer.speed > 0 ? Math.max(baseDuration / layer.speed, 1.2) : 0;
+        const style: LayerStyle = {
+          backgroundImage: `url(${layer.src})`,
+          backgroundRepeat: layer.repeat ? 'repeat-x' : 'no-repeat',
+          backgroundSize: layer.repeat ? 'auto 100%' : 'cover',
+          backgroundPosition: layer.repeat ? 'left bottom' : 'center',
+          filter: layer.filter,
+          '--layer-duration': layer.repeat && duration ? `${duration}s` : '0s',
+        };
+        const className = `stage-bg-layer${layer.repeat ? ' stage-bg-layer--scroll' : ''}`;
+        return <div key={layer.src} className={className} style={style} />;
+      })}
+      <div className="stage-bg-glow" style={{ '--accent': def.accent } as CSSProperties} />
       <div className="stage-bg-vignette" />
     </div>
   );

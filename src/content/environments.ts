@@ -1,54 +1,101 @@
 import type { EnvironmentId } from '@/lib/types';
 
+export interface BgLayer {
+  src: string;
+  /** 0 = parado (muito longe), 1 = acompanha o ritmo em cheio (mais perto) */
+  speed: number;
+  /** true = ladrilha horizontalmente (ceu, fileira de predios); false = cena unica, cobre a tela */
+  repeat: boolean;
+  /** ajuste de cor pontual, ex: puxar uma cena diurna pro tom noturno do projeto */
+  filter?: string;
+}
+
 export interface EnvironmentDef {
   id: EnvironmentId;
   label: string;
-  /** Placeholder ate as artes pixel art chegarem (ver docs/PENDENCIAS.md B1). */
-  gradient: string;
+  baseColor: string;
+  layers: BgLayer[];
   accent: string;
 }
+
+const b = (path: string) => `/assets/backgrounds/${path}`;
 
 export const environments: Record<EnvironmentId, EnvironmentDef> = {
   hero: {
     id: 'hero',
     label: 'Limiar',
-    gradient: 'linear-gradient(180deg, #030212 0%, #0d0a2e 50%, #1a0f3d 100%)',
+    baseColor: '#100a2e',
     accent: '#38f2ff',
+    layers: [
+      { src: b('hero/layer-0.png'), speed: 0.04, repeat: false },
+      { src: b('hero/layer-1.png'), speed: 0.15, repeat: true },
+    ],
   },
   caverna: {
     id: 'caverna',
     label: 'Caverna',
-    gradient: 'linear-gradient(180deg, #0a0e2a 0%, #131a3d 55%, #0d3b4f 100%)',
+    baseColor: '#0a0e2a',
     accent: '#38f2ff',
+    layers: [
+      { src: b('caverna/layer-0.png'), speed: 0.15, repeat: true },
+      { src: b('caverna/layer-1.png'), speed: 0.4, repeat: true },
+    ],
   },
   'cidade-m2': {
     id: 'cidade-m2',
     label: 'Cidade — amanhecer',
-    gradient: 'linear-gradient(180deg, #12082b 0%, #2a1150 55%, #4a1750 100%)',
+    baseColor: '#12082b',
     accent: '#ff5fe0',
+    layers: [
+      { src: b('cidade-m2/layer-0.png'), speed: 0.1, repeat: true },
+      { src: b('cidade-m2/layer-1.png'), speed: 0.3, repeat: true },
+      { src: b('cidade-m2/layer-2.png'), speed: 0.55, repeat: true },
+    ],
   },
   planicie: {
     id: 'planicie',
     label: 'Planície',
-    gradient: 'linear-gradient(180deg, #05041a 0%, #170f3d 55%, #2a1b4d 100%)',
+    baseColor: '#05041a',
     accent: '#8a6bff',
+    layers: [
+      {
+        src: b('planicie/layer-0.png'),
+        speed: 0.12,
+        repeat: true,
+        filter: 'brightness(0.55) saturate(1.3) hue-rotate(220deg)',
+      },
+    ],
   },
   subaquatico: {
     id: 'subaquatico',
     label: 'Subaquático',
-    gradient: 'linear-gradient(180deg, #021024 0%, #062a3f 55%, #08405c 100%)',
+    baseColor: '#021024',
     accent: '#2de0c8',
+    layers: [
+      { src: b('subaquatico/layer-0.png'), speed: 0.12, repeat: true, filter: 'brightness(0.7)' },
+      { src: b('subaquatico/layer-1.png'), speed: 0.4, repeat: true, filter: 'brightness(0.75)' },
+    ],
   },
   'cidade-m5': {
     id: 'cidade-m5',
     label: 'Cidade — presença',
-    gradient: 'linear-gradient(180deg, #1a0a2e 0%, #3a1258 55%, #5c1a5c 100%)',
+    baseColor: '#1a0a2e',
     accent: '#ff4fd8',
+    layers: [
+      { src: b('cidade-m5/layer-0.png'), speed: 0.1, repeat: true },
+      { src: b('cidade-m5/layer-1.png'), speed: 0.3, repeat: true },
+      { src: b('cidade-m5/layer-2.png'), speed: 0.55, repeat: true },
+    ],
   },
   mirante: {
     id: 'mirante',
     label: 'Mirante — amanhecer',
-    gradient: 'linear-gradient(180deg, #150c30 0%, #6a2d5c 45%, #d97a3f 100%)',
+    baseColor: '#150c30',
     accent: '#ffb347',
+    layers: [
+      { src: b('mirante/layer-0.png'), speed: 0.04, repeat: true },
+      { src: b('mirante/layer-1.png'), speed: 0.2, repeat: true },
+      { src: b('mirante/layer-2.png'), speed: 0.4, repeat: true },
+    ],
   },
 };
