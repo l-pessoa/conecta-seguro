@@ -65,7 +65,9 @@ porque a licença precisa constar no relatório.
 
 ### B4. Interface
 - [ ] Logo do ConectaSeguro, se houver
-- [ ] Ícones de celular/mensagem/cadeado para as telas de situação
+- [x] ~~Ícones de celular/mensagem/cadeado~~ — resolvido: pacote Lucide (`lucide-react`,
+      licença ISC), ícones de linha monocromáticos tingidos com o neon do tema.
+      Sem emoji em lugar nenhum da interface.
 
 ### B5. Áudio (opcional, baixa prioridade)
 - [ ] Som ambiente por ambiente
