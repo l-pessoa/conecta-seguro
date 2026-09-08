@@ -10,10 +10,11 @@ const KEY = 'conectaseguro.journey';
 interface JourneyState {
   currentSceneId: string;
   completedModules: ModuleId[];
+  explorationMode: boolean;
 }
 
 function initialState(): JourneyState {
-  return { currentSceneId: firstSceneOf(1).id, completedModules: [] };
+  return { currentSceneId: firstSceneOf(1).id, completedModules: [], explorationMode: false };
 }
 
 export function useJourney() {
@@ -46,6 +47,7 @@ export function useJourney() {
       const next = nextModuleId(scene.module);
 
       persist({
+        ...state,
         currentSceneId: next ? firstSceneOf(next).id : sceneId,
         completedModules,
       });
@@ -53,8 +55,23 @@ export function useJourney() {
     [state, persist],
   );
 
+  const goToModule = useCallback(
+    (moduleId: ModuleId) => {
+      persist({ ...state, currentSceneId: firstSceneOf(moduleId).id, explorationMode: true });
+    },
+    [state, persist],
+  );
+
   const currentScene = scenesById[state.currentSceneId];
   const journeyComplete = state.completedModules.length === modules.length;
 
-  return { hydrated, currentScene, completedModules: state.completedModules, journeyComplete, completeScene };
+  return {
+    hydrated,
+    currentScene,
+    completedModules: state.completedModules,
+    explorationMode: state.explorationMode,
+    journeyComplete,
+    completeScene,
+    goToModule,
+  };
 }

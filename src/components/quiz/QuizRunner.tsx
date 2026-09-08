@@ -43,6 +43,10 @@ export function QuizRunner({ phase, items, onComplete }: QuizRunnerProps) {
     finish();
   }
 
+  function goBack() {
+    if (index > 0) setIndex((i) => i - 1);
+  }
+
   function finish() {
     const result = scoreQuiz(phase, items, answers);
     writeStorage(`conectaseguro.quiz.${phase}`, result);
@@ -71,9 +75,19 @@ export function QuizRunner({ phase, items, onComplete }: QuizRunnerProps) {
         selected={currentAnswer}
         onSelect={selectOption}
       />
-      {currentAnswer && (
-        <Button onClick={goNext}>{isLast ? 'Continuar' : 'Próxima'}</Button>
-      )}
+      <div className="quiz-actions">
+        {index > 0 ? (
+          <Button variant="ghost" onClick={goBack}>
+            Voltar
+          </Button>
+        ) : (
+          <span />
+        )}
+        <Button variant="ghost" onClick={goNext}>
+          Pular
+        </Button>
+        {currentAnswer && <Button onClick={goNext}>{isLast ? 'Continuar' : 'Próxima'}</Button>}
+      </div>
     </div>
   );
 }

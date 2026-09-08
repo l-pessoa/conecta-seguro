@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Press_Start_2P } from 'next/font/google';
+import { NavBar } from '@/components/ui/NavBar';
 import './globals.css';
 
 const pixelFont = Press_Start_2P({
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={pixelFont.variable}>
-      <body>{children}</body>
+      <body>
+        <NavBar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -15,7 +15,7 @@ import type { ModuleId } from '@/lib/types';
 export default function ModulePage() {
   const params = useParams<{ modulo: string }>();
   const router = useRouter();
-  const { hydrated, currentScene, completedModules, journeyComplete, completeScene } = useJourney();
+  const { hydrated, currentScene, completedModules, explorationMode, journeyComplete, completeScene } = useJourney();
   const [finishedModuleId, setFinishedModuleId] = useState<ModuleId | null>(null);
   const [pace, setPace] = useState(pacingFor(null));
 
@@ -34,6 +34,9 @@ export default function ModulePage() {
     const mod = modulesById[finishedModuleId];
     const next = nextModuleId(finishedModuleId);
 
+    const destination = journeyComplete ? '/avaliacao' : explorationMode || !next ? '/modulos' : `/jornada/${next}`;
+    const label = journeyComplete ? 'Ir pra avaliação final' : explorationMode || !next ? 'Escolher próximo módulo' : 'Continuar';
+
     return (
       <main className="module-summary page-shell">
         <h2>Módulo concluído</h2>
@@ -49,9 +52,7 @@ export default function ModulePage() {
             </ol>
           </div>
         )}
-        <Button onClick={() => router.push(journeyComplete || !next ? '/avaliacao' : `/jornada/${next}`)}>
-          {journeyComplete || !next ? 'Ir pra avaliação final' : 'Continuar'}
-        </Button>
+        <Button onClick={() => router.push(destination)}>{label}</Button>
       </main>
     );
   }
