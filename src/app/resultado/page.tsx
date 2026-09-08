@@ -16,7 +16,7 @@ export default function ResultadoPage() {
   }, []);
 
   return (
-    <main className="result-page">
+    <main className="result-page page-shell">
       <h1>Jornada concluída</h1>
       <ol className="closing-steps">
         {closingSteps.map((step) => (

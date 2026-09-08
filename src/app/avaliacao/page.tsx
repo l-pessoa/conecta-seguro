@@ -8,7 +8,7 @@ export default function AvaliacaoPage() {
   const router = useRouter();
 
   return (
-    <main className="quiz-page">
+    <main className="quiz-page page-shell">
       <header className="quiz-header">
         <h1>Avaliação final</h1>
         <p>Situações novas — vamos ver como fica depois da jornada.</p>

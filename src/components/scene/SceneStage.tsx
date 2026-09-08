@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Scene } from '@/lib/types';
 import { advanceLine, initialSceneState, selectChoice } from '@/engine/sceneMachine';
-import { pacingFor } from '@/engine/pacing';
-import { ParallaxBackground } from './ParallaxBackground';
+import { pacingFor, type Pace } from '@/engine/pacing';
 import { WalkingCharacter } from './WalkingCharacter';
 import { DialogueBox } from './DialogueBox';
 import { ChoiceList } from './ChoiceList';
@@ -13,10 +12,11 @@ import { FeedbackPanel } from './FeedbackPanel';
 interface SceneStageProps {
   scene: Scene;
   onComplete: (sceneId: string) => void;
+  onPaceChange?: (pace: Pace) => void;
 }
 
-/** Renderiza uma cena. Passe `key={scene.id}` no chamador pra reiniciar o estado a cada troca. */
-export function SceneStage({ scene, onComplete }: SceneStageProps) {
+/** Renderiza o primeiro plano de uma cena. O fundo (ParallaxBackground) fica a cargo da página. */
+export function SceneStage({ scene, onComplete, onPaceChange }: SceneStageProps) {
   const [state, setState] = useState(initialSceneState);
 
   const selectedChoice = state.selectedChoiceId
@@ -25,9 +25,13 @@ export function SceneStage({ scene, onComplete }: SceneStageProps) {
 
   const pace = pacingFor(selectedChoice?.quality ?? null);
 
+  useEffect(() => {
+    onPaceChange?.(pace);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pace.label]);
+
   return (
     <div className="scene-stage">
-      <ParallaxBackground env={scene.env} pace={pace} />
       <WalkingCharacter pace={pace} />
 
       <div className="scene-content">

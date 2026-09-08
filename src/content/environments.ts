@@ -9,6 +9,12 @@ export interface EnvironmentDef {
 }
 
 export const environments: Record<EnvironmentId, EnvironmentDef> = {
+  hero: {
+    id: 'hero',
+    label: 'Limiar',
+    gradient: 'linear-gradient(180deg, #030212 0%, #0d0a2e 50%, #1a0f3d 100%)',
+    accent: '#38f2ff',
+  },
   caverna: {
     id: 'caverna',
     label: 'Caverna',

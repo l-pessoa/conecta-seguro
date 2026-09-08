@@ -8,7 +8,7 @@ export default function DiagnosticoPage() {
   const router = useRouter();
 
   return (
-    <main className="quiz-page">
+    <main className="quiz-page page-shell">
       <header className="quiz-header">
         <h1>Diagnóstico</h1>
         <p>Antes de começar a jornada, responda com o que você faria de verdade.</p>

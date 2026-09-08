@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useJourney } from '@/engine/useJourney';
 import { modulesById, nextModuleId } from '@/content/modules';
+import { pacingFor } from '@/engine/pacing';
 import { SceneStage } from '@/components/scene/SceneStage';
+import { ParallaxBackground } from '@/components/scene/ParallaxBackground';
 import { DeepDiveSheet } from '@/components/scene/DeepDiveSheet';
 import { ProgressTrail } from '@/components/ui/ProgressTrail';
 import { Button } from '@/components/ui/Button';
@@ -15,6 +17,7 @@ export default function ModulePage() {
   const router = useRouter();
   const { hydrated, currentScene, completedModules, journeyComplete, completeScene } = useJourney();
   const [finishedModuleId, setFinishedModuleId] = useState<ModuleId | null>(null);
+  const [pace, setPace] = useState(pacingFor(null));
 
   const routeModuleId = Number(params.modulo) as ModuleId;
 
@@ -32,7 +35,7 @@ export default function ModulePage() {
     const next = nextModuleId(finishedModuleId);
 
     return (
-      <main className="module-summary">
+      <main className="module-summary page-shell">
         <h2>Módulo concluído</h2>
         <p>{mod.title}</p>
         <DeepDiveSheet deepDive={mod.deepDive} />
@@ -58,7 +61,8 @@ export default function ModulePage() {
   const mod = modulesById[routeModuleId];
 
   return (
-    <main className="module-page">
+    <div className="stage-shell">
+      <ParallaxBackground env={currentScene.env} pace={pace} />
       <ProgressTrail completedModules={completedModules} currentModule={routeModuleId} />
       <header className="module-header">
         <h1>{mod.title}</h1>
@@ -67,12 +71,13 @@ export default function ModulePage() {
       <SceneStage
         key={currentScene.id}
         scene={currentScene}
+        onPaceChange={setPace}
         onComplete={(sceneId) => {
           const scene = currentScene;
           completeScene(sceneId);
           if (!scene.next) setFinishedModuleId(scene.module);
         }}
       />
-    </main>
+    </div>
   );
 }
