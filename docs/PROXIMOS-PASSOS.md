@@ -1,54 +1,53 @@
 # Onde paramos — 08/09/2026
 
-## Descobertas ao ler o roteiro
+## Feito até agora
 
-Os 7 arquivos originais estão copiados em `docs/roteiro-original/`.
+- Conteúdo completo em `docs/conteudo/`: introdução, 12 cenas essenciais,
+  6 aprofundamentos, forma A (diagnóstico) e forma B (avaliação final) do
+  instrumento, 12 itens cada, pareados por competência.
+- Código: tipos (`src/lib/types.ts`), conteúdo convertido pra `.ts`
+  (`src/content/`), motor de cena e progresso (`src/engine/`), componentes de
+  UI, todas as rotas do fluxo do participante. `npm run dev` rodando.
+- Frente inteira clicável, ponta a ponta: introdução → consentimento →
+  diagnóstico → 6 módulos → avaliação final → resultado. Sem backend ainda —
+  decisão explícita, ver seção abaixo.
+- 15 testes automatizados passando (`npm run test`): integridade de
+  conteúdo, formato do quiz, correção.
 
-- **`Quiz Diagnóstico Segurança.md` é conteúdo pronto.** 15 questões com alternativas,
-  gabarito, competência e conceito. Distratores plausíveis de verdade. Peça mais
-  adiantada do projeto.
-- **Os 6 arquivos de módulo são especificação, não roteiro.** Dizem o que cada cena
-  deve ensinar e o que evitar, mas não trazem as falas nem as alternativas escritas.
-  O trabalho pedagógico está feito; falta a escrita concreta.
+## Backend — fase própria, ainda não começou
 
-## Conflitos a resolver
+Decisão do usuário: front primeiro, back depois, numa fase dedicada.
 
-1. Specs assumem 3 situações por módulo → viram 2 + aprofundamento opcional.
-2. Módulo 1 tem 6 tempos (situações + 2FA + códigos + painel de reação). Proposta:
-   2 situações + "kit de reação" no fechamento; códigos de autenticação migram para
-   o Módulo 3, onde a situação "eu sou do suporte" já pede isso.
-3. Specs pedem ~18 animações sob medida. Reduzir a 3 dispositivos reutilizáveis:
-   ritmo da caminhada · destaque sobre elementos da cena · conexão animada entre elementos.
-4. Módulo 1 §17-§22 foi escrito para a stack antiga — ignorar.
-
-## Direção visual revisada (tema escuro)
-
-Referências do usuário: roxo profundo, neon ciano e magenta, estrelas.
-
-- **Sai** SunnyLand (ensolarado demais, briga com a paleta).
-- **Âncora visual:** Warped City / Synth Cities (ansimuz, CC0) — cyberpunk neon roxo.
-- **Mantidos:** Mountain Dusk (ansimuz, CC0) e Parallax Backgrounds: Caves (Admurin),
-  de preferência a variante com cristais azuis.
-- **Progressão nova:** a jornada inteira acontece numa noite, cada módulo com um tom de
-  neon diferente. A única mudança real de luz é o amanhecer no mirante do Módulo 6.
-  Mantém a metáfora escuro → luz e elimina variantes diurnas de cada cenário.
-
-O usuário vai enviar arquivos de imagem próprios. Montar a paleta a partir deles.
-
-## Feito em 08-09/09
-
-- [x] Escrevi as 12 cenas essenciais + 6 aprofundamentos → `docs/conteudo/modulo-*.md`
-- [x] Mapeei 12 das 15 questões do diagnóstico (2 por módulo) → `docs/conteudo/quiz-diagnostico-mapeamento.md`.
-  Q4 e Q12 saem por não terem módulo que ensine a competência; Q6 e Q10 saem por
-  redundância dentro do próprio módulo; escrevi 1 questão nova pro Módulo 5, que
-  não tinha segunda candidata natural no banco original.
+**O que isso significa agora:**
+- `src/app/api/` foi removido (os 3 arquivos eram só comentário, sem handler,
+  e quebravam o build do Next sob `isolatedModules`). Recriar quando a fase
+  de backend começar:
+  - `POST /api/participante` — registra participante (código, consent_at, session_tag)
+  - `POST /api/quiz` — recebe respostas, corrige no servidor, grava, devolve só o resultado
+  - `POST /api/evento` — registra eventos de jornada, aceita lote
+- A correção do quiz roda **no cliente**, temporariamente
+  (`src/lib/quizScore.ts`), com o gabarito visível em `src/content/quiz/form-a.ts`
+  e `form-b.ts` (campo `correct`). Isso viola a regra 28 do design (gabarito
+  nunca deve chegar ao navegador) — **aceitável só nesta fase de testar o
+  front, nunca para coleta real.**
+- Antes de qualquer coleta com participantes de verdade:
+  1. Mover o gabarito pra `src/lib/server/answers.ts` (`import 'server-only'`)
+  2. Implementar as 3 rotas acima com Supabase
+  3. Trocar as chamadas de `scoreQuiz` local por `fetch('/api/quiz')`
+  4. Apagar o campo `correct` de `QuizItem` e dos arquivos de formulário
 
 ## Decisões pendentes
 
 - [ ] Revisar o tom das 12 cenas e os contextos fictícios (loja, app de fotos)
-- [ ] Receber as imagens do usuário para fixar a paleta
-- [ ] **Falar com o orientador sobre consentimento** (bloqueia a coleta)
-- [ ] Converter `docs/conteudo/*.md` para `src/content/**/*.ts` quando o conteúdo
-      estiver aprovado (depende de `src/lib/types.ts` estar definido primeiro)
-- [ ] Mais adiante: escrever a forma B (avaliação final) com pares isomórficos —
-      só depois que os módulos estiverem consolidados, como já estava no plano
+- [ ] Receber as imagens do usuário para fixar a paleta (hoje: gradientes
+      placeholder por ambiente em `src/content/environments.ts`)
+- [ ] **Falar com o orientador sobre consentimento** (bloqueia a coleta, não o código)
+- [ ] Sprite do personagem e NPCs (hoje: silhueta CSS placeholder em `WalkingCharacter.tsx`)
+- [ ] Criar conta Supabase quando a fase de backend começar
+
+## Débito técnico conhecido
+
+- `npm audit`: 7 vulnerabilidades em dependências de desenvolvimento
+  (Vite/Vitest/PostCSS — servidor de dev, não o app publicado). Corrigível
+  só subindo pra Next 16 (mudança quebradora) — revisar antes do deploy real,
+  não urgente pra uso local.

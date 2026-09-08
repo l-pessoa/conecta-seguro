@@ -1,1 +1,11 @@
-// Botao base. Alvo de toque minimo 44px.
+'use client';
+
+import type { ButtonHTMLAttributes } from 'react';
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'ghost';
+}
+
+export function Button({ variant = 'primary', className = '', ...props }: ButtonProps) {
+  return <button className={`btn btn-${variant} ${className}`.trim()} {...props} />;
+}
