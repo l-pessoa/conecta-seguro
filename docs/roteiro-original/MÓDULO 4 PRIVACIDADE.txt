@@ -1,0 +1,774 @@
+MÓDULO 4 — PRIVACIDADE
+
+IMPORTANTE: este prompt complementa a especificação geral do ConectaSeguro e deve ser implementado respeitando a arquitetura, identidade visual e padrões já utilizados nos Módulos 1, 2 e 3.
+
+Não trate este documento como uma limitação absoluta de design. As regras pedagógicas são obrigatórias, mas existe liberdade para melhorar a experiência quando uma solução de UX, game design, narrativa ou direção visual claramente beneficiar o projeto.
+
+1. TEMA DO MÓDULO
+Módulo 4 — Privacidade
+
+Este módulo deve ensinar o participante a perceber que privacidade não significa simplesmente:
+
+"não conte nada para ninguém."
+
+A ideia central é:
+
+Privacidade é ter controle sobre o que você compartilha, com quem, quando e para qual finalidade.
+
+O participante deve aprender a avaliar o contexto antes de compartilhar informações, publicar conteúdos ou permitir acesso a dados.
+
+2. OBJETIVOS DE APRENDIZAGEM
+
+Ao terminar o módulo, o participante deve conseguir:
+
+2.1 Perceber que informações aparentemente simples podem revelar muito
+
+Exemplos:
+
+localização;
+rotina;
+escola;
+lugares frequentados;
+informações familiares;
+imagens;
+documentos;
+conversas;
+horários;
+objetos presentes em uma foto.
+
+Uma informação isolada pode parecer inofensiva.
+
+Várias informações juntas podem revelar muito mais.
+
+2.2 Pensar antes de publicar
+
+O participante deve desenvolver o hábito de perguntar:
+
+"O que essa publicação revela além daquilo que eu pretendia mostrar?"
+
+Não ensinar que toda publicação é perigosa.
+
+O objetivo é estimular consciência antes do compartilhamento.
+
+2.3 Entender que público e privado são escolhas diferentes
+
+O participante deve perceber que:
+
+nem todo conteúdo precisa ser público;
+configurações de privacidade importam;
+diferentes pessoas podem ter diferentes níveis de acesso;
+compartilhar com alguém não significa necessariamente compartilhar com todos.
+2.4 Avaliar permissões de aplicativos
+
+O participante deve entender que aplicativos podem solicitar acesso a:
+
+localização;
+câmera;
+microfone;
+contatos;
+fotos;
+arquivos.
+
+A pergunta principal deve ser:
+
+"Esse aplicativo realmente precisa disso para funcionar?"
+
+2.5 Saber reduzir exposição
+
+O participante deve sair do módulo sabendo que pode:
+
+limitar quem vê determinado conteúdo;
+revisar permissões;
+evitar publicar informações desnecessárias;
+remover informações que não precisam estar disponíveis;
+pensar sobre o contexto antes de compartilhar.
+3. IDENTIDADE DO MÓDULO
+
+Os módulos anteriores:
+
+Módulo 1
+
+CRIAR → PROTEGER → REAGIR
+
+Módulo 2
+
+PERCEBER → VERIFICAR → AGIR
+
+Módulo 3
+
+RECONHECER → QUESTIONAR → CONFIRMAR
+
+Para o Módulo 4:
+
+PENSAR → CONTROLAR → COMPARTILHAR
+
+A sensação deve ser diferente.
+
+Este módulo deve ser menos sobre "ameaça chegando" e mais sobre consciência das próprias escolhas.
+
+4. ESTRUTURA
+
+Utilizar aproximadamente 3 situações principais.
+
+Estrutura:
+
+CONTEXTO
+↓
+SITUAÇÃO
+↓
+DECISÃO
+↓
+CONSEQUÊNCIA
+↓
+EXPLICAÇÃO
+↓
+APLICAÇÃO
+↓
+PROGRESSÃO
+
+As três situações devem abordar aspectos diferentes da privacidade.
+
+5. SITUAÇÃO 1 — "O QUE ESSA FOTO MOSTRA?"
+Objetivo
+
+Ensinar que uma imagem pode revelar informações além do elemento principal que a pessoa pretendia mostrar.
+
+Contexto
+
+O personagem está em uma situação cotidiana e decide publicar uma foto.
+
+A imagem pode parecer completamente normal.
+
+Porém, no fundo da imagem existem elementos que revelam informações adicionais.
+
+Exemplos:
+
+localização;
+nome de um local;
+uniforme;
+documento;
+tela de computador;
+endereço;
+horário;
+rotina;
+conversa ao fundo.
+
+Não utilizar dados pessoais reais.
+
+Tudo deve ser fictício.
+
+Mecânica
+
+Essa deve ser uma interação visual.
+
+Apresentar a imagem e perguntar:
+
+"Antes de publicar, o que você verificaria?"
+
+O participante pode tocar em diferentes partes da imagem.
+
+Ao tocar, determinados elementos podem ser destacados.
+
+Por exemplo:
+
+[LOCALIZAÇÃO]
+[DOCUMENTO]
+[CONVERSA]
+[UNIFORME]
+[HORÁRIO]
+
+Não transformar em um jogo de "ache todos os perigos".
+
+A intenção é mostrar que contexto importa.
+
+Decisão final
+
+Perguntar algo como:
+
+Você publicaria a imagem como está?
+
+Alternativas:
+
+sim, porque a foto não mostra nada importante;
+sim, mas apenas porque meus amigos conhecem o local;
+revisaria o que aparece antes de publicar;
+não publicaria nenhuma foto nunca.
+
+A resposta correta deve ser:
+
+revisar o conteúdo e decidir conscientemente o que realmente precisa ser compartilhado.
+
+Explicação
+
+Mensagem principal:
+
+Às vezes você não compartilha uma informação diretamente. A imagem pode compartilhá-la por você.
+
+Explicar que elementos de fundo podem revelar informações que não eram a intenção principal da publicação.
+
+6. SITUAÇÃO 2 — "POR QUE ESSE APLICATIVO PRECISA DISSO?"
+Objetivo
+
+Ensinar o participante a questionar permissões de aplicativos.
+
+Contexto
+
+O personagem instala um aplicativo fictício.
+
+Durante a configuração, aparecem pedidos de permissão.
+
+Por exemplo:
+
+"Permitir acesso à localização?"
+
+Depois:
+
+"Permitir acesso aos contatos?"
+
+Depois:
+
+"Permitir uso do microfone?"
+
+A situação deve mostrar que permissões diferentes têm finalidades diferentes.
+
+Mecânica
+
+O participante recebe uma tela semelhante a um celular.
+
+Cada permissão pode ser selecionada.
+
+Para cada uma, apresentar:
+
+"Isso é necessário para o aplicativo funcionar?"
+
+O objetivo não é ensinar que toda permissão é ruim.
+
+Alguns aplicativos realmente precisam de determinados acessos.
+
+A questão é avaliar a necessidade e finalidade.
+
+Exemplo
+
+Um aplicativo fictício de edição de imagens solicita:
+
+fotos → faz sentido para selecionar imagens;
+localização → pode não ser necessária;
+contatos → pode não ser necessária;
+microfone → depende da função utilizada.
+
+O participante deve aprender a questionar permissões que não parecem relacionadas à função do aplicativo.
+
+Decisão
+
+Alternativas:
+
+aceitar todas sem verificar;
+negar todas sempre;
+analisar cada permissão e permitir apenas o que fizer sentido;
+desinstalar qualquer aplicativo que peça uma permissão.
+
+Resposta correta:
+
+analisar individualmente e limitar acessos desnecessários.
+
+Explicação
+
+Mensagem:
+
+Permissão não é obrigação.
+
+E:
+
+Antes de permitir acesso, pense no que o aplicativo realmente precisa para fazer aquilo que você quer.
+
+Não ensinar procedimentos específicos de um sistema operacional.
+
+7. SITUAÇÃO 3 — "QUANTO VOCÊ ESTÁ REVELANDO?"
+Objetivo
+
+Ensinar que várias informações aparentemente pequenas podem formar um retrato detalhado da rotina de alguém.
+
+Contexto
+
+O personagem está preparando uma sequência de publicações.
+
+Em vez de uma publicação isolada, aparecem várias informações:
+
+"Indo para a escola"
+↓
+"Treino toda terça"
+↓
+"Minha mãe trabalha até 18h"
+↓
+"Estou nesse lugar agora"
+↓
+"Vou viajar amanhã"
+
+Não utilizar exatamente essas frases se elas ficarem excessivamente pessoais.
+
+Criar uma situação fictícia e adequada ao público.
+
+Mecânica
+
+Mostrar várias pequenas publicações.
+
+O participante deve decidir quais informações são:
+
+tranquilas de compartilhar;
+melhor limitar;
+dependentes do contexto.
+
+Não transformar isso em uma classificação absoluta.
+
+A ideia é ensinar:
+
+uma informação pode mudar de risco dependendo de quem pode vê-la e do contexto.
+
+Mecânica visual opcional
+
+Esta é uma oportunidade para uma ideia criativa.
+
+As informações podem aparecer como pequenas peças de um painel.
+
+Inicialmente:
+
+LOCAL
+HORÁRIO
+ROTINA
+ESCOLA
+INTERESSES
+
+À medida que o participante seleciona várias informações para publicar, o sistema pode montar visualmente um "mapa da rotina".
+
+Isso demonstra que informações pequenas podem se conectar.
+
+Se a arquitetura existente permitir essa interação de forma simples, implemente-a.
+
+Se isso exigir criar um sistema complexo desnecessário, simplifique.
+
+Explicação
+
+Mostrar:
+
+Uma informação isolada pode parecer pequena. Várias juntas podem revelar muito mais.
+
+E:
+
+Privacidade também é pensar no conjunto.
+
+8. CONCEITO IMPORTANTE — PRIVACIDADE NÃO É PARANOIA
+
+O módulo não deve ensinar:
+
+"Nunca poste fotos."
+
+Nem:
+
+"Nunca use aplicativos."
+
+Nem:
+
+"Nunca compartilhe localização."
+
+Nem:
+
+"Tudo que está na internet é perigoso."
+
+Isso seria exagerado e pedagogicamente ruim.
+
+Ensinar:
+
+A questão não é compartilhar ou não compartilhar. É decidir conscientemente o que compartilhar, com quem e em qual contexto.
+
+9. MICRODECISÃO FINAL
+
+Criar uma pequena decisão de síntese.
+
+Apresentar uma situação cotidiana:
+
+"Você vai publicar algo agora. Antes de tocar em publicar, qual pergunta é mais importante?"
+
+Alternativas plausíveis.
+
+A melhor resposta deve envolver:
+
+O que estou compartilhando, quem poderá ver e se isso realmente precisa ser público?
+
+10. REGRA DE OURO
+
+Encerrar o módulo com:
+
+PENSE
+↓
+CONTROLE
+↓
+COMPARTILHE
+
+E uma frase:
+
+Antes de compartilhar, pense no que você está revelando — não apenas no que pretende mostrar.
+
+11. CONTEÚDO OPCIONAL
+
+Criar conteúdos de aprofundamento.
+
+Eles não devem bloquear o progresso.
+
+11.1 Público não significa necessariamente "todo mundo que você conhece"
+
+Explicar de maneira simples que diferentes plataformas oferecem diferentes formas de controle de audiência.
+
+O importante é compreender:
+
+quem poderá acessar aquilo que você publicou?
+
+11.2 Permissões de aplicativos
+
+Explicar:
+
+por que aplicativos pedem permissões;
+por que algumas permissões fazem sentido;
+por que outras podem ser desnecessárias;
+por que revisar permissões periodicamente pode ser útil.
+11.3 "Apagar depois resolve?"
+
+Explicar que apagar uma publicação reduz sua disponibilidade naquele perfil, mas não significa necessariamente que ninguém tenha visto ou guardado o conteúdo.
+
+Não utilizar linguagem alarmista.
+
+11.4 Privacidade e conveniência
+
+Mostrar que muitas vezes existe uma troca:
+
+mais acesso → mais conveniência;
+
+menos acesso → mais controle.
+
+O participante deve aprender a avaliar essa troca.
+
+12. FEEDBACK
+Resposta correta
+
+Exemplo:
+
+Boa escolha. Você pensou no contexto antes de compartilhar.
+
+Resposta incorreta
+
+Exemplo:
+
+Talvez valha olhar de novo. A informação parece pequena, mas pode revelar mais quando combinada com outras.
+
+Nunca usar:
+
+game over;
+vergonha;
+"você colocou sua vida em risco";
+consequências exageradas.
+13. DESIGN DOS NPCs
+
+NPCs devem apresentar situações cotidianas.
+
+Não devem dar uma palestra sobre privacidade.
+
+Exemplo:
+
+NPC:
+"Vou postar essa foto.
+Você vê alguma coisa que eu deveria conferir?"
+
+[PARTICIPANTE ANALISA]
+
+NPC:
+"Eu nem tinha percebido isso."
+
+A descoberta deve acontecer através da interação.
+
+14. DIREÇÃO VISUAL DOS CENÁRIOS
+
+O Módulo 4 deve utilizar preferencialmente um dos 6 ambientes oficiais já existentes, mas essa preferência não deve ser uma restrição rígida.
+
+O cenário escolhido deve favorecer:
+
+observação;
+descoberta;
+detalhes no ambiente;
+composição visual;
+sensação de exploração.
+
+Uma paisagem natural, fundo do mar, cidade ou outro ambiente com muitos detalhes pode funcionar muito bem para este módulo, dependendo dos assets disponíveis.
+
+A escolha definitiva deve considerar a experiência completa dos seis módulos, e não apenas este módulo isoladamente.
+
+15. LIBERDADE CRIATIVA — REGRA GERAL DOS CENÁRIOS
+
+Os 6 cenários existentes são a base visual oficial da jornada.
+
+Entretanto:
+
+não trate os 6 cenários como uma limitação rígida.
+
+Antes de criar algo completamente novo, avalie se o resultado pode ser obtido através de:
+
+outra região do cenário;
+mudança de iluminação;
+dia;
+tarde;
+pôr do sol;
+noite;
+parallax;
+novos elementos de primeiro plano;
+objetos interativos;
+efeitos ambientais;
+pequenas extensões.
+
+Porém, se uma ideia nova realmente melhorar:
+
+narrativa;
+aprendizagem;
+UX;
+game design;
+estética;
+progressão;
+identidade do módulo;
+
+você pode propor e implementar essa solução.
+
+A regra é:
+
+não criar coisas novas sem propósito.
+
+Não é:
+
+"nunca criar coisas novas".
+
+Use sua experiência em:
+
+design;
+game design;
+UX;
+direção visual;
+narrativa interativa;
+
+para identificar oportunidades que não foram previstas originalmente.
+
+Se uma solução criativa melhorar significativamente o projeto, ela é bem-vinda.
+
+Se exigir grande quantidade de trabalho sem benefício proporcional, prefira uma solução mais simples.
+
+16. ANIMAÇÃO
+
+As animações devem reforçar a ideia de observar e descobrir.
+
+Possibilidades:
+
+Situação 1
+
+Ao tocar em elementos da foto:
+
+pequenos destaques;
+zoom;
+iluminação;
+contorno;
+pequenas animações.
+Situação 2
+
+Permissões podem aparecer como elementos de uma interface de celular.
+
+Situação 3
+
+Informações podem se conectar visualmente.
+
+Se uma ideia de animação melhor surgir, ela pode ser utilizada desde que não prejudique:
+
+desempenho;
+legibilidade;
+simplicidade;
+mobile.
+17. MOBILE-FIRST
+
+A interação precisa funcionar principalmente em celular.
+
+Priorizar:
+
+toque;
+elementos grandes;
+leitura curta;
+feedback imediato;
+pouca necessidade de rolagem;
+ausência de dependência de hover.
+18. PERFORMANCE
+
+Evitar:
+
+excesso de partículas;
+efeitos pesados;
+dezenas de objetos animados;
+imagens gigantes;
+sistemas desnecessários.
+
+O módulo deve funcionar em celulares de baixo e médio desempenho.
+
+19. BACKEND
+
+Continuar utilizando a arquitetura existente.
+
+As decisões devem ser processadas de acordo com o sistema existente.
+
+Não expor respostas corretas ao frontend.
+
+Continuar respeitando a separação entre:
+
+pergunta enviada ao participante
+
+e
+
+resposta correta armazenada/validada no backend
+20. EVENTOS
+
+Quando suportado pela arquitetura existente, registrar:
+
+completed_scene
+opened_explanation
+opened_example
+opened_optional_content
+skipped_content
+
+Se forem implementadas interações específicas de análise de imagem/permissões, registrar somente eventos realmente úteis.
+
+Não transformar cada toque do participante em uma quantidade enorme de eventos.
+
+21. NÃO CRIAR
+
+Não adicionar:
+
+ranking;
+vidas;
+moedas;
+punições;
+cronômetro;
+login;
+coleta de dados pessoais;
+multiplayer;
+chat;
+sistemas complexos de rastreamento;
+conteúdo assustador;
+mensagens moralistas;
+regras absolutas como "nunca compartilhe nada".
+
+O objetivo é ensinar controle e consciência, não medo da internet.
+
+22. SEM LIMITE ARTIFICIAL DE TEMPO
+
+Não implementar limite de tempo.
+
+O participante pode:
+
+analisar rapidamente;
+explorar detalhes;
+abrir conteúdos opcionais;
+seguir para o próximo módulo.
+
+A experiência deve continuar funcionando para diferentes níveis de interesse.
+
+23. FLUXO FINAL
+
+Implementar aproximadamente:
+
+ENTRADA NO MÓDULO
+↓
+BREVE CONTEXTO
+↓
+SITUAÇÃO 1
+"O que essa foto mostra?"
+↓
+ANÁLISE VISUAL
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+SITUAÇÃO 2
+"Por que esse aplicativo precisa disso?"
+↓
+ANÁLISE DE PERMISSÕES
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+SITUAÇÃO 3
+"Quanto você está revelando?"
+↓
+ANÁLISE DO CONJUNTO
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+MICRODECISÃO FINAL
+↓
+APROFUNDAMENTOS OPCIONAIS
+↓
+SÍNTESE
+PENSE → CONTROLE → COMPARTILHE
+↓
+PRÓXIMO MÓDULO
+24. CRITÉRIOS DE ACEITAÇÃO
+
+O Módulo 4 será considerado concluído quando:
+
+ Existem 3 situações principais.
+ Existe uma situação de análise de imagem/publicação.
+ Existe uma situação de permissões de aplicativo.
+ Existe uma situação mostrando como informações pequenas podem se combinar.
+ As decisões são plausíveis.
+ O participante recebe feedback após cada decisão.
+ O módulo ensina privacidade como controle, e não como medo.
+ O participante aprende a pensar sobre audiência.
+ O participante aprende a avaliar permissões.
+ O participante aprende que contexto importa.
+ O participante aprende que informações podem se combinar.
+ Existem conteúdos opcionais.
+ Não existe limite artificial de tempo.
+ O módulo funciona em celular.
+ A arquitetura existente é reutilizada.
+ O backend continua validando as decisões.
+ A resposta correta não é exposta ao frontend.
+ Os eventos importantes são registrados quando suportados.
+ O cenário segue a direção visual geral do projeto.
+ Existe liberdade para soluções criativas que realmente melhorem a experiência.
+ O módulo termina com:
+
+PENSE → CONTROLE → COMPARTILHE
+
+25. ORIENTAÇÃO FINAL
+
+Antes de implementar:
+
+Analise os Módulos 1, 2 e 3 existentes.
+Reutilize componentes.
+Reutilize o sistema de cenas.
+Reutilize o sistema de decisões.
+Reutilize feedbacks.
+Reutilize animações quando fizer sentido.
+Reutilize os padrões de assets.
+Avalie a experiência visual dos módulos anteriores.
+
+Depois, implemente o Módulo 4.
+
+Não fique limitado literalmente às soluções descritas neste prompt.
+
+Se durante a implementação você identificar uma solução de UX, narrativa, game design, animação ou direção visual significativamente melhor, você pode utilizá-la.
+
+A única exigência é que a inovação tenha propósito claro e seja compatível com:
+
+objetivo pedagógico;
+público;
+arquitetura;
+desempenho;
+experiência mobile.
+
+O objetivo final é fazer o participante compreender:
+
+Privacidade não significa esconder tudo. Significa ter consciência e controle sobre o que você decide compartilhar.

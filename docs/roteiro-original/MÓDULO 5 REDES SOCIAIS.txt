@@ -1,0 +1,783 @@
+MÓDULO 5 — REDES SOCIAIS E IDENTIDADE DIGITAL
+
+IMPORTANTE: este prompt complementa a especificação geral do ConectaSeguro e deve ser implementado respeitando a arquitetura, identidade visual e padrões dos Módulos 1, 2, 3 e 4.
+
+As regras pedagógicas abaixo são obrigatórias, mas não representam uma limitação absoluta de design. Existe liberdade para propor e implementar soluções criativas de UX, game design, narrativa, animação e direção visual quando elas realmente melhorarem a experiência.
+
+1. TEMA DO MÓDULO
+Módulo 5 — Redes Sociais e Identidade Digital
+
+Este módulo deve ensinar que a presença digital de uma pessoa é construída por diversos elementos:
+
+publicações;
+comentários;
+fotos;
+vídeos;
+perfis;
+interações;
+informações compartilhadas;
+maneira como a pessoa se apresenta;
+conteúdo associado ao seu perfil.
+
+O objetivo não é ensinar o participante a "montar uma imagem perfeita".
+
+O objetivo é desenvolver consciência sobre como aquilo que fazemos online pode representar quem somos para outras pessoas.
+
+Conceito central:
+
+Sua identidade digital é construída pelas informações e interações que você deixa associadas à sua presença online.
+
+2. OBJETIVOS DE APRENDIZAGEM
+
+Ao terminar o módulo, o participante deve compreender:
+
+2.1 O que fazemos online pode formar uma percepção sobre nós
+
+Uma pessoa que nunca conhecemos presencialmente pode formar uma impressão a partir de:
+
+perfil;
+publicações;
+comentários;
+fotos;
+vídeos;
+interações públicas.
+
+Essa percepção pode não representar completamente quem somos.
+
+Portanto:
+
+o que aparece online é apenas uma parte da pessoa, mas pode influenciar como ela é percebida.
+
+2.2 Contexto importa
+
+Uma publicação feita:
+
+entre amigos;
+para uma comunidade específica;
+em um perfil público;
+em um grupo;
+em uma situação privada;
+
+pode ter interpretações diferentes dependendo de quem a vê.
+
+Ensinar o participante a pensar:
+
+"Quem pode interpretar isso e em qual contexto?"
+
+2.3 Algo publicado pode continuar circulando
+
+O participante deve compreender que uma publicação pode:
+
+ser visualizada;
+compartilhada;
+capturada;
+reproduzida;
+sair do contexto original.
+
+Não apresentar isso de forma alarmista.
+
+Não dizer que "tudo fica para sempre".
+
+A formulação deve ser mais precisa:
+
+Depois que algo é compartilhado, você pode perder parte do controle sobre onde aquilo vai parar.
+
+2.4 Identidade digital não é somente aparência
+
+Não reduzir o conceito a foto de perfil ou estética.
+
+Mostrar que identidade digital também envolve:
+
+comportamento;
+comunicação;
+comentários;
+escolhas;
+relacionamentos;
+comunidades das quais participamos.
+2.5 É possível revisar escolhas
+
+O participante deve entender que identidade digital não é algo imutável.
+
+É possível:
+
+revisar publicações;
+ajustar privacidade;
+remover conteúdo;
+corrigir informações;
+repensar o que será publicado no futuro.
+
+A mensagem não deve ser:
+
+"Uma postagem errada vai destruir seu futuro."
+
+A mensagem deve ser:
+
+"Suas escolhas online podem ser revistas, e você pode construir hábitos melhores."
+
+3. IDENTIDADE DO MÓDULO
+
+Os módulos anteriores:
+
+Módulo 1
+
+CRIAR → PROTEGER → REAGIR
+
+Módulo 2
+
+PERCEBER → VERIFICAR → AGIR
+
+Módulo 3
+
+RECONHECER → QUESTIONAR → CONFIRMAR
+
+Módulo 4
+
+PENSAR → CONTROLAR → COMPARTILHAR
+
+Para o Módulo 5:
+
+PENSAR → REPRESENTAR → CUIDAR
+
+O módulo deve ter uma sensação mais social e reflexiva.
+
+Não precisa ser tão focado em ameaça como os Módulos 2 e 3.
+
+4. ESTRUTURA
+
+Utilizar aproximadamente 3 situações principais.
+
+Estrutura:
+
+CONTEXTO
+↓
+SITUAÇÃO
+↓
+DECISÃO
+↓
+CONSEQUÊNCIA
+↓
+EXPLICAÇÃO
+↓
+APLICAÇÃO
+↓
+PROGRESSÃO
+
+As situações devem representar diferentes aspectos da identidade digital.
+
+5. SITUAÇÃO 1 — "VOCÊ POSTARIA?"
+Objetivo
+
+Ensinar a pensar antes de publicar, considerando contexto e audiência.
+
+Contexto
+
+O personagem está prestes a publicar alguma coisa em uma rede social fictícia.
+
+Pode ser:
+
+foto;
+comentário;
+vídeo;
+meme;
+opinião;
+situação cotidiana.
+
+A publicação não deve ser obviamente "errada".
+
+Ela deve ser uma situação que realmente poderia gerar dúvida.
+
+Interação
+
+Perguntar:
+
+"Antes de publicar, o que você deveria considerar?"
+
+Alternativas plausíveis:
+
+se eu gostei do conteúdo;
+se meus amigos vão achar engraçado;
+quem poderá ver;
+se o conteúdo representa o que quero deixar associado ao meu perfil;
+todas as anteriores.
+
+Evitar perguntas em que a resposta correta seja óbvia demais.
+
+Mecânica visual
+
+A publicação pode aparecer em uma interface fictícia de rede social.
+
+O participante pode visualizar:
+
+imagem;
+legenda;
+audiência;
+comentários;
+perfil.
+
+Ao tocar em diferentes elementos, pequenas informações podem aparecer.
+
+Uma ideia interessante é mostrar a mesma publicação em diferentes contextos de audiência.
+
+Por exemplo:
+
+AMIGOS
+↓
+COMUNIDADE
+↓
+PÚBLICO
+
+A publicação é a mesma.
+
+O contexto muda.
+
+Isso demonstra que:
+
+a mesma coisa pode ser interpretada de maneiras diferentes dependendo de quem vê.
+
+Se essa mecânica for simples de implementar dentro da arquitetura existente, utilizá-la.
+
+6. SITUAÇÃO 2 — "ISSO AINDA ESTÁ ONLINE?"
+Objetivo
+
+Ensinar sobre circulação de conteúdo e perda parcial de controle após o compartilhamento.
+
+Contexto
+
+O personagem encontra uma publicação antiga.
+
+Ele percebe que:
+
+alguém compartilhou;
+outra pessoa comentou;
+uma captura foi feita;
+o conteúdo apareceu em outro contexto.
+
+Não precisa representar uma situação grave.
+
+O importante é demonstrar a ideia de circulação.
+
+Mecânica
+
+O participante observa uma publicação originalmente criada em um perfil.
+
+Depois, o conteúdo aparece progressivamente em outros espaços.
+
+Exemplo visual:
+
+MEU PERFIL
+↓
+COMPARTILHADO
+↓
+OUTRA PESSOA
+↓
+OUTRO CONTEXTO
+
+A publicação pode mudar de posição na interface, mostrando que o autor original não controla mais completamente sua circulação.
+
+Pergunta
+
+"Depois de publicar, você controla completamente quem verá esse conteúdo?"
+
+Alternativas:
+
+sim, porque posso apagar depois;
+sim, se minha conta for privada;
+não completamente; outras pessoas podem compartilhar ou registrar o conteúdo;
+não, porque qualquer publicação automaticamente fica pública.
+
+Resposta correta:
+
+não completamente.
+
+Explicação
+
+Mensagem:
+
+Depois de compartilhar algo, você pode perder parte do controle sobre onde aquilo circula.
+
+Evitar o conceito absoluto de "internet nunca esquece".
+
+A ideia é mais precisa:
+
+Mesmo quando você apaga algo do seu perfil, outras pessoas podem já ter visto, compartilhado ou guardado o conteúdo.
+
+7. SITUAÇÃO 3 — "ESSE PERFIL REPRESENTA VOCÊ?"
+Objetivo
+
+Mostrar que identidade digital é construída ao longo do tempo por várias pequenas ações.
+
+Contexto
+
+O personagem observa seu próprio perfil fictício.
+
+O perfil contém uma mistura de:
+
+foto;
+bio;
+publicações;
+comentários;
+respostas;
+interesses;
+interações.
+
+Algumas escolhas são neutras.
+
+Outras podem transmitir uma imagem que talvez não corresponda ao que o personagem realmente deseja representar.
+
+Mecânica
+
+Criar uma espécie de painel de identidade digital.
+
+O participante pode selecionar elementos do perfil.
+
+Cada elemento gera uma pergunta:
+
+"Isso representa algo que você gostaria de associar à sua presença online?"
+
+Não existe uma resposta universal.
+
+O objetivo é reflexão.
+
+Decisão
+
+No final:
+
+"Se alguém conhecesse você apenas por esse perfil, que impressão teria?"
+
+Apresentar opções relacionadas a:
+
+interesses;
+comportamento;
+forma de comunicação;
+responsabilidade;
+humor;
+respeito.
+
+Não transformar em teste de personalidade.
+
+Explicação
+
+Mensagem:
+
+Sua identidade digital é construída por várias escolhas pequenas, não por uma única publicação.
+
+E:
+
+Você não precisa parecer perfeito. Precisa ter consciência do que está construindo.
+
+8. MECÂNICA DE SÍNTESE — "ANTES DE POSTAR"
+
+Criar uma pequena sequência final de decisão.
+
+Antes de publicar algo, o participante deve passar por três perguntas:
+
+1. O QUE ESTOU MOSTRANDO?
+↓
+2. QUEM PODE VER?
+↓
+3. ESTOU CONFORTÁVEL COM ISSO REPRESENTANDO MINHA PRESENÇA ONLINE?
+
+A terceira pergunta não deve ser tratada como uma regra absoluta.
+
+Ela representa reflexão.
+
+9. CONCEITO IMPORTANTE — IDENTIDADE DIGITAL ≠ PERSONAGEM PERFEITO
+
+Não ensinar o participante a construir uma imagem artificial.
+
+Não dizer:
+
+"Você precisa cuidar da sua imagem para parecer perfeito."
+
+Ensinar:
+
+Sua presença online deve ser consciente, não perfeita.
+
+É normal:
+
+mudar de opinião;
+aprender;
+cometer erros;
+rever escolhas;
+amadurecer.
+
+O objetivo é desenvolver responsabilidade e consciência.
+
+10. CONTEÚDO OPCIONAL
+
+Criar conteúdos de aprofundamento.
+
+10.1 O que é identidade digital?
+
+Explicar:
+
+É o conjunto de informações, conteúdos e interações que ajudam a formar como uma pessoa é percebida no ambiente digital.
+
+10.2 Privacidade x identidade digital
+
+Fazer conexão com o Módulo 4.
+
+Mostrar:
+
+Privacidade = quem pode acessar determinadas informações.
+
+Identidade digital = o que essas informações e interações comunicam sobre você.
+
+Os conceitos estão relacionados, mas não são iguais.
+
+10.3 Posso apagar uma publicação?
+
+Explicar que apagar pode remover o conteúdo do perfil, mas não garante que ninguém tenha visto, capturado ou compartilhado anteriormente.
+
+Não usar linguagem absoluta.
+
+10.4 Comentários também fazem parte da identidade digital
+
+Mostrar que identidade digital não é apenas aquilo que publicamos.
+
+Comentários e interações também podem contribuir para a percepção sobre nós.
+
+11. CONEXÃO COM OS MÓDULOS ANTERIORES
+
+O Módulo 5 deve fazer o participante perceber que os assuntos anteriores estão relacionados.
+
+Por exemplo:
+
+SENHAS
+↓
+protegem o acesso
+
+LINKS
+↓
+exigem verificação
+
+ENGENHARIA SOCIAL
+↓
+exige atenção à manipulação
+
+PRIVACIDADE
+↓
+controla o que compartilhamos
+
+IDENTIDADE DIGITAL
+↓
+mostra como nossa presença online é construída
+
+Essa conexão pode aparecer rapidamente no fechamento.
+
+Não criar uma revisão longa.
+
+12. FEEDBACK
+Resposta correta
+
+Exemplo:
+
+Boa reflexão. Você considerou não só o conteúdo, mas também quem poderia vê-lo.
+
+Resposta incorreta
+
+Evitar julgamento.
+
+Exemplo:
+
+Vale pensar em outro detalhe: a mesma publicação pode ser interpretada de maneiras diferentes dependendo de quem a vê.
+
+13. NPCs
+
+NPCs devem continuar apresentando situações.
+
+Exemplo:
+
+NPC:
+"Eu achei engraçado.
+Vou postar."
+
+PARTICIPANTE:
+[decide]
+
+NPC:
+"Mas você pensou em quem pode ver?"
+
+O NPC não deve dar a resposta imediatamente.
+
+14. DIREÇÃO VISUAL DOS CENÁRIOS
+
+O Módulo 5 deve utilizar um dos 6 cenários oficiais existentes sempre que fizer sentido.
+
+Por ser um módulo sobre redes sociais, identidade e relações, um ambiente que transmita convivência, comunidade ou amplitude pode ser especialmente interessante.
+
+A cidade pode funcionar bem se ainda não estiver excessivamente utilizada.
+
+Uma paisagem aberta, área rural ou outro ambiente com espaço para personagens também pode funcionar.
+
+A escolha definitiva deve considerar a distribuição visual dos seis módulos.
+
+Não é necessário representar literalmente uma rede social através de um "mundo digital".
+
+15. LIBERDADE CRIATIVA DOS CENÁRIOS
+
+Os seis cenários existentes são a base visual oficial do projeto.
+
+Porém, eles não são uma limitação rígida.
+
+Antes de criar um ambiente completamente novo, avaliar:
+
+reutilização de uma região existente;
+alteração de horário;
+iluminação;
+pôr do sol;
+noite;
+novos elementos de primeiro plano;
+parallax;
+elementos interativos;
+pequenas extensões.
+
+Entretanto, se uma solução nova realmente melhorar:
+
+narrativa;
+UX;
+game design;
+aprendizagem;
+estética;
+progressão;
+identidade visual;
+
+ela pode ser proposta e implementada.
+
+A regra é:
+
+não criar coisas novas sem propósito.
+
+Não é:
+
+"nunca criar coisas novas".
+
+Use suas capacidades de design, game design, UX e direção visual para identificar soluções que não foram previstas originalmente.
+
+Se uma ideia elevar significativamente o projeto, ela é bem-vinda.
+
+Se aumentar muito a complexidade sem benefício proporcional, prefira uma solução mais simples.
+
+16. ANIMAÇÃO
+
+A animação deve representar:
+
+interação social;
+publicação;
+circulação;
+mudança de audiência;
+construção gradual de identidade.
+
+Uma ideia visual especialmente interessante para este módulo:
+
+"Ecos digitais"
+
+Quando uma publicação é criada, pequenas cópias/representações podem aparecer em diferentes partes da cena.
+
+Por exemplo:
+
+PUBLICAÇÃO
+   ↓
+PERFIL
+   ↓
+COMPARTILHAMENTO
+   ↓
+OUTRO PERFIL
+
+Isso cria uma representação visual da circulação do conteúdo.
+
+Implementar somente se for compatível com o sistema atual e não exigir um mecanismo complexo.
+
+17. MOBILE-FIRST
+
+Todas as interações devem funcionar por toque.
+
+Priorizar:
+
+botões grandes;
+cards;
+interfaces simples;
+leitura curta;
+elementos claramente selecionáveis.
+
+Evitar depender de:
+
+hover;
+mouse;
+arrastar com precisão;
+textos pequenos.
+18. PERFORMANCE
+
+O módulo deve funcionar bem em celulares de baixo e médio desempenho.
+
+Evitar:
+
+excesso de partículas;
+animações simultâneas;
+efeitos pesados;
+vídeos desnecessários;
+imagens enormes.
+19. BACKEND
+
+Continuar utilizando a arquitetura existente.
+
+As decisões devem ser processadas pelo sistema já implementado.
+
+Não expor respostas corretas ao frontend.
+
+Manter a separação entre:
+
+conteúdo apresentado
+
+e
+
+resposta correta validada no backend
+20. EVENTOS
+
+Quando suportado pela arquitetura atual, registrar:
+
+completed_scene
+opened_explanation
+opened_example
+opened_optional_content
+skipped_content
+
+Se forem criadas interações especiais de análise de perfil ou audiência, registrar apenas eventos relevantes.
+
+Não transformar cada toque em evento.
+
+21. NÃO CRIAR
+
+Não adicionar:
+
+ranking;
+seguidores reais;
+sistema de curtidas real;
+chat;
+comentários reais;
+coleta de perfis pessoais;
+integração com redes sociais;
+login social;
+exposição de dados reais;
+métricas de popularidade;
+competição baseada em seguidores;
+sistema de aprovação social.
+
+Todas as redes sociais apresentadas devem ser fictícias e simuladas.
+
+O objetivo é educação.
+
+22. SEM LIMITE ARTIFICIAL
+
+Não implementar cronômetro obrigatório.
+
+O participante pode explorar as situações no próprio ritmo.
+
+Os conteúdos opcionais não devem bloquear a progressão.
+
+23. FECHAMENTO
+
+Encerrar com:
+
+PENSE
+↓
+REPRESENTE
+↓
+CUIDE
+
+E uma frase:
+
+Você não precisa ser perfeito na internet. Precisa ter consciência do que escolhe deixar associado à sua presença online.
+
+Depois permitir avanço para o Módulo 6.
+
+24. FLUXO FINAL
+ENTRADA
+↓
+BREVE CONTEXTO
+↓
+SITUAÇÃO 1
+"Você postaria?"
+↓
+ANÁLISE DE AUDIÊNCIA
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+SITUAÇÃO 2
+"Isso ainda está online?"
+↓
+CIRCULAÇÃO DO CONTEÚDO
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+SITUAÇÃO 3
+"Esse perfil representa você?"
+↓
+ANÁLISE DA IDENTIDADE DIGITAL
+↓
+DECISÃO
+↓
+EXPLICAÇÃO
+↓
+SÍNTESE
+"ANTES DE POSTAR"
+↓
+APROFUNDAMENTOS OPCIONAIS
+↓
+PENSE → REPRESENTE → CUIDE
+↓
+PRÓXIMO MÓDULO
+25. CRITÉRIOS DE ACEITAÇÃO
+
+O Módulo 5 será considerado concluído quando:
+
+ Existem 3 situações principais.
+ Existe uma situação de publicação/audiência.
+ Existe uma situação de circulação de conteúdo.
+ Existe uma situação de identidade digital.
+ As decisões são plausíveis.
+ O participante recebe feedback educativo.
+ O módulo explica identidade digital.
+ O módulo diferencia identidade digital de privacidade.
+ O módulo ensina que contexto importa.
+ O módulo ensina que compartilhar pode reduzir o controle sobre o conteúdo.
+ O módulo não utiliza linguagem moralista ou alarmista.
+ O participante entende que identidade digital não significa criar uma persona perfeita.
+ Existem conteúdos opcionais.
+ Existe uma síntese final.
+ O módulo funciona em celular.
+ Não existe limite artificial de tempo.
+ A arquitetura existente foi reutilizada.
+ O backend continua validando as decisões.
+ As respostas corretas não são expostas ao frontend.
+ Os eventos relevantes são registrados quando suportados.
+ As redes sociais apresentadas são fictícias.
+ A direção visual utiliza os cenários oficiais como base, mas preserva liberdade criativa.
+ O módulo termina com:
+
+PENSE → REPRESENTE → CUIDE
+
+26. ORIENTAÇÃO FINAL PARA IMPLEMENTAÇÃO
+
+Antes de implementar:
+
+Analise os Módulos 1–4.
+Reutilize componentes existentes.
+Reutilize o sistema de cenas.
+Reutilize decisões e feedback.
+Reutilize animações quando apropriado.
+Reutilize os padrões de assets.
+Observe a distribuição visual dos cenários já utilizados.
+Evite repetir exatamente a mesma mecânica dos módulos anteriores.
+
+Se identificar uma solução de UX, game design, narrativa ou direção visual que seja claramente superior à especificada aqui, você pode propor e implementar essa solução.
+
+A inovação deve ter propósito e ser compatível com o projeto.
+
+O objetivo final é fazer o participante entender:
+
+Sua identidade digital não é uma imagem perfeita que você precisa construir. É o resultado das escolhas e interações que você deixa associadas à sua presença online — e você pode aprender a fazer essas escolhas com mais consciência.
