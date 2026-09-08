@@ -35,9 +35,20 @@ Referências do usuário: roxo profundo, neon ciano e magenta, estrelas.
 
 O usuário vai enviar arquivos de imagem próprios. Montar a paleta a partir deles.
 
+## Feito em 08-09/09
+
+- [x] Escrevi as 12 cenas essenciais + 6 aprofundamentos → `docs/conteudo/modulo-*.md`
+- [x] Mapeei 12 das 15 questões do diagnóstico (2 por módulo) → `docs/conteudo/quiz-diagnostico-mapeamento.md`.
+  Q4 e Q12 saem por não terem módulo que ensine a competência; Q6 e Q10 saem por
+  redundância dentro do próprio módulo; escrevi 1 questão nova pro Módulo 5, que
+  não tinha segunda candidata natural no banco original.
+
 ## Decisões pendentes
 
-- [ ] Escolher 12 das 15 questões do diagnóstico (2 por módulo), guardar 3 como reserva
-- [ ] Autorizar que eu escreva as 12 cenas essenciais a partir dos specs
-- [ ] Receber as imagens do usuário
+- [ ] Revisar o tom das 12 cenas e os contextos fictícios (loja, app de fotos)
+- [ ] Receber as imagens do usuário para fixar a paleta
 - [ ] **Falar com o orientador sobre consentimento** (bloqueia a coleta)
+- [ ] Converter `docs/conteudo/*.md` para `src/content/**/*.ts` quando o conteúdo
+      estiver aprovado (depende de `src/lib/types.ts` estar definido primeiro)
+- [ ] Mais adiante: escrever a forma B (avaliação final) com pares isomórficos —
+      só depois que os módulos estiverem consolidados, como já estava no plano
