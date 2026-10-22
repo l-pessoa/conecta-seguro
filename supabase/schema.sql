@@ -40,8 +40,8 @@ create table if not exists journey_events (
 );
 create index if not exists journey_events_participant_idx on journey_events (participant_code);
 
--- Gabarito do quiz. Precisa bater com src/lib/server/gabarito.ts (tests/quiz.test.ts confere).
-create table if not exists gabarito (
+-- Gabarito do quiz (6 itens por forma). Precisa bater com src/lib/server/gabarito.ts (tests/quiz.test.ts confere).
+create table if not exists gabarito_quiz (
   form       text not null check (form in ('A','B')),
   item_id    text not null,
   correct    text not null check (correct in ('A','B','C','D')),
@@ -52,10 +52,10 @@ create table if not exists gabarito (
 alter table participants    enable row level security;
 alter table quiz_responses  enable row level security;
 alter table journey_events  enable row level security;
-alter table gabarito        enable row level security;
-revoke all on participants, quiz_responses, journey_events, gabarito from anon, authenticated;
+alter table gabarito_quiz   enable row level security;
+revoke all on participants, quiz_responses, journey_events, gabarito_quiz from anon, authenticated;
 
-insert into public.gabarito (form,item_id,correct,competency) values
+insert into public.gabarito_quiz (form,item_id,correct,competency) values
 ('A','a-m1-1','A','Senhas'),
 ('A','a-m2-2','C','QR Codes e destinos de links'),
 ('A','a-m3-1','D','Engenharia social'),
@@ -111,21 +111,21 @@ begin
          count(*) filter (where g.item_id is not null and a->>'optionId' in ('A','B','C','D','nao_sei'))
     into v_distintos, v_validos
     from jsonb_array_elements(p_answers) a
-    left join public.gabarito g on g.form = p_form and g.item_id = a->>'itemId';
+    left join public.gabarito_quiz g on g.form = p_form and g.item_id = a->>'itemId';
   if v_distintos <> v_n or v_validos <> v_n then raise exception 'respostas invalidas'; end if;
 
-  select count(*) into v_total from public.gabarito where form = p_form;
+  select count(*) into v_total from public.gabarito_quiz where form = p_form;
   select count(*) filter (where a->>'optionId' = g.correct),
          count(*) filter (where a->>'optionId' = 'nao_sei')
     into v_score, v_unsure
     from jsonb_array_elements(p_answers) a
-    join public.gabarito g on g.form = p_form and g.item_id = a->>'itemId';
+    join public.gabarito_quiz g on g.form = p_form and g.item_id = a->>'itemId';
   select coalesce(jsonb_object_agg(competency, jsonb_build_object('total', t, 'correct', c)), '{}'::jsonb)
     into v_comp
     from (
       select g.competency, count(*) as t,
              count(*) filter (where a->>'optionId' = g.correct) as c
-        from public.gabarito g
+        from public.gabarito_quiz g
         left join jsonb_array_elements(p_answers) a on a->>'itemId' = g.item_id
        where g.form = p_form
        group by g.competency
