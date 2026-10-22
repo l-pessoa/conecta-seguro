@@ -27,7 +27,7 @@ export const module5: Modulo = {
         },
         {
           id: 'b',
-          t: 'Se a foto ficou bem iluminada e nítida',
+          t: 'Se a foto ficou bem iluminada, nítida e com boa composição',
           q: 'aceitavel',
           porque: 'Qualidade importa pouco aqui. O que mais pesa é quem vê e o que o post conta.',
         },
@@ -51,7 +51,7 @@ export const module5: Modulo = {
       opcoes: [
         {
           id: 'a',
-          t: 'Que apagar resolve: depois que apago, some',
+          t: 'Que apagar resolve: depois que eu apago o post, ele some de vez',
           q: 'arriscado',
           porque: 'Quem viu pode ter salvo ou printado antes. Apagar ajuda, mas não garante.',
         },
@@ -87,7 +87,7 @@ export const module5: Modulo = {
       opcoes: [
         {
           id: 'a',
-          t: 'Comparo as fotos e os amigos em comum',
+          t: 'Comparo as fotos e os amigos em comum com o perfil antigo',
           q: 'aceitavel',
           porque: 'Fotos e amigos em comum podem ser copiados. Tudo isso fica dentro do perfil suspeito.',
         },

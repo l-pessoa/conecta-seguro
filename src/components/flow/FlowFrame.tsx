@@ -14,12 +14,14 @@ interface FlowFrameProps {
   /** lista lateral (desktop): titulo e passos */
   aside?: { title: string; steps: string[]; at: number };
   mood?: Mood;
+  /** modulo (1 a 6): define a cor de destaque da tela */
+  mod?: number;
   actions?: React.ReactNode;
   children: React.ReactNode;
 }
 
 /** Moldura de toda tela do fluxo: barra (voltar, progresso, sair), tela, acoes fixas no rodape, fundo vivo. */
-export function FlowFrame({ back, close = '/modulos', progress, label, aside, mood = 'calmo', actions, children }: FlowFrameProps) {
+export function FlowFrame({ back, close = '/modulos', progress, label, aside, mood = 'calmo', mod, actions, children }: FlowFrameProps) {
   const screen = useRef<HTMLDivElement>(null);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,7 +29,7 @@ export function FlowFrame({ back, close = '/modulos', progress, label, aside, mo
   }, []);
 
   return (
-    <div className="flow" data-mood={mood}>
+    <div className="flow" data-mood={mood} style={mod ? ({ ['--mc']: `var(--m${mod})` } as React.CSSProperties) : undefined}>
       <div className="mood" aria-hidden="true">
         <i className="m-calmo" />
         <i className="m-alerta" />

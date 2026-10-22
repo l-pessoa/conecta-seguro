@@ -98,7 +98,7 @@ export const module6: Modulo = {
         },
         {
           id: 'b',
-          t: 'Só fecho a página e desinstalo o app',
+          t: 'Só fecho a página e desinstalo o app que eu usei pra abrir o link',
           q: 'aceitavel',
           porque: 'Para o contato, mas a senha já foi entregue e precisa ser trocada.',
         },

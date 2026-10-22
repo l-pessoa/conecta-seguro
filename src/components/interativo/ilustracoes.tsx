@@ -13,7 +13,7 @@ export interface Slot { id: string; x: number; y: number; r: number; label: stri
 export interface Cena { Draw: () => ReactNode; slots: Slot[]; titulo: string }
 
 const G = ({ c, children }: { c: string; children: ReactNode }) => <g className={s[c]}>{children}</g>;
-const Chao = ({ x = 12, w = 56 }: { x?: number; w?: number }) => <R x={x} y={54} w={w} h={2} c="l" />;
+const Chao = ({ x = 12, w = 56 }: { x?: number; w?: number }) => <R x={x} y={54} w={w} h={2} c="m" />;
 
 /* ---------- M1: cofre ---------- */
 const cofre: Cena = {
@@ -211,7 +211,7 @@ const mesa: Cena = {
   ],
   Draw: () => (
     <>
-      <R x={0} y={0} w={80} h={40} c="l" />
+      <R x={0} y={0} w={80} h={40} c="m" />
       <R x={0} y={40} w={80} h={20} c="b" />
       <R x={0} y={40} w={80} h={1} c="k" />
       {/* gato dormindo na prateleira */}
@@ -247,6 +247,12 @@ const mesa: Cena = {
 export const CENAS: Record<ArtId, Cena> = {
   cofre, 'celular-link': celularLink, 'mascara-anzol': mascaraAnzol,
   'olho-foto': olhoFoto, 'perfil-post': perfilPost, 'placa-pare': placaPare, mesa,
+};
+
+/** cor de destaque de cada arte/modulo (tokens --m1..--m6 do tema) */
+export const ACENTO: Record<ArtId, string> = {
+  cofre: 'var(--m1, #ffcd75)', 'celular-link': 'var(--m2, #41d6e8)', 'mascara-anzol': 'var(--m3, #ff6fa8)',
+  'olho-foto': 'var(--m4, #ff8a3d)', 'perfil-post': 'var(--m5, #b79cff)', 'placa-pare': 'var(--m6, #5b8cff)', mesa: 'var(--m4, #ff8a3d)',
 };
 
 export const ART_IDS = Object.keys(CENAS) as ArtId[];

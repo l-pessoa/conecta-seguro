@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { CENAS, type ArtId, type Slot } from './ilustracoes';
+import { ACENTO, CENAS, type ArtId, type Slot } from './ilustracoes';
 import { IconCheck, IconDash } from './icones';
 import './ix.css';
 import s from './HotspotScene.module.css';
@@ -52,7 +52,7 @@ export function HotspotScene({
   return (
     <figure className={`ix ${s.raiz}`}>
       <svg
-        viewBox="0 0 320 240" className={s.svg} role="img" aria-label={descricao ?? cena.titulo}
+        viewBox="0 0 320 240" className={`ix-art ${s.svg}`} style={{ ['--px-acc' as string]: ACENTO[art] } as React.CSSProperties} role="img" aria-label={descricao ?? cena.titulo}
         shapeRendering="crispEdges"
       >
         <g transform="scale(4)"><cena.Draw /></g>

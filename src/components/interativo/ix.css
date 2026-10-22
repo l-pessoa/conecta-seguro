@@ -1,47 +1,55 @@
 /* Variaveis locais dos componentes interativos. Usam os tokens do DESIGN.md quando existem. */
 .ix {
-  --ix-ink: var(--ink, #0f1a0b);
-  --ix-bg: var(--bg, #f3f6ee);
-  --ix-surface: var(--surface, #ffffff);
-  --ix-surface2: var(--surface-2, #e7eddf);
-  --ix-muted: var(--muted, #4a5744);
-  --ix-edge: var(--edge, #7f8c75);
-  --ix-accent: var(--accent, #a3e86a);
-  --ix-on-accent: var(--on-accent, #0f1a0b);
-  --ix-link: var(--link, #2a6310);
-  --ix-good-bg: var(--good-bg, #dcf2cc);
-  --ix-good-fg: var(--good-fg, #1b5a0d);
-  --ix-mid-bg: var(--mid-bg, #fdefc0);
-  --ix-mid-fg: var(--mid-fg, #6a4700);
-  --ix-risk-bg: var(--risk-bg, #ffe2d6);
-  --ix-risk-fg: var(--risk-fg, #8a2a0b);
-  --ix-coral: #ff9f80;
-  --ix-sun: #ffd96a;
+  /* UI: tokens do tema (roxo escuro). Os valores depois da virgula so valem se o token faltar. */
+  --ix-ink: var(--ink, #f6efff);
+  --ix-bg: var(--bg, #1a1033);
+  --ix-surface: var(--surface, #2b1b4a);
+  --ix-surface2: var(--surface-2, #3a2766);
+  --ix-muted: var(--muted, #c9bbea);
+  --ix-edge: var(--edge, #8f78d6);
+  --ix-accent: var(--mc, var(--accent, #ffcd75));
+  --ix-on-accent: var(--on-accent, #1a1033);
+  --ix-link: var(--link, #ffcd75);
+  --ix-good-bg: var(--good-bg, #1f4d2e);
+  --ix-good-fg: var(--good-fg, #9af5a8);
+  --ix-mid-bg: var(--mid-bg, #4a3a12);
+  --ix-mid-fg: var(--mid-fg, #ffd98a);
+  --ix-risk-bg: var(--risk-bg, #5a1f33);
+  --ix-risk-fg: var(--risk-fg, #ffb3c1);
+  --ix-ok: var(--ok, #38b764); /* verde: so acerto / senha forte */
+  --ix-coral: var(--alert, #ef7d57);
+  --ix-sun: var(--warn, #ffcd75);
+  /* retro (Sweetie 16): confete e detalhes; front pode sobrescrever --pal-1..6 */
+  --ix-p1: var(--pal-1, #ffcd75);
+  --ix-p2: var(--pal-2, #41a6f6);
+  --ix-p3: var(--pal-3, #ef7d57);
+  --ix-p4: var(--pal-4, #73eff7);
+  --ix-p5: var(--pal-5, #d77bba);
+  --ix-p6: var(--pal-6, #a7f070);
   /* canto em degrau de 4 px (pixel art) para blocos sem foco */
   --ix-clip: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
-  --ix-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ix-font-display: var(--font-pixel, var(--font-display, ui-monospace, monospace));
+  --ix-ease: steps(4, end);
+  --ix-font-display: var(--font-display, var(--font-pixel, ui-monospace, monospace));
   --ix-font-body: var(--font-body, system-ui, sans-serif);
+  --ix-font-phone: var(--font-phone, var(--font-body, system-ui, sans-serif));
   font-family: var(--ix-font-body);
   color: var(--ix-ink);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .ix {
-    --ix-ink: var(--ink, #edf3e7);
-    --ix-bg: var(--bg, #0d130a);
-    --ix-surface: var(--surface, #172012);
-    --ix-surface2: var(--surface-2, #1f2b19);
-    --ix-muted: var(--muted, #a8b79f);
-    --ix-edge: var(--edge, #5f7254);
-    --ix-accent: var(--accent, #b4f27e);
-    --ix-link: var(--link, #b4f27e);
-    --ix-good-bg: var(--good-bg, #1e3a16);
-    --ix-good-fg: var(--good-fg, #c0eca4);
-    --ix-mid-bg: var(--mid-bg, #3a2f0c);
-    --ix-mid-fg: var(--mid-fg, #f2d789);
-    --ix-risk-bg: var(--risk-bg, #43211a);
-    --ix-risk-fg: var(--risk-fg, #ffbfa8);
-  }
+/* Arte: painel claro (lavanda) com contorno escuro, para ler bem sobre o roxo escuro do site.
+   Cor de destaque (--px-acc) muda por modulo. Tudo sobrescrevivel pelos tokens --art-*. */
+.ix-art {
+  --px-fundo: var(--art-bg, #cdbde8);
+  --px-ink: var(--art-ink, #1a1c2c);
+  --px-shade: var(--art-shade, #3a3560);
+  --px-mid: var(--art-mid, #7a7aa8);
+  --px-soft: var(--art-soft, #e6defa);
+  --px-paper: var(--art-paper, #fbf8ff);
+  --px-acc: var(--art-acc, #ffcd75);
+  --px-acc-dk: color-mix(in srgb, var(--px-acc) 55%, #1a1c2c);
+  --px-ok: var(--ok, #38b764);
+  --px-alert: var(--alert, #ef7d57);
+  --px-warn: var(--warn, #ffcd75);
+  --px-wood: var(--art-wood, #b9784a);
 }
 .ix-sr {
   position: absolute; width: 1px; height: 1px; overflow: hidden;

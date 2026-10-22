@@ -56,7 +56,7 @@ export const module1: Modulo = {
       opcoes: [
         {
           id: 'a',
-          t: 'Deixo como está: é só um site de jogos',
+          t: 'Deixo como está: é só um site de jogos que quase não uso',
           q: 'arriscado',
           porque: 'Quem pega a senha testa ela em e-mail e redes. Uma senha repetida abre várias portas.',
         },
@@ -68,7 +68,7 @@ export const module1: Modulo = {
         },
         {
           id: 'c',
-          t: 'Uma senha diferente por conta, guardadas num gerenciador',
+          t: 'Uma senha diferente por conta, num gerenciador',
           q: 'melhor',
           porque: 'Se uma vaza, as outras não caem junto. O gerenciador lembra por você.',
         },
@@ -91,13 +91,13 @@ export const module1: Modulo = {
       opcoes: [
         {
           id: 'a',
-          t: 'Abro o app por conta própria, confiro os aparelhos e troco a senha',
+          t: 'Abro o app por conta própria e confiro os aparelhos',
           q: 'melhor',
           porque: 'Você vai pelo caminho que já conhece e vê o que aconteceu de verdade. Sem depender do link.',
         },
         {
           id: 'b',
-          t: 'Toco no link do aviso para verificar',
+          t: 'Toco no link do aviso, que parece vir do próprio serviço',
           q: 'arriscado',
           porque: 'Mesmo um aviso real pode vir copiado. Link que chega até você não é o caminho mais seguro.',
         },

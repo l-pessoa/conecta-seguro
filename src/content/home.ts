@@ -4,7 +4,7 @@ export const home: Home = {
   titulo: 'Pare, pense, escolha.',
   subtitulo: 'Uma jornada rápida para decidir melhor no que chega pelo celular.',
   gancho: {
-    from: 'Grupo da turma',
+    from: 'Nova mensagem',
     body: 'Vaga rápida! Só hoje: presente surpresa pra quem clicar antes que acabe.',
     pergunta: 'O que você faria?',
     acoes: ['Clicar logo', 'Parar e olhar'],

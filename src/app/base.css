@@ -27,7 +27,7 @@ svg { shape-rendering: crispEdges; }
 
 /* botoes 8-bit: moldura em degrau, bisel, "afunda" ao tocar */
 .btn {
-  --ring-c: var(--ink);
+  --ring-c: var(--deep);
   display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
   min-height: var(--tap); padding: 6px var(--sp-5); border: 0; border-radius: 0; margin-bottom: 8px;
   background: var(--accent); color: var(--on-accent); font-family: var(--font-label); font-weight: 700; font-size: 1.0625rem; letter-spacing: 0.02em;
@@ -37,8 +37,8 @@ svg { shape-rendering: crispEdges; }
 }
 .btn:hover { background: var(--accent-soft); }
 .btn:active { transform: translateY(var(--px)); box-shadow: var(--ring), 0 var(--px) 0 0 var(--ring-c), inset var(--px) var(--px) 0 0 var(--bevel); }
-.btn[disabled], .btn[aria-disabled='true'] { --ring-c: var(--edge); background: var(--surface-2); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: var(--ring); margin-bottom: 0; }
-.btn--ghost { background: var(--surface); }
+.btn[disabled], .btn[aria-disabled='true'] { --ring-c: var(--line); background: var(--surface-2); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: var(--ring); margin-bottom: 0; }
+.btn--ghost { background: var(--surface); color: var(--ink); --ring-c: var(--edge); }
 .btn--ghost:hover { background: var(--surface-2); }
 .btn--text { --ring-c: transparent; background: transparent; color: var(--muted); padding: 0 var(--sp-4); box-shadow: none; margin: 0; }
 .btn--text:hover { background: transparent; color: var(--ink); text-decoration: underline; }
@@ -58,7 +58,7 @@ svg { shape-rendering: crispEdges; }
 .iconbtn[aria-disabled='true'] { opacity: 0.35; pointer-events: none; }
 
 .toast {
-  position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
+  position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%); background: var(--accent); color: var(--on-accent);
   padding: var(--sp-3) var(--sp-5); font-weight: 600; font-size: var(--fs-small);
   z-index: 40; max-width: calc(100vw - 32px); text-align: center;
 }

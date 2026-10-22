@@ -6,14 +6,12 @@ import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } f
 import { ArrowRight } from '@nsmr/pixelart-react';
 import type { Modulo } from '@/content/types';
 
-const TONES = ['cm--accent', 'cm--dark', 'cm--soft', '', 'cm--soft', 'cm--accent'];
-
 function Card({ m, i, n, progress, reduce }: { m: Modulo; i: number; n: number; progress: MotionValue<number>; reduce: boolean }) {
   const scale = useTransform(progress, [i / n, 1], [1, Math.max(0.86, 1 - (n - 1 - i) * 0.025)]);
   return (
-    <li style={{ ['--k' as string]: i }}>
+    <li style={{ ['--k' as string]: i, ['--mc' as string]: `var(--m${m.id})` }}>
       <motion.div style={reduce ? undefined : { scale }}>
-        <Link href="/entrar" className={`card-mod ${TONES[i]}`}>
+        <Link href="/entrar" className="card-mod">
           <span>
             <span className="n">{m.id}</span>
           </span>

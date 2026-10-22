@@ -103,7 +103,7 @@ export const module4: Modulo = {
         },
         {
           id: 'b',
-          t: 'Nada: cada post é inofensivo',
+          t: 'Nada de mais: cada post, sozinho, é totalmente inofensivo',
           q: 'arriscado',
           porque: 'Sozinhos parecem inofensivos, mas juntos mostram horários e lugares.',
         },

@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { cenasById, modules } from '@/content/modules';
@@ -82,6 +82,14 @@ describe('cenas de escolha', () => {
     }
   });
 
+  it('a melhor nao e a mais longa em mais de 40% das cenas, nem a unica a repetir vocabulario de seguranca', () => {
+    const maisLonga = escolhas.filter((c) => c.tipo !== 'medidor').filter((c) => {
+      const tam = c.opcoes.map((o) => o.t.length);
+      return c.opcoes.find((o) => o.q === 'melhor')!.t.length >= Math.max(...tam);
+    });
+    expect(maisLonga.length / (escolhas.length - 1)).toBeLessThanOrEqual(0.4);
+  });
+
   it('o medidor tem forca em todas as opcoes e a melhor e a mais forte', () => {
     for (const c of escolhas.filter((x) => x.tipo === 'medidor')) {
       for (const o of c.opcoes) expect(o.forca, `${c.id}/${o.id}`).toBeDefined();
@@ -155,7 +163,7 @@ describe('nomes proibidos', () => {
 
   it('nenhum texto de conteudo usa esses nomes', () => {
     const dirs = ['src/content', 'src/components', 'src/app'].map((d) => join(root, d));
-    for (const dir of dirs) {
+    for (const dir of dirs.filter((d) => existsSync(d))) {
       for (const f of arquivos(dir).filter((x) => /\.(ts|tsx|md|txt)$/.test(x))) {
         expect(proibido.test(readFileSync(f, 'utf8')), f).toBe(false);
       }

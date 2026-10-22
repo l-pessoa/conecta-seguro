@@ -1,4 +1,4 @@
-.raiz { clip-path: var(--ix-clip); overflow: hidden; background: var(--ix-accent); display: grid; place-items: center; }
+.raiz { clip-path: var(--ix-clip); overflow: hidden; background: var(--px-fundo); display: grid; place-items: center; }
 .cover { width: 100%; aspect-ratio: 4 / 3; max-width: 520px; }
 .small { width: 88px; aspect-ratio: 1; }
 .svg { width: 100%; height: 100%; }

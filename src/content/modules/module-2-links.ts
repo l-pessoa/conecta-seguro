@@ -71,7 +71,7 @@ export const module2: Modulo = {
         },
         {
           id: 'b',
-          t: 'Clico agora, antes que cancele',
+          t: 'Clico agora no link, antes que o pedido seja cancelado de vez',
           q: 'arriscado',
           porque: 'Pressa é a ferramenta do golpe: ela quer que você aja antes de pensar.',
         },

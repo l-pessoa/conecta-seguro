@@ -1,4 +1,4 @@
-import { CENAS, ARTE_DO_MODULO, type ArtId } from './ilustracoes';
+import { ACENTO, CENAS, ARTE_DO_MODULO, type ArtId } from './ilustracoes';
 import { PixelSvg } from './pixel';
 import './ix.css';
 import s from './ModuleArt.module.css';
@@ -14,8 +14,8 @@ export function ModuleArt({ module, size = 'cover', className = '' }: ModuleArtP
   const art: ArtId = ARTE_DO_MODULO[module];
   const { Draw } = CENAS[art];
   return (
-    <div className={`ix ${s.raiz} ${size === 'small' ? s.small : s.cover} ${className}`} aria-hidden="true">
-      <PixelSvg className={s.svg}><Draw /></PixelSvg>
+    <div className={`ix ix-art ${s.raiz} ${size === 'small' ? s.small : s.cover} ${className}`} aria-hidden="true">
+      <PixelSvg className={s.svg} acc={ACENTO[art]}><Draw /></PixelSvg>
     </div>
   );
 }

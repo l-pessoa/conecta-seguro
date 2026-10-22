@@ -23,7 +23,7 @@ export const module3: Modulo = {
       opcoes: [
         {
           id: 'a',
-          t: 'Prêmio: promete algo bom se você clicar',
+          t: 'Prêmio: promete algo bom pra você clicar e entregar seus dados',
           q: 'aceitavel',
           porque: 'Aqui não tem prêmio, tem ameaça. Mas "você ganhou!" é outro truque comum: vale reconhecer.',
         },
@@ -70,7 +70,7 @@ export const module3: Modulo = {
         },
         {
           id: 'c',
-          t: 'Peço pra ele provar que é do suporte',
+          t: 'Peço pra ele provar que é do suporte antes de mandar o código',
           q: 'aceitavel',
           porque: 'Bom instinto, mas quem aplica golpe inventa prova. A checagem tem que vir de fora da conversa.',
         },

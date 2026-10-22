@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import s from './pixel.module.css';
 
 /**
@@ -104,11 +104,12 @@ export function Texto({ x, y, t, cor = 'w' }: { x: number; y: number; t: string;
 }
 
 /** Svg de arte: grade 80x60 (ou h maior), desenhada a 4x, nitida. */
-export function PixelSvg({ children, h = GRADE_H, className = '', label }: { children: ReactNode; h?: number; className?: string; label?: string }) {
+export function PixelSvg({ children, h = GRADE_H, className = '', label, acc }: { children: ReactNode; h?: number; className?: string; label?: string; acc?: string }) {
   return (
     <svg
       viewBox={`0 0 ${GRADE_W * 4} ${h * 4}`}
-      className={`${s.svg} ${className}`}
+      className={`ix-art ${s.svg} ${className}`}
+      style={acc ? ({ ['--px-acc' as string]: acc } as CSSProperties) : undefined}
       shapeRendering="crispEdges"
       role={label ? 'img' : undefined}
       aria-label={label}

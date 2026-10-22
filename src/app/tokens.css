@@ -1,28 +1,39 @@
 /* Tokens ConectaSeguro v2, versao pixel ("Conversa Pixel"). Tema pixel.
    Unidade base do "pixel": --px (4px). Paleta Game Boy clara + alerta coral + cautela ambar. */
 :root {
+  color-scheme: dark;
   --px: 4px;
 
-  --bg: #e9f1cf;
-  --surface: #f7fbe6;
-  --surface-2: #d3e3a3;
-  --ink: #0f380f;
-  --muted: #35592a;
-  --line: #b4c985;
-  --edge: #306230;
-  --accent: #9bbc0f;
-  --accent-soft: #c9dd7a;
-  --on-accent: #0f380f;
-  --link: #1f5a1f;
-  --tile-dark: #0f380f;
-  --on-tile-dark: #e9f1cf;
+  /* base: roxo profundo */
+  --bg: #1a1033;
+  --surface: #2b1b4a;
+  --surface-2: #3a2766;
+  --deep: #0b0618;
+  --ink: #f6efff;
+  --muted: #c9bbea;
+  --line: #4b3580;
+  --edge: #8f78d6;
 
-  --good-bg: #c9e49a;
-  --good-fg: #174d17;
-  --mid-bg: #f1dc8a;
-  --mid-fg: #55400a;
-  --risk-bg: #f4c2b0;
-  --risk-fg: #7a1d0d;
+  /* destaques retro (Sweetie 16 / PICO-8): ouro, ciano, rosa, laranja, lilas, azul */
+  --m1: #ffcd75;
+  --m2: #41d6e8;
+  --m3: #ff6fa8;
+  --m4: #ff8a3d;
+  --m5: #b79cff;
+  --m6: #5b8cff;
+  --accent: var(--m1);
+  --accent-soft: #ffe2a8;
+  --on-accent: #1a1033;
+  --mc: var(--m1);
+  --link: #ffcd75;
+
+  /* verde so para acerto */
+  --good-bg: #1f4d2e;
+  --good-fg: #9af5a8;
+  --mid-bg: #4a3a12;
+  --mid-fg: #ffd98a;
+  --risk-bg: #5a1f33;
+  --risk-fg: #ffb3c1;
 
   --font-display: var(--font-ps2p), 'Courier New', monospace;
   --font-label: var(--font-silk), 'Courier New', monospace;
@@ -47,7 +58,6 @@
   --sp-8: 72px;
   --sp-9: 112px;
 
-  /* sem cantos arredondados: tudo reto, com degrau feito por sombra */
   --r-sm: 0;
   --r-md: 0;
   --r-lg: 0;
@@ -62,39 +72,13 @@
   --tap: 48px;
   --safe-b: env(safe-area-inset-bottom, 0px);
 
-  --bevel: rgba(15, 56, 15, 0.22);
-  --bevel-hi: rgba(255, 255, 255, 0.38);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f380f;
-    --surface: #1a4a1a;
-    --surface-2: #245c24;
-    --ink: #e9f1cf;
-    --muted: #b9d08a;
-    --line: #2f6b2f;
-    --edge: #8bac0f;
-    --accent: #9bbc0f;
-    --accent-soft: #3f6d12;
-    --on-accent: #0f380f;
-    --link: #c9e66a;
-    --tile-dark: #07230a;
-    --on-tile-dark: #e9f1cf;
-    --good-bg: #2a5a1c;
-    --good-fg: #d3f0a8;
-    --mid-bg: #4f3f0a;
-    --mid-fg: #f6e08e;
-    --risk-bg: #5a241a;
-    --risk-fg: #ffc9b6;
-    --bevel: rgba(0, 0, 0, 0.35);
-    --bevel-hi: rgba(255, 255, 255, 0.18);
-  }
+  --bevel: rgba(0, 0, 0, 0.3);
+  --bevel-hi: rgba(255, 255, 255, 0.35);
 }
 
 /* moldura em degrau: 4 sombras sem canto. Cor via --ring-c no proprio elemento. */
 :where(*, *::before, *::after) {
-  --ring-c: var(--ink);
+  --ring-c: var(--edge);
   --ring:
     0 calc(var(--px) * -1) 0 0 var(--ring-c),
     0 var(--px) 0 0 var(--ring-c),

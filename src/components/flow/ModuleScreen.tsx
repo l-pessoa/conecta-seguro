@@ -49,6 +49,7 @@ function SceneStep({ m, passo }: { m: Modulo; passo: number }) {
 
   return (
     <FlowFrame
+      mod={m.id}
       mood={mood}
       back={`/modulo/${m.id}/${passo - 1}`}
       progress={{ total: 5, at: passo }}
@@ -78,6 +79,7 @@ function Closing({ m }: { m: Modulo }) {
   const nextModule = modules.find((x) => x.id === m.id + 1);
   return (
     <FlowFrame
+      mod={m.id}
       mood="alivio"
       back={`/modulo/${m.id}/3`}
       progress={{ total: 5, at: 4 }}
@@ -116,6 +118,7 @@ export function ModuleScreen({ id, passo }: { id: number; passo: number }) {
     const retomada = retomadaPara(m.id);
     return (
       <FlowFrame
+        mod={m.id}
         mood="calmo"
         back="/modulos"
         progress={{ total: 5, at: 0 }}

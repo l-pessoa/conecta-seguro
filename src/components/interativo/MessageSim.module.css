@@ -10,7 +10,7 @@
 .area { min-height: 64px; }
 .balao {
   background: var(--ix-surface2); clip-path: var(--ix-clip);
-  padding: 14px 16px; max-width: 94%; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 14px 16px; max-width: 94%; font-family: var(--ix-font-phone);
   transform-origin: 0 0;
 }
 .entra { animation: chega 360ms steps(4) both; }

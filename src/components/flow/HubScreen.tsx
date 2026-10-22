@@ -31,7 +31,7 @@ export function HubScreen() {
           const ids = m.cenas.map((c) => c.id);
           const st = moduleStatus(state, m.id, ids);
           return (
-            <Link key={m.id} href={`/modulo/${m.id}/${resumeStep(state, m.id, ids)}`} className={`hubrow ${st === 'feito' ? 'done' : st === 'andamento' ? 'now' : ''}`}>
+            <Link key={m.id} href={`/modulo/${m.id}/${resumeStep(state, m.id, ids)}`} className={`hubrow ${st === 'feito' ? 'done' : st === 'andamento' ? 'now' : ''}`} style={{ ['--mc' as string]: `var(--m${m.id})` }}>
               <span className="n">{st === 'feito' ? <Check size={22} /> : m.id}</span>
               <span><b>{m.titulo}</b><small>{m.linha}</small></span>
               <span className="st">{STATUS[st]}</span>

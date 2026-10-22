@@ -1,18 +1,18 @@
 .raiz { margin: 0; display: grid; gap: 12px; }
-.svg { width: 100%; height: auto; display: block; image-rendering: pixelated; clip-path: var(--ix-clip); background: var(--ix-surface2); touch-action: manipulation; }
+.svg { width: 100%; height: auto; display: block; image-rendering: pixelated; clip-path: var(--ix-clip); background: var(--px-fundo); touch-action: manipulation; }
 .ponto { transform-box: fill-box; }
 .alvo { fill: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .dica { pointer-events: none; animation: dica 1.2s steps(1) infinite; }
-.dicaQ { fill: var(--ix-accent); stroke: var(--ix-ink); stroke-width: 4; }
-.dicaP { fill: var(--ix-ink); }
+.dicaQ { fill: var(--px-acc); stroke: var(--px-ink); stroke-width: 4; }
+.dicaP { fill: var(--px-ink); }
 @keyframes dica { 0% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.55; transform: translateY(-4px); } }
 .achado { pointer-events: none; }
-.aroAchado { fill: var(--ix-accent); fill-opacity: 0.4; stroke: var(--ix-ink); stroke-width: 4; animation: pop 360ms steps(3) both; }
-.aroNeutro { fill: var(--ix-surface); fill-opacity: 0.35; stroke: var(--ix-ink); stroke-width: 4; stroke-dasharray: 4 8; animation: pop 360ms steps(3) both; }
-.aroPerdido { fill: none; stroke: var(--ix-ink); stroke-width: 4; stroke-dasharray: 12 8; pointer-events: none; }
-.aroFoco { fill: none; stroke: var(--ix-link); stroke-width: 4; pointer-events: none; }
-.seloQ { fill: var(--ix-ink); }
-.seloCheck { fill: var(--ix-accent); }
+.aroAchado { fill: var(--px-acc); fill-opacity: 0.4; stroke: var(--px-ink); stroke-width: 4; animation: pop 360ms steps(3) both; }
+.aroNeutro { fill: var(--px-paper); fill-opacity: 0.35; stroke: var(--px-ink); stroke-width: 4; stroke-dasharray: 4 8; animation: pop 360ms steps(3) both; }
+.aroPerdido { fill: none; stroke: var(--px-ink); stroke-width: 4; stroke-dasharray: 12 8; pointer-events: none; }
+.aroFoco { fill: none; stroke: #3b5dc9; stroke-width: 4; pointer-events: none; }
+.seloQ { fill: var(--px-ink); }
+.seloCheck { fill: var(--px-acc); }
 @keyframes pop { from { opacity: 0; } to { opacity: 1; } }
 
 .legenda { display: flex; flex-wrap: wrap; gap: 8px; }

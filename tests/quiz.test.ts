@@ -105,4 +105,67 @@ describe('gabarito (servidor)', () => {
       expect(maisLonga, `${nome}: correta e a mais longa em ${maisLonga} de 12`).toBeLessThanOrEqual(4);
     }
   });
+
+  it('a correta tambem nao e a mais curta em mais de 4 itens por forma', () => {
+    for (const [nome, chave, form] of formas) {
+      let maisCurta = 0;
+      for (const item of form) {
+        const certa = GABARITO[chave][item.id].correct;
+        const tam = item.opcoes.map((o) => o.t.length);
+        if (item.opcoes.find((o) => o.id === certa)!.t.length <= Math.min(...tam)) maisCurta += 1;
+      }
+      expect(maisCurta, `${nome}: correta e a mais curta em ${maisCurta} de 12`).toBeLessThanOrEqual(4);
+    }
+  });
+});
+
+describe('pistas que entregam a resposta', () => {
+  const VOCAB = /oficial|verific|confirm|canal|recurso|segur/i;
+  // dois verbos de acao ligados por "e": " e " seguido de verbo conjugado ou infinitivo
+  const DOIS_VERBOS = /\b\p{L}{3,}\b[^,.;:]*\se\s+\p{L}{3,}(?:o|ei|ar|er|ir)\b/iu;
+  const ABSOLUTO = /\b(nunca|sempre)\b/i;
+
+  function itens() {
+    return formas.flatMap(([, chave, form]) =>
+      form.map((item) => {
+        const certa = GABARITO[chave][item.id].correct;
+        return {
+          id: item.id,
+          certa: item.opcoes.find((o) => o.id === certa)!.t,
+          erradas: item.opcoes.filter((o) => o.id !== certa).map((o) => o.t),
+        };
+      }),
+    );
+  }
+
+  it('a correta nao e a unica com vocabulario de seguranca', () => {
+    for (const { id, certa, erradas } of itens()) {
+      if (VOCAB.test(certa)) expect(erradas.some((t) => VOCAB.test(t)), id).toBe(true);
+    }
+  });
+
+  it('a correta nao e a unica com dois verbos de acao ligados por "e"', () => {
+    for (const { id, certa, erradas } of itens()) {
+      if (DOIS_VERBOS.test(certa)) expect(erradas.some((t) => DOIS_VERBOS.test(t)), id).toBe(true);
+    }
+  });
+
+  it('expressoes de assinatura da correta tambem aparecem nas erradas (ou em nenhuma)', () => {
+    const ASSINATURA = /sem o link|por conta própria|que já (tenho|uso|tinha)|direto no (app|site)/i;
+    for (const { id, certa, erradas } of itens()) {
+      if (ASSINATURA.test(certa)) expect(erradas.some((t) => ASSINATURA.test(t)), id).toBe(true);
+    }
+  });
+
+  it('nao ha "nunca/sempre" so nas erradas', () => {
+    for (const { id, certa, erradas } of itens()) {
+      if (!ABSOLUTO.test(certa)) expect(erradas.some((t) => ABSOLUTO.test(t)), id).toBe(false);
+    }
+  });
+
+  it('enunciados neutros: nada de "mais completa", "mais segura" ou "melhor pratica"', () => {
+    for (const [, , form] of formas) {
+      for (const item of form) expect(item.pergunta, item.id).not.toMatch(/mais completa|mais segura|melhor pr[aá]tica|mais adequad/i);
+    }
+  });
 });

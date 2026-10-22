@@ -11,7 +11,7 @@ export interface CelebrateProps {
   pecas?: number;
 }
 
-const CORES = ['var(--ix-accent)', 'var(--ix-ink)', 'var(--ix-coral)', 'var(--ix-sun)'];
+const CORES = ['var(--ix-p1)', 'var(--ix-p2)', 'var(--ix-p3)', 'var(--ix-p4)', 'var(--ix-p5)', 'var(--ix-p6)'];
 
 /** valores deterministas (sem Math.random: nada de diferenca servidor/cliente) */
 function peca(i: number) {

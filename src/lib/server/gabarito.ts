@@ -2,7 +2,7 @@ import 'server-only';
 
 /**
  * GABARITO do quiz pre/pos. So no servidor: nunca importar de componente de cliente.
- * Gerado a partir do conteudo; a integridade (3/3/3/3, comprimentos) e testada em tests/quiz.test.ts.
+ * A integridade (3/3/3/3, comprimentos, pistas) e testada em tests/quiz.test.ts.
  * A = pre (Forma A), B = pos (Forma B). `conceito` e a explicacao mostrada no fim do pos.
  */
 export type OpcaoGabarito = 'A' | 'B' | 'C' | 'D';
@@ -16,7 +16,7 @@ export interface EntradaGabarito {
 export const GABARITO: Record<'A' | 'B', Record<string, EntradaGabarito>> = {
   A: {
     "a-m1-1": { correct: "A", competency: "Senhas", conceito: "Senha forte é longa, imprevisível e exclusiva de cada conta." },
-    "a-m1-2": { correct: "D", competency: "Segurança de contas", conceito: "Mesmo com a conta funcionando, vale conferir os acessos recentes pelos recursos oficiais e encerrar os desconhecidos." },
+    "a-m1-2": { correct: "D", competency: "Segurança de contas", conceito: "Mesmo com a conta funcionando, vale conferir os acessos recentes e encerrar os desconhecidos." },
     "a-m2-1": { correct: "B", competency: "Verificação de links", conceito: "Confie no canal que você já conhece, não no link que chegou, mesmo vindo de um grupo." },
     "a-m2-2": { correct: "C", competency: "QR Codes e destinos de links", conceito: "Aparência e cadeado não provam nada: vá pelo app ou endereço que você já conhece." },
     "a-m3-1": { correct: "D", competency: "Engenharia social", conceito: "O sinal é a combinação: prazo curto, pedido de dados e link inesperado. Nome e logo se copiam." },
@@ -26,7 +26,7 @@ export const GABARITO: Record<'A' | 'B', Record<string, EntradaGabarito>> = {
     "a-m5-1": { correct: "D", competency: "Identidade digital", conceito: "Provas dentro do perfil suspeito se copiam; confirme por um canal que você já usava." },
     "a-m5-2": { correct: "A", competency: "Audiência e contexto em redes sociais", conceito: "Post público tem público de verdade: pense em quem pode ver e no que revela." },
     "a-m6-1": { correct: "B", competency: "Golpes contextualizados", conceito: "Uma encomenda real não torna a mensagem real; confirme na fonte." },
-    "a-m6-2": { correct: "C", competency: "Proteção e recuperação de acesso", conceito: "Bloqueie o aparelho e encerre os acessos às contas; esperar ou divulgar só aumenta o risco." },
+    "a-m6-2": { correct: "C", competency: "Proteção e recuperação de acesso", conceito: "Bloqueie o aparelho e encerre os acessos às contas; esperar só aumenta o risco." },
   },
   B: {
     "b-m1-1": { correct: "B", competency: "Senhas", conceito: "Senha forte não precisa ser decorada: um gerenciador guarda senhas longas e únicas." },

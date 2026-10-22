@@ -1,12 +1,12 @@
-/* paleta limitada de 10 cores. Claro e escuro herdam dos tokens do tema. */
+/* paleta limitada de 10 cores (variaveis --px-* de ix.css, classe .ix-art) */
 .svg { image-rendering: pixelated; shape-rendering: crispEdges; display: block; }
-.k { fill: var(--ix-ink); }
-.d { fill: var(--ix-muted); }
-.m { fill: var(--ix-edge); }
-.l { fill: var(--ix-surface2); }
-.w { fill: var(--ix-surface); }
-.g { fill: var(--ix-accent); }
-.G { fill: var(--ix-good-fg); }
-.r { fill: var(--ix-coral); }
-.y { fill: var(--ix-sun); }
-.b { fill: #b98a5a; }
+.k { fill: var(--px-ink); }
+.d { fill: var(--px-shade); }
+.m { fill: var(--px-mid); }
+.l { fill: var(--px-soft); }
+.w { fill: var(--px-paper); }
+.g { fill: var(--px-acc); }
+.G { fill: var(--px-acc-dk); }
+.r { fill: var(--px-alert); }
+.y { fill: var(--px-warn); }
+.b { fill: var(--px-wood); }
