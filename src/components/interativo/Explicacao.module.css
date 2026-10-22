@@ -1,0 +1,9 @@
+.raiz { clip-path: var(--ix-clip); display: flex; gap: 12px; padding: 14px 16px;  animation: sobe 380ms steps(5) both; }
+.icone { flex: none; width: 32px; height: 32px;  display: grid; place-items: center; background: var(--ix-ink); color: var(--ix-surface); }
+.rotulo { margin: 0 0 2px; font-weight: 800; font-size: 0.9375rem; font-family: var(--ix-font-display); }
+.texto { margin: 0; font-size: 1rem; line-height: 1.5; }
+.sinal { background: var(--ix-good-bg); color: var(--ix-good-fg); }
+.neutro { background: var(--ix-surface2); color: var(--ix-ink); }
+.perdido { background: var(--ix-mid-bg); color: var(--ix-mid-fg); outline: 3px dashed currentColor; outline-offset: -5px; }
+@keyframes sobe { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .raiz { animation: none; } }

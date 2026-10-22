@@ -1,94 +1,129 @@
-import type { ModuleDefinition } from '@/lib/types';
+import type { Modulo } from '../types';
 
-export const module2: ModuleDefinition = {
+export const module2: Modulo = {
   id: 2,
-  title: 'Links e Mensagens',
-  logic: 'PERCEBER → VERIFICAR → AGIR',
-  env: 'cidade-m2',
-  scenes: [
+  titulo: 'Links e mensagens',
+  linha: 'Perceba o que é estranho e confira.',
+  lema: ['PERCEBER', 'VERIFICAR', 'AGIR'],
+  gancho: 'Chegou mensagem com link. Dá pra perceber o que é estranho e checar com calma.',
+  retomada: 'Mensagem inesperada? Não use o link: confirme pelo app ou site que você já conhece.',
+  cenas: [
     {
-      id: 'm2-s1',
-      module: 2,
-      env: 'cidade-m2',
-      setup: [
-        { text: 'Seu pedido teve um problema. Resolva agora para não perder a encomenda.' },
+      id: 'm2-c1',
+      modulo: 2,
+      verbo: 'PERCEBER',
+      tatica: 'pressa + link escondido',
+      tipo: 'sinal',
+      mock: {
+        from: '[[Número desconhecido]]',
+        time: '16:41',
+        body: '[[Seu pedido não foi entregue.]] [[Atualize seu endereço agora]] ou ele será devolvido: [[bit.ly/entrega-4x7]]',
+      },
+      pergunta: 'Toque no que parece estranho.',
+      pontos: [
+        {
+          id: 'numero',
+          t: 'Número desconhecido',
+          sinal: true,
+          porque: 'Loja de verdade avisa pelo app ou por um canal que você já usa, não por número solto.',
+        },
+        {
+          id: 'entregue',
+          t: 'Seu pedido não foi entregue.',
+          sinal: false,
+          porque: 'Isso sozinho não é sinal. Mensagens reais também falam isso. Olhe o conjunto.',
+        },
+        {
+          id: 'pressa',
+          t: 'Atualize seu endereço agora',
+          sinal: true,
+          porque: 'Pressa + pedido de dado. É assim que tentam te fazer agir sem pensar.',
+        },
+        {
+          id: 'link',
+          t: 'bit.ly/entrega-4x7',
+          sinal: true,
+          porque: 'Link encurtado esconde o destino real. Você só vê para onde vai depois de abrir.',
+        },
       ],
-      prompt: 'O que você faz?',
-      choices: [
-        {
-          id: 'a',
-          text: 'Clica no link imediatamente pra resolver',
-          quality: 'arriscado',
-          feedback:
-            'Mesmo que a mensagem pareça real, agir direto pelo link recebido é arriscado — você não sabe pra onde ele te leva de verdade.',
-        },
-        {
-          id: 'b',
-          text: 'Ignora e apaga a mensagem sem checar nada',
-          quality: 'arriscado',
-          feedback:
-            'Ignorar tudo também não resolve: se existir mesmo alguma pendência, você só vai descobrir checando por um caminho confiável.',
-        },
-        {
-          id: 'c',
-          text: 'Abre o aplicativo da loja direto (não pelo link) e confere se existe alguma pendência',
-          quality: 'melhor',
-          feedback:
-            'Exatamente. Você mesmo abre o aplicativo que já conhece e confirma se existe algum problema real — sem depender do link recebido.',
-        },
-        {
-          id: 'd',
-          text: 'Responde à mensagem perguntando "isso é oficial mesmo?"',
-          quality: 'aceitavel',
-          feedback:
-            'Perguntar já é melhor que clicar direto, mas quem enviou uma mensagem enganosa provavelmente vai dizer que é oficial mesmo. A confirmação mais segura vem de um canal que você já conhece, não da própria mensagem.',
-        },
-      ],
-      principle: 'Verificar não é ignorar — é confirmar pelo caminho que você já conhece, sem depender do link recebido.',
-      next: 'm2-s2',
+      regra: 'Um sinal solto é dúvida. Pressa, link escondido e pedido juntos pedem que você pare.',
+      saibaMais: 'Não precisa clicar para checar: abra o app da loja e veja o pedido por lá.',
     },
     {
-      id: 'm2-s2',
-      module: 2,
-      env: 'cidade-m2',
-      setup: [{ text: 'SUA CONTA SERÁ BLOQUEADA EM 10 MINUTOS. RESOLVA AGORA.' }],
-      prompt: 'O que você faz?',
-      choices: [
+      id: 'm2-c2',
+      modulo: 2,
+      verbo: 'VERIFICAR',
+      tatica: 'pressa',
+      tipo: 'mensagem',
+      mock: {
+        from: 'Loja Neon · mensagem',
+        time: 'agora',
+        body: 'Seu pedido teve um problema. Resolva em 10 minutos ou ele será cancelado. [[Resolver agora]]',
+        link: 'Resolver agora',
+      },
+      pergunta: 'O que você faz?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Clica agora, antes que seja tarde',
-          quality: 'arriscado',
-          feedback:
-            'É exatamente esse o efeito que a urgência tenta causar: te fazer agir antes de pensar. Prazos apertados demais são um sinal de alerta, não um motivo pra pular a verificação.',
+          t: 'Abro o app da loja por conta própria e confiro o pedido',
+          q: 'melhor',
+          porque: 'Se o problema for real, aparece lá. Pedido de verdade continua esperando daqui a cinco minutos.',
         },
         {
           id: 'b',
-          text: 'Encaminha pra um amigo perguntar o que ele acha',
-          quality: 'aceitavel',
-          feedback:
-            'Encaminhar não resolve a sua situação nem confirma nada — só passa a dúvida adiante. Melhor verificar você mesmo por um canal confiável.',
+          t: 'Clico agora, antes que cancele',
+          q: 'arriscado',
+          porque: 'Pressa é a ferramenta do golpe: ela quer que você aja antes de pensar.',
         },
         {
           id: 'c',
-          text: 'Para, respira, e busca a situação por um canal confiável antes de decidir',
-          quality: 'melhor',
-          feedback:
-            'Parar antes de agir é a virada. Um prazo apertado não é motivo suficiente pra abrir mão de verificar — se o problema for real, ele continua existindo daqui a alguns minutos.',
-        },
-        {
-          id: 'd',
-          text: 'Responde direto na mensagem pedindo mais prazo',
-          quality: 'arriscado',
-          feedback:
-            'Responder confirma pra quem enviou que esse contato está ativo e sendo monitorado, o que pode incentivar novas tentativas.',
+          t: 'Mando para um amigo e vejo o que ele acha',
+          q: 'aceitavel',
+          porque: 'Passa a dúvida adiante, mas não confirma nada. A resposta está na loja, não no amigo.',
         },
       ],
-      principle: 'Você não precisa decidir só porque alguém criou urgência. Pare, verifique, decida.',
-      next: null,
+      regra: 'Prazo apertado não é prova. Confirme por onde você já conhece.',
+      saibaMais: 'Responder à mensagem também avisa ao golpista que seu número está ativo.',
+    },
+    {
+      id: 'm2-c3',
+      modulo: 2,
+      verbo: 'AGIR',
+      tatica: 'aparência copiada',
+      tipo: 'escolha',
+      mock: {
+        from: 'Cartaz na rua · QR Code',
+        body: '"Ganhe 50% off na Plataforma X! Escaneie." Você escaneia e abre uma página pedindo seu login.',
+        campo: 'Login',
+      },
+      pergunta: 'O que você faz?',
+      opcoes: [
+        {
+          id: 'a',
+          t: 'Entro, se a página for igual à da plataforma',
+          q: 'arriscado',
+          porque: 'Visual se copia em minutos. Parecer igual não prova que é a página de verdade.',
+        },
+        {
+          id: 'b',
+          t: 'Fecho e entro pelo app ou site que eu já conheço',
+          q: 'melhor',
+          porque: 'Você vai pelo caminho que já conhece. Se a promoção existir, aparece lá.',
+        },
+        {
+          id: 'c',
+          t: 'Confiro o cadeado do navegador e, se tiver, entro',
+          q: 'aceitavel',
+          porque: 'Cadeado só diz que a conexão é protegida. Site falso também pode ter.',
+        },
+      ],
+      regra: 'QR Code é um link disfarçado. Na dúvida, vá pelo caminho que você já conhece.',
+      saibaMais: 'Dá para ver o endereço antes de abrir: leia o link que a câmera mostra antes de tocar.',
     },
   ],
-  deepDive: {
-    title: '"Mas parece oficial..."',
-    body: 'Logo, nome conhecido, texto bem escrito — nada disso prova que uma mensagem é verdadeira. Aparência pode ser copiada com facilidade. O que realmente confirma é checar pelo canal que você já conhece, não os detalhes visuais da mensagem que chegou. Extra: um site com cadeado (https) só garante que a conexão está criptografada — não garante que o site é confiável. Um site falso também pode ter cadeado.',
-  },
+  pratica: [
+    'Mensagem inesperada com link? Não use o link.',
+    'Abra o app ou site que você já conhece e confira lá.',
+    'Pressa e prazo curto não provam nada.',
+  ],
 };

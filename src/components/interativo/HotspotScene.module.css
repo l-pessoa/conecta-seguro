@@ -1,0 +1,30 @@
+.raiz { margin: 0; display: grid; gap: 12px; }
+.svg { width: 100%; height: auto; display: block; image-rendering: pixelated; clip-path: var(--ix-clip); background: var(--ix-surface2); touch-action: manipulation; }
+.ponto { transform-box: fill-box; }
+.alvo { fill: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.dica { pointer-events: none; animation: dica 1.2s steps(1) infinite; }
+.dicaQ { fill: var(--ix-accent); stroke: var(--ix-ink); stroke-width: 4; }
+.dicaP { fill: var(--ix-ink); }
+@keyframes dica { 0% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.55; transform: translateY(-4px); } }
+.achado { pointer-events: none; }
+.aroAchado { fill: var(--ix-accent); fill-opacity: 0.4; stroke: var(--ix-ink); stroke-width: 4; animation: pop 360ms steps(3) both; }
+.aroNeutro { fill: var(--ix-surface); fill-opacity: 0.35; stroke: var(--ix-ink); stroke-width: 4; stroke-dasharray: 4 8; animation: pop 360ms steps(3) both; }
+.aroPerdido { fill: none; stroke: var(--ix-ink); stroke-width: 4; stroke-dasharray: 12 8; pointer-events: none; }
+.aroFoco { fill: none; stroke: var(--ix-link); stroke-width: 4; pointer-events: none; }
+.seloQ { fill: var(--ix-ink); }
+.seloCheck { fill: var(--ix-accent); }
+@keyframes pop { from { opacity: 0; } to { opacity: 1; } }
+
+.legenda { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  all: unset; box-sizing: border-box; min-height: 44px; padding: 0 16px; border-radius: 0; cursor: pointer;
+  border: 0; box-shadow: 0 -4px 0 0 var(--ix-edge), 0 4px 0 0 var(--ix-edge), -4px 0 0 0 var(--ix-edge), 4px 0 0 0 var(--ix-edge); margin: 4px; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.9375rem;
+  background: var(--ix-surface); -webkit-tap-highlight-color: transparent;
+}
+.chip[aria-pressed='true'] { background: var(--ix-accent); color: var(--ix-on-accent); box-shadow: 0 -4px 0 0 var(--ix-ink), 0 4px 0 0 var(--ix-ink), -4px 0 0 0 var(--ix-ink), 4px 0 0 0 var(--ix-ink); }
+.chip:active { transform: scale(0.97); }
+.chip:focus-visible { outline: 3px solid var(--ix-link); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dica, .aroAchado, .aroNeutro { animation: none; }
+}

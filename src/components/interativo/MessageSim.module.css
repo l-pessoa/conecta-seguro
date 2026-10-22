@@ -1,0 +1,70 @@
+.raiz { margin: 0; display: grid; gap: 10px; }
+.cabecalho { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.9375rem; }
+.avatar {
+  width: 36px; height: 36px;  display: grid; place-items: center;
+  background: var(--ix-accent); color: var(--ix-on-accent); font-family: var(--ix-font-display); font-weight: 800;
+  flex: none;
+}
+.remetente { min-width: 0; overflow-wrap: anywhere; }
+.hora { margin-left: auto; color: var(--ix-muted); font-weight: 500; font-size: 0.8125rem; }
+.area { min-height: 64px; }
+.balao {
+  background: var(--ix-surface2); clip-path: var(--ix-clip);
+  padding: 14px 16px; max-width: 94%; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  transform-origin: 0 0;
+}
+.entra { animation: chega 360ms steps(4) both; }
+@keyframes chega { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.digitando { display: inline-flex; gap: 5px; align-items: center; padding: 16px 18px; }
+.digitando i {
+  width: 8px; height: 8px;  background: var(--ix-muted);
+  animation: ponto 1s steps(1) infinite;
+}
+.digitando i:nth-child(2) { animation-delay: 0.15s; }
+.digitando i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ponto { 0%, 70%, 100% { opacity: 0.3; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-4px); } }
+.texto { margin: 0; line-height: 2.1; font-size: 1.0625rem; overflow-wrap: anywhere; }
+
+/* trecho tocavel: padding vertical de 14px = caixa de toque >= 44px (so a area visual e menor, via ::after) */
+.parte {
+  all: unset; position: relative; isolation: isolate; cursor: pointer; display: inline; font: inherit;
+  padding: 14px 3px; margin: 0 -1px;
+  text-decoration: underline dotted var(--ix-link); text-decoration-thickness: 2px; text-underline-offset: 4px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  -webkit-tap-highlight-color: transparent;
+}
+.parte::after {
+  content: ''; position: absolute; inset: 12px 0; z-index: -1; background: var(--ix-accent);
+  opacity: 0; pointer-events: none; animation: dica 2.8s var(--d, 0s) steps(2) infinite;
+}
+@keyframes dica { 0%, 60%, 100% { opacity: 0; } 30% { opacity: 0.55; } }
+.parte:active { transform: translateY(1px); }
+.parte:focus-visible { outline: 3px solid var(--ix-link); outline-offset: -4px; }
+.parte:disabled { cursor: default; }
+.achado { text-decoration: none; color: var(--ix-on-accent); }
+.achado::after { opacity: 1; animation: ache 520ms steps(4); }
+@keyframes ache { 0% { opacity: 0.2; } 40% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--ix-accent) 55%, transparent); } 100% { box-shadow: 0 0 0 0 transparent; } }
+.selo {
+  position: absolute; right: -6px; top: 2px; width: 20px; height: 20px;
+  background: var(--ix-ink); color: var(--ix-surface); display: grid; place-items: center;
+  animation: selo 380ms steps(3) both;
+}
+@keyframes selo { from { transform: scale(0); } to { transform: scale(1); } }
+.perdido { text-decoration: none; }
+.perdido::after { opacity: 1; background: transparent; outline: 2px dashed var(--ix-ink); outline-offset: 0; animation: surge 400ms steps(3) both; }
+@keyframes surge { from { opacity: 0.2; } to { opacity: 1; } }
+.neutro { text-decoration: none; }
+.neutro::after { opacity: 1; background: var(--ix-surface); outline: 2px dotted var(--ix-edge); animation: none; }
+
+.campo { margin-top: 10px; display: grid; gap: 4px; }
+.campoRotulo { font-size: 0.8125rem; font-weight: 600; color: var(--ix-muted); }
+.campoBox { height: 40px;  background: var(--ix-surface); border: 2px solid var(--ix-edge); }
+.legenda { color: var(--ix-muted); font-size: 0.9375rem; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .entra, .selo, .achado::after, .perdido::after { animation: none; }
+  .parte::after, .digitando i { animation: none; }
+  .achado::after, .perdido::after, .neutro::after { opacity: 1; }
+}
+

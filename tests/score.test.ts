@@ -1,35 +1,52 @@
 import { describe, expect, it } from 'vitest';
-import { scoreQuiz } from '@/lib/quizScore';
-import { formA } from '@/content/quiz';
+import { scoreAnswers, type Gabarito } from '@/lib/server/score';
 
-describe('correcao do quiz', () => {
-  it('conta acertos e erros corretamente', () => {
-    const answers = formA.map((item) => ({ itemId: item.id, optionId: item.correct }));
-    const result = scoreQuiz('pre', formA, answers);
+const key: Gabarito = {
+  'x-1': { correct: 'A', competency: 'Senhas' },
+  'x-2': { correct: 'C', competency: 'Senhas' },
+  'x-3': { correct: 'B', competency: 'Golpes' },
+};
 
-    expect(result.total).toBe(12);
-    expect(result.correct).toBe(12);
+describe('correcao no servidor', () => {
+  it('conta todos os acertos', () => {
+    const r = scoreAnswers(key, [
+      { itemId: 'x-1', optionId: 'A' },
+      { itemId: 'x-2', optionId: 'C' },
+      { itemId: 'x-3', optionId: 'B' },
+    ]);
+    expect(r.correct).toBe(3);
+    expect(r.total).toBe(3);
   });
 
-  it('resposta errada nao conta como acerto', () => {
-    const item = formA[0];
-    const wrongOption = item.options.find((o) => o.id !== item.correct)!;
-    const result = scoreQuiz('pre', [item], [{ itemId: item.id, optionId: wrongOption.id }]);
-
-    expect(result.correct).toBe(0);
-    expect(result.byCompetency[item.competency]).toEqual({ total: 1, correct: 0 });
+  it('resposta errada nao conta', () => {
+    const r = scoreAnswers(key, [{ itemId: 'x-1', optionId: 'D' }]);
+    expect(r.correct).toBe(0);
   });
 
-  it('item sem resposta conta como erro, nao quebra', () => {
-    const result = scoreQuiz('pre', formA, []);
-    expect(result.correct).toBe(0);
-    expect(result.total).toBe(12);
+  it('nao_sei e erro e e contado a parte', () => {
+    const r = scoreAnswers(key, [
+      { itemId: 'x-1', optionId: 'nao_sei' },
+      { itemId: 'x-2', optionId: 'C' },
+    ]);
+    expect(r.correct).toBe(1);
+    expect(r.unsure).toBe(1);
+  });
+
+  it('item sem resposta conta como erro e nao quebra', () => {
+    const r = scoreAnswers(key, []);
+    expect(r).toMatchObject({ correct: 0, total: 3, unsure: 0 });
   });
 
   it('agrupa por competencia', () => {
-    const answers = formA.map((item) => ({ itemId: item.id, optionId: item.correct }));
-    const result = scoreQuiz('pre', formA, answers);
-    const competencies = Object.keys(result.byCompetency);
-    expect(competencies.length).toBe(12);
+    const r = scoreAnswers(key, [
+      { itemId: 'x-1', optionId: 'A' },
+      { itemId: 'x-3', optionId: 'A' },
+    ]);
+    expect(r.byCompetency).toEqual({ Senhas: { total: 2, correct: 1 }, Golpes: { total: 1, correct: 0 } });
+  });
+
+  it('ignora itemId que nao existe no gabarito', () => {
+    const r = scoreAnswers(key, [{ itemId: 'zzz', optionId: 'A' }]);
+    expect(r.correct).toBe(0);
   });
 });

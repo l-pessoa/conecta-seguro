@@ -1,101 +1,122 @@
-import type { ModuleDefinition } from '@/lib/types';
+import type { Modulo } from '../types';
 
-export const module3: ModuleDefinition = {
+export const module3: Modulo = {
   id: 3,
-  title: 'Golpes e Engenharia Social',
-  logic: 'RECONHECER → QUESTIONAR → CONFIRMAR',
-  env: 'planicie',
-  scenes: [
+  titulo: 'Golpes e truques',
+  linha: 'Conheça o truque antes de cair nele.',
+  lema: ['RECONHECER', 'QUESTIONAR', 'CONFIRMAR'],
+  gancho: 'Todo golpe usa um truque para você não pensar. Conhecer o truque é a melhor defesa.',
+  retomada: 'Pressa + pedido sensível: pare e confirme. Código é só seu.',
+  cenas: [
     {
-      id: 'm3-s1',
-      module: 3,
-      env: 'planicie',
-      setup: [
-        {
-          text: 'Detectamos um problema na sua conta. Precisamos confirmar alguns dados agora, ou o acesso será suspenso.',
-        },
-      ],
-      prompt: 'O que você faz?',
-      choices: [
+      id: 'm3-c1',
+      modulo: 3,
+      verbo: 'RECONHECER',
+      tatica: 'pressa e medo',
+      tipo: 'mensagem',
+      mock: {
+        from: 'Suporte Aurora',
+        time: '11:20',
+        body: 'Detectamos um problema na sua conta. Confirme seus dados em 10 minutos ou o acesso será suspenso.',
+      },
+      pergunta: 'Qual truque está sendo usado aqui?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Faz o que foi pedido imediatamente, pra não perder o acesso',
-          quality: 'arriscado',
-          feedback:
-            'Urgência é uma das ferramentas mais usadas pra impedir que alguém pare pra pensar. Uma situação real continua existindo mesmo alguns minutos depois.',
+          t: 'Prêmio: promete algo bom se você clicar',
+          q: 'aceitavel',
+          porque: 'Aqui não tem prêmio, tem ameaça. Mas "você ganhou!" é outro truque comum: vale reconhecer.',
         },
         {
           id: 'b',
-          text: 'Ignora pra sempre, sem checar nada',
-          quality: 'arriscado',
-          feedback:
-            'Ignorar por completo também não é ideal: se houver mesmo alguma pendência, só checar pelo canal oficial confirma isso com segurança.',
+          t: 'Amizade: fala como alguém que você conhece',
+          q: 'aceitavel',
+          porque: 'O tom é formal, não de amigo. Esse truque existe (cena 3), mas não é o principal aqui.',
         },
         {
           id: 'c',
-          text: 'Verifica a situação por um canal oficial antes de fazer qualquer coisa',
-          quality: 'melhor',
-          feedback:
-            'Urgência não é prova de legitimidade. Verificar direto no canal oficial confirma se o problema existe de verdade — sem depender do que essa mensagem diz.',
-        },
-        {
-          id: 'd',
-          text: 'Responde pedindo mais detalhes sobre o problema',
-          quality: 'aceitavel',
-          feedback:
-            'Pedir mais detalhes parece cauteloso, mas quem está aplicando um golpe pode inventar qualquer detalhe convincente. A confirmação real vem de fora dessa conversa.',
+          t: 'Pressa e medo: pouco tempo e ameaça de perder o acesso',
+          q: 'melhor',
+          porque: 'Prazo curto + ameaça tiram seu tempo de pensar. Quem tem problema real pode esperar você checar.',
         },
       ],
-      principle: 'Urgência não é prova de legitimidade — é, muitas vezes, uma tática pra evitar que você verifique.',
-      next: 'm3-s2',
+      regra: 'Pressa + pedido sensível: pare e confirme pelo app ou site oficial.',
+      saibaMais: 'Urgência não é prova. Problema real continua existindo daqui a alguns minutos.',
     },
     {
-      id: 'm3-s2',
-      module: 3,
-      env: 'planicie',
-      setup: [
-        {
-          text: 'Olá! Sou da equipe de suporte. Identificamos uma atividade incomum. Pra confirmar que é você, me envia o código que acabou de chegar no seu celular?',
-        },
-      ],
-      prompt: 'O que você faz?',
-      choices: [
+      id: 'm3-c2',
+      modulo: 3,
+      verbo: 'QUESTIONAR',
+      tatica: 'autoridade falsa + pedido de segredo',
+      tipo: 'mensagem',
+      mock: {
+        from: 'Suporte (WhatsApp)',
+        time: '19:05',
+        body: 'Oi! Sou do suporte. Vi uma atividade estranha. Pra confirmar que é você, me manda o código que chegou no seu celular.',
+      },
+      pergunta: 'O que você faz?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Envia o código, já que a pessoa parece ser do suporte mesmo',
-          quality: 'arriscado',
-          feedback:
-            'Cargo, nome ou linguagem formal não provam quem alguém realmente é. Um código de verificação é pessoal — não deve ser compartilhado, nem com quem parece ser da equipe de suporte.',
+          t: 'Mando o código: parece mesmo do suporte',
+          q: 'arriscado',
+          porque: 'Cargo e tom formal não provam nada. Código de verificação é só seu, nem para o suporte de verdade.',
         },
         {
           id: 'b',
-          text: 'Pede pra pessoa provar que é realmente do suporte antes de decidir',
-          quality: 'aceitavel',
-          feedback:
-            'Pedir prova é um bom instinto, mas ainda depende da resposta de quem está do outro lado — que pode inventar qualquer coisa convincente. Melhor confirmar por fora dessa conversa.',
+          t: 'Não mando e confiro pelo site ou app oficial',
+          q: 'melhor',
+          porque: 'Suporte de verdade não pede código por mensagem. Conferir por fora da conversa é o caminho seguro.',
         },
         {
           id: 'c',
-          text: 'Não envia o código e confirma a identidade da pessoa por um canal independente, como o site oficial',
-          quality: 'melhor',
-          feedback:
-            'Exatamente. Suporte de verdade não pede código de verificação por mensagem. Confirmar por um canal que você já conhece é o caminho seguro.',
-        },
-        {
-          id: 'd',
-          text: 'Envia só uma parte do código, "pra ajudar sem arriscar tudo"',
-          quality: 'arriscado',
-          feedback:
-            'Não existe "enviar parte com segurança" — qualquer parte do código pode ser o suficiente pra dar acesso à conta.',
+          t: 'Peço pra ele provar que é do suporte',
+          q: 'aceitavel',
+          porque: 'Bom instinto, mas quem aplica golpe inventa prova. A checagem tem que vir de fora da conversa.',
         },
       ],
-      principle:
-        'Quem alguém diz ser não é prova de quem realmente é. Códigos de verificação são pessoais e não se compartilham — nem parcialmente.',
-      next: null,
+      regra: 'Código de verificação é só seu. Nunca passe, nem para o "suporte".',
+      saibaMais: 'Nem metade do código: qualquer parte pode ser o suficiente para entrar na sua conta.',
+    },
+    {
+      id: 'm3-c3',
+      modulo: 3,
+      verbo: 'CONFIRMAR',
+      tatica: '"é um conhecido"',
+      tipo: 'mensagem',
+      mock: {
+        from: 'Rafa (amigo)',
+        time: '21:48',
+        body: 'Mano, tô tentando recuperar minha conta e o código foi pro seu cel. Me manda aí rapidinho?',
+      },
+      pergunta: 'O que você faz?',
+      opcoes: [
+        {
+          id: 'a',
+          t: 'Não mando e ligo pro Rafa para confirmar',
+          q: 'melhor',
+          porque: 'Pedido fora do normal, até de amigo, vale confirmar por outro canal. Uma ligação resolve.',
+        },
+        {
+          id: 'b',
+          t: 'Pergunto por que o código chegou no meu cel',
+          q: 'aceitavel',
+          porque: 'Boa dúvida, mas se a conta foi invadida quem responde é o golpista. Confirme fora da conversa.',
+        },
+        {
+          id: 'c',
+          t: 'Mando: é o Rafa, eu conheço',
+          q: 'arriscado',
+          porque: 'A conta do Rafa pode ter sido invadida. O golpe usa pessoas que você conhece.',
+        },
+      ],
+      regra: 'Pediu algo fora do normal, até um amigo? Confirme por outro canal.',
+      saibaMais: 'Você não está desconfiando do Rafa: está protegendo vocês dois.',
     },
   ],
-  deepDive: {
-    title: '"É meu amigo"',
-    body: 'Até um contato conhecido pode ter a conta comprometida ou imitada. Quando um pedido foge do padrão — principalmente envolvendo dinheiro, códigos ou urgência — vale confirmar com a pessoa por outro meio já conhecido, como uma ligação, antes de agir.',
-  },
+  pratica: [
+    'Pressa + pedido sensível: pare e confirme.',
+    'Código de verificação é só seu. Nunca passe.',
+    'Até de amigo, pedido estranho: confirme por outro canal.',
+  ],
 };

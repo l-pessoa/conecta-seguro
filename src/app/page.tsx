@@ -1,174 +1,118 @@
-'use client';
+import Link from 'next/link';
+import { ArrowRight, Check } from '@nsmr/pixelart-react';
+import { home, modules } from '@/content/modules';
+import { HeroHeading } from '@/components/landing/HeroHeading';
+import { HookChat } from '@/components/landing/HookChat';
+import { ThemeMarquee } from '@/components/landing/ThemeMarquee';
+import { ScrubText } from '@/components/landing/ScrubText';
+import { ModuleStack } from '@/components/landing/ModuleStack';
+import { Reveal } from '@/components/landing/Reveal';
+import { Cart, Notification } from '@nsmr/pixelart-react';
 
-import { Suspense, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Key, Link as LinkIcon, Drama, EyeOff, Share2, TriangleAlert } from 'lucide-react';
-import { introBeats } from '@/content/intro';
-import { DialogueBox } from '@/components/scene/DialogueBox';
-import { ParallaxBackground } from '@/components/scene/ParallaxBackground';
-import { ConsentGate } from '@/components/ui/ConsentGate';
-import { Button } from '@/components/ui/Button';
-import { VirusIcon } from '@/components/ui/VirusIcon';
-import { getOrCreateParticipant, recordConsent } from '@/lib/participant';
-
-const ICONS = {
-  key: Key,
-  link: LinkIcon,
-  drama: Drama,
-  'eye-off': EyeOff,
-  'share-2': Share2,
-  'triangle-alert': TriangleAlert,
-} as const;
-
-const FLOATING_ICONS = [
-  { Icon: Key, top: '14%', left: '12%', delay: '0s', duration: '9s' },
-  { Icon: LinkIcon, top: '68%', left: '8%', delay: '1.2s', duration: '11s' },
-  { Icon: Drama, top: '22%', left: '84%', delay: '2.4s', duration: '8s' },
-  { Icon: EyeOff, top: '78%', left: '80%', delay: '0.6s', duration: '10s' },
-  { Icon: Share2, top: '48%', left: '92%', delay: '3s', duration: '9s' },
-  { Icon: TriangleAlert, top: '85%', left: '45%', delay: '1.8s', duration: '7.5s' },
-] as const;
-
-type View = 'hero' | 'intro' | 'consent';
-
-export default function HomePage() {
+export default function LandingPage() {
   return (
-    <Suspense fallback={null}>
-      <IntroFlow />
-    </Suspense>
-  );
-}
-
-function IntroFlow() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const [view, setView] = useState<View>('hero');
-  const [exploring, setExploring] = useState(false);
-  const [beatIndex, setBeatIndex] = useState(0);
-  const [lineIndex, setLineIndex] = useState(0);
-  const [showTopics, setShowTopics] = useState(false);
-  const [showCta, setShowCta] = useState(false);
-
-  const beat = introBeats[beatIndex];
-  const isLastBeat = beatIndex === introBeats.length - 1;
-
-  function startTour() {
-    setExploring(false);
-    setView('intro');
-  }
-
-  function startExploring() {
-    setExploring(true);
-    setView('consent');
-  }
-
-  function goNextBeat() {
-    if (isLastBeat) {
-      setView('consent');
-      return;
-    }
-    setBeatIndex((i) => i + 1);
-    setLineIndex(0);
-    setShowTopics(false);
-    setShowCta(false);
-  }
-
-  function advanceLine() {
-    if (lineIndex + 1 < beat.lines.length) {
-      setLineIndex((i) => i + 1);
-      return;
-    }
-    if (beat.topics && !showTopics) {
-      setShowTopics(true);
-      return;
-    }
-    if (beat.cta && !showCta) {
-      setShowCta(true);
-      return;
-    }
-    goNextBeat();
-  }
-
-  function handleAccept() {
-    getOrCreateParticipant(searchParams.get('t'));
-    recordConsent();
-    router.push(exploring ? '/diagnostico?next=modulos' : '/diagnostico');
-  }
-
-  if (view === 'consent') {
-    return <ConsentGate onAccept={handleAccept} />;
-  }
-
-  if (view === 'hero') {
-    return (
-      <div className="stage-shell">
-        <ParallaxBackground env="hero" />
-        <div className="hero-floating-icons" aria-hidden="true">
-          {FLOATING_ICONS.map(({ Icon, top, left, delay, duration }, i) => (
-            <Icon
-              key={i}
-              size={26}
-              className="hero-floating-icon"
-              style={{ top, left, animationDelay: delay, animationDuration: duration }}
-            />
-          ))}
+    <>
+      <header className="top">
+        <div className="wrap">
+          <Link className="logo" href="/">ConectaSeguro</Link>
+          <Link className="btn" href="/entrar" aria-label={home.cta}><span className="cta-long">{home.cta}</span><span className="cta-short" aria-hidden="true">Começar</span></Link>
         </div>
-        <div className="hero-content">
-          <VirusIcon size={64} className="hero-virus reveal-1" />
-          <h1 className="hero-welcome reveal-1">Bem-vindo</h1>
-          <p className="hero-tagline reveal-2">
-            Uma jornada sobre as decisões que a gente toma todo dia sem perceber.
-          </p>
-          <p className="hero-question reveal-3">Vamos começar?</p>
-          <div className="hero-buttons reveal-4">
-            <Button onClick={startTour}>Começar o tour</Button>
-            <Button variant="ghost" onClick={startExploring}>
-              Explorar livremente
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+      </header>
 
-  return (
-    <div className="stage-shell">
-      <ParallaxBackground env="hero" />
-      <div className="intro-content">
-        {!showTopics && !showCta && (
-          <DialogueBox line={{ text: beat.lines[lineIndex] }} onAdvance={advanceLine} />
-        )}
-
-        {showTopics && beat.topics && (
-          <div className="intro-topics">
-            <p>{beat.lines[0]}</p>
-            <ul className="intro-topic-list">
-              {beat.topics.map((topic) => {
-                const Icon = ICONS[topic.icon];
-                return (
-                  <li key={topic.label}>
-                    <Icon size={20} aria-hidden="true" />
-                    <div>
-                      <strong>{topic.label}</strong>
-                      <span>{topic.hint}</span>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-            <div className="intro-cta">
-              <Button onClick={advanceLine}>Continuar</Button>
+      <main>
+        <section className="hero">
+          <div className="wrap hero-grid">
+            <div>
+              <HeroHeading />
+              <p className="hero-sub rise" style={{ ['--i' as string]: 0 }}>{home.subtitulo}</p>
+              <div className="hero-cta rise" style={{ ['--i' as string]: 1 }}>
+                <Link className="btn btn--lg" href="/entrar">
+                  {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+            <div className="chat-wrap rise" style={{ ['--i' as string]: 2 }}>
+              <div className="float-chip fc1" aria-hidden="true"><Notification size={20} /> Novo login detectado</div>
+              <div className="float-chip fc2" aria-hidden="true"><Cart size={20} /> Seu pedido foi entregue?</div>
+              <HookChat gancho={home.gancho} cta={home.cta} />
             </div>
           </div>
-        )}
+        </section>
 
-        {showCta && beat.cta && (
-          <div className="intro-cta">
-            <Button onClick={goNextBeat}>{beat.cta}</Button>
+        <ThemeMarquee temas={home.temas} />
+
+        <section className="sec">
+          <div className="wrap">
+            <ScrubText text="Você não precisa saber reconhecer todos os problemas da internet. Precisa saber parar, pensar e escolher o próximo passo." />
           </div>
-        )}
-      </div>
-    </div>
+        </section>
+
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap how">
+            <h2>{home.comoFunciona.titulo}</h2>
+            <ol className="steps">
+              {home.comoFunciona.passos.map((p, i) => (
+                <Reveal as="li" key={p} delay={i * 0.1}>
+                  <span>{p}</span>
+                </Reveal>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="sec" style={{ paddingTop: 0 }} id="modulos">
+          <div className="wrap">
+            <h2>{home.fatos[0]}</h2>
+            <p className="sec-lede">{home.fatos.slice(1).join('. ')}.</p>
+            <ModuleStack modulos={modules} />
+          </div>
+        </section>
+
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <div className="priv">
+              <h2>Seu nome não é pedido.</h2>
+              <ul>
+                {home.privacidade.map((t, i) => (
+                  <Reveal as="li" key={t} delay={i * 0.12}>
+                    <Check className="ico" aria-hidden="true" />
+                    {t}
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="sec" style={{ paddingTop: 0 }}>
+          <div className="wrap">
+            <h2>Perguntas rápidas</h2>
+            <div className="faq">
+              {home.faq.map((f) => (
+                <details key={f.p}>
+                  <summary>{f.p}</summary>
+                  <p>{f.r}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="final">
+          <div className="wrap">
+            <h2>Bora começar?</h2>
+            <Link className="btn btn--lg" href="/entrar">
+              {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      <footer className="foot">
+        <div className="wrap">
+          <span>ConectaSeguro, projeto de extensão universitária.</span>
+        </div>
+      </footer>
+    </>
   );
 }

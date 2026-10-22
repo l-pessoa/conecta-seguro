@@ -1,0 +1,16 @@
+.raiz { display: grid; gap: 14px; }
+.barra { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.contador { margin: 0; font-size: 0.9375rem; color: var(--ix-muted); }
+.contador strong { color: var(--ix-ink); font-family: var(--ix-font-display); font-size: 1.125rem; }
+.pontos { display: flex; gap: 6px; }
+.pontos i { width: 12px; height: 12px;  border: 2px solid var(--ix-edge); transition: transform 300ms steps(5), background 300ms; }
+.pontos i.cheio { background: var(--ix-accent); border-color: var(--ix-ink); transform: scale(1.25); }
+.conferir {
+  all: unset; box-sizing: border-box; margin-left: auto; min-height: 44px; padding: 0 20px;  cursor: pointer;
+  margin: 4px; box-shadow: 0 -4px 0 0 var(--ix-ink), 0 4px 0 0 var(--ix-ink), -4px 0 0 0 var(--ix-ink), 4px 0 0 0 var(--ix-ink); font-weight: 700; display: inline-flex; align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.conferir:active { transform: scale(0.97); }
+.conferir:focus-visible { outline: 3px solid var(--ix-link); outline-offset: 3px; }
+.lista { display: grid; gap: 10px; }
+@media (prefers-reduced-motion: reduce) { .pontos i { transition: none; } }

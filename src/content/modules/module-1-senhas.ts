@@ -1,102 +1,120 @@
-import type { ModuleDefinition } from '@/lib/types';
+import type { Modulo } from '../types';
 
-export const module1: ModuleDefinition = {
+export const module1: Modulo = {
   id: 1,
-  title: 'Senhas e Segurança de Contas',
-  logic: 'CRIAR → PROTEGER → REAGIR',
-  env: 'caverna',
-  scenes: [
+  titulo: 'Senhas e contas',
+  linha: 'Crie, proteja e reaja.',
+  lema: ['CRIAR', 'PROTEGER', 'REAGIR'],
+  gancho: 'Uma senha boa é a primeira porta fechada. Vamos criar uma, protegê-la e saber reagir.',
+  retomada: 'Senha longa e só sua. Estranhou um acesso? Entre pelo app.',
+  cenas: [
     {
-      id: 'm1-s1',
-      module: 1,
-      env: 'caverna',
-      setup: [
-        { text: 'Vou criar uma senha pra essa conta nova. O que você acha dessas opções?' },
-      ],
-      prompt: 'Qual dessas senhas oferece mais proteção?',
-      choices: [
+      id: 'm1-c1',
+      modulo: 1,
+      verbo: 'CRIAR',
+      tipo: 'medidor',
+      mock: { from: 'Cadastro · Loja de Jogos', time: '14:07', body: 'Crie uma senha para sua conta nova.', campo: 'Senha' },
+      pergunta: 'Qual senha protege mais?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Julia2011 (nome + ano de nascimento)',
-          quality: 'arriscado',
-          feedback:
-            'Nome e ano são fáceis de descobrir — aparecem no seu perfil, na escola, em conversas. Uma senha baseada neles cai rápido numa tentativa de adivinhação.',
+          t: 'Pedro2011',
+          hint: 'nome + ano',
+          q: 'arriscado',
+          forca: 0,
+          porque: 'Nome e ano aparecem no seu perfil e são os primeiros chutes de quem tenta entrar.',
         },
         {
           id: 'b',
-          text: 'Amo1Chocolate! (frase incomum, comprida, sem dado pessoal)',
-          quality: 'melhor',
-          feedback:
-            'Boa escolha: é longa, não usa nada pessoal e não segue um padrão óbvio. Isso dificulta muito uma tentativa de adivinhação.',
+          t: 'chuva-roxa-bicicleta-pipoca',
+          q: 'melhor',
+          forca: 4,
+          porque: 'Longa e sem nada pessoal. O tamanho pesa mais do que símbolos esquisitos.',
         },
         {
           id: 'c',
-          text: 'Senha123! (parece complexa, mas é padrão comum)',
-          quality: 'arriscado',
-          feedback:
-            'Parece forte porque tem número e símbolo, mas é um dos padrões mais testados por quem tenta adivinhar senhas. Complexidade visual não é o mesmo que imprevisibilidade.',
-        },
-        {
-          id: 'd',
-          text: 'PrincesaAzul#7 (frase popular com variação)',
-          quality: 'aceitavel',
-          feedback:
-            'Melhor que usar dado pessoal, mas frases populares com pequenas variações também entram nas listas mais tentadas. Quanto mais incomum e longa, mais segura.',
+          t: 'Senha123!',
+          q: 'aceitavel',
+          forca: 1,
+          porque: 'Parece forte, mas é padrão que as listas de senhas já conhecem. Previsível, mesmo com símbolo.',
         },
       ],
-      principle: 'Uma senha protege mais quando é longa e imprevisível — não quando só parece complicada.',
-      next: 'm1-s2',
+      regra: 'Senha forte é longa e imprevisível, não só complicada.',
+      saibaMais: 'Quatro palavras soltas, sem relação, são mais fortes e mais fáceis de lembrar que "X7#k!".',
     },
     {
-      id: 'm1-s2',
-      module: 1,
-      env: 'caverna',
-      setup: [{ text: 'Novo acesso detectado. Dispositivo não reconhecido.' }],
-      prompt: 'O que você faz?',
-      choices: [
+      id: 'm1-c2',
+      modulo: 1,
+      verbo: 'PROTEGER',
+      tipo: 'escolha',
+      mock: {
+        from: 'Notícia · site de jogos',
+        time: '09:32',
+        body: 'Vazaram senhas de um site de jogos. Você usa a mesma senha nele, no e-mail e no Insta.',
+      },
+      pergunta: 'O que protege melhor suas contas?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Ignora, porque a senha ainda funciona normalmente',
-          quality: 'arriscado',
-          feedback:
-            'A senha continuar funcionando não significa que o acesso foi autorizado por você. Ignorar deixa a dúvida sem resposta.',
+          t: 'Deixo como está: é só um site de jogos',
+          q: 'arriscado',
+          porque: 'Quem pega a senha testa ela em e-mail e redes. Uma senha repetida abre várias portas.',
         },
         {
           id: 'b',
-          text: 'Responde a uma mensagem que chegou por fora dizendo ser da "equipe de segurança" e pedindo pra confirmar a senha',
-          quality: 'arriscado',
-          feedback:
-            'Nenhuma equipe de segurança confiável pede sua senha por mensagem. Esse é exatamente o tipo de pedido que deveria fazer você parar e checar por outro caminho.',
+          t: 'Troco só a senha do site que vazou',
+          q: 'aceitavel',
+          porque: 'Ajuda, mas a mesma senha continua valendo no e-mail e no Insta.',
         },
         {
           id: 'c',
-          text: 'Entra na conta pelo aplicativo oficial (sem usar nenhum link recebido) e confere os acessos recentes',
-          quality: 'melhor',
-          feedback:
-            'Essa é a forma mais segura: você mesmo entra na conta pelo caminho que já conhece, sem depender de nenhum link ou mensagem recebida, e confere o que realmente aconteceu.',
-        },
-        {
-          id: 'd',
-          text: 'Troca a senha rapidamente, sem checar mais nada',
-          quality: 'aceitavel',
-          feedback:
-            'Trocar a senha ajuda, mas sozinho não é suficiente — vale também conferir os dispositivos conectados e considerar uma camada extra de proteção.',
+          t: 'Uma senha diferente por conta, guardadas num gerenciador',
+          q: 'melhor',
+          porque: 'Se uma vaza, as outras não caem junto. O gerenciador lembra por você.',
         },
       ],
-      principle:
-        'Quando desconfiar de um acesso, entre na conta pelo caminho que você já conhece — nunca por um link que chegou até você.',
-      next: null,
+      regra: 'Uma senha por conta. Quando uma vaza, as outras não caem.',
+      saibaMais: 'Gerenciador de senhas é um cofre: você decora só a chave dele.',
+    },
+    {
+      id: 'm1-c3',
+      modulo: 1,
+      verbo: 'REAGIR',
+      tipo: 'escolha',
+      mock: {
+        from: 'Aviso de segurança',
+        time: 'agora',
+        body: 'Novo login em aparelho desconhecido. Não foi você? [[Revisar acesso]]',
+        link: 'Revisar acesso',
+      },
+      pergunta: 'O que você faz?',
+      opcoes: [
+        {
+          id: 'a',
+          t: 'Abro o app por conta própria, confiro os aparelhos e troco a senha',
+          q: 'melhor',
+          porque: 'Você vai pelo caminho que já conhece e vê o que aconteceu de verdade. Sem depender do link.',
+        },
+        {
+          id: 'b',
+          t: 'Toco no link do aviso para verificar',
+          q: 'arriscado',
+          porque: 'Mesmo um aviso real pode vir copiado. Link que chega até você não é o caminho mais seguro.',
+        },
+        {
+          id: 'c',
+          t: 'Troco a senha rápido e pronto',
+          q: 'aceitavel',
+          porque: 'Ajuda, mas falta ver quais aparelhos estão conectados e ligar a verificação em duas etapas.',
+        },
+      ],
+      regra: 'Estranhou um acesso? Entre pelo caminho que você já conhece.',
+      saibaMais: 'Verificação em duas etapas: mesmo com sua senha, ninguém entra sem o código.',
     },
   ],
-  deepDive: {
-    title: 'A mesma senha em tudo',
-    body: 'Muita gente usa a mesma senha em várias contas pra não precisar lembrar de tantas. O problema é que, se uma dessas contas vazar, a mesma chave pode abrir as outras portas também. Um gerenciador de senhas guarda senhas diferentes para cada conta sem que você precise decorar todas — funciona como um cofre que só você acessa.',
-  },
-  closing: [
-    'Entre pelo aplicativo oficial.',
-    'Confira os dispositivos conectados.',
-    'Troque a senha.',
-    'Ative a verificação em duas etapas, se o serviço tiver.',
-    'Nunca compartilhe códigos que chegarem no seu celular — nem com quem parecer confiável.',
+  pratica: [
+    'Senha longa e só sua. Quatro palavras soltas já ajudam.',
+    'Uma senha por conta, num gerenciador.',
+    'Estranho? Entre pelo app, veja os acessos, troque a senha.',
   ],
 };

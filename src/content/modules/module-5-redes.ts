@@ -1,94 +1,116 @@
-import type { ModuleDefinition } from '@/lib/types';
+import type { Modulo } from '../types';
 
-export const module5: ModuleDefinition = {
+export const module5: Modulo = {
   id: 5,
-  title: 'Redes Sociais e Identidade Digital',
-  logic: 'PENSAR → REPRESENTAR → CUIDAR',
-  env: 'cidade-m5',
-  scenes: [
+  titulo: 'Redes sociais',
+  linha: 'Pense em quem vê e no que você constrói.',
+  lema: ['PENSAR', 'REPRESENTAR', 'CUIDAR'],
+  gancho: 'Cada post é um pedacinho de como os outros te veem. Dá pra escolher com calma.',
+  retomada: 'Post público tem público de verdade. Perfil novo de conhecido? Confirme por outro canal.',
+  cenas: [
     {
-      id: 'm5-s1',
-      module: 5,
-      env: 'cidade-m5',
-      setup: [
-        { text: 'Uma publicação está pronta pra ser postada — nada nela é obviamente certo ou errado.' },
-      ],
-      prompt: 'Antes de publicar, o que é mais importante considerar?',
-      choices: [
+      id: 'm5-c1',
+      modulo: 5,
+      verbo: 'PENSAR',
+      tipo: 'escolha',
+      mock: {
+        from: 'Rascunho · Público',
+        body: 'Foto da festa + "📍 Casa do Vitor. Vou ficar até tarde!" Quem pode ver: qualquer pessoa.',
+      },
+      pergunta: 'O que mais vale pensar antes de postar?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Se você gostou do conteúdo',
-          quality: 'arriscado',
-          feedback:
-            'Gostar do conteúdo é o primeiro passo, mas não é o único — vale pensar também em quem vai ver e no que aquilo passa sobre você.',
+          t: 'Quem, além dos amigos, vai ver isso e o que revela',
+          q: 'melhor',
+          porque: 'Qualquer pessoa pode ver onde você está e até quando. Pense no público real, não só nos amigos.',
         },
         {
           id: 'b',
-          text: 'Se seus amigos vão achar engraçado',
-          quality: 'arriscado',
-          feedback:
-            'Achar engraçado entre amigos não garante que a mesma piada funcione do mesmo jeito pra quem não está naquele contexto.',
+          t: 'Se a foto ficou bem iluminada e nítida',
+          q: 'aceitavel',
+          porque: 'Qualidade importa pouco aqui. O que mais pesa é quem vê e o que o post conta.',
         },
         {
           id: 'c',
-          text: 'Quem vai poder ver e se isso representa o que você quer transmitir',
-          quality: 'melhor',
-          feedback:
-            'Pensar em quem pode ver e no que a publicação representa é o que ajuda a decidir com mais consciência — não existe uma resposta única, mas essas duas perguntas orientam a decisão.',
-        },
-        {
-          id: 'd',
-          text: 'Se o conteúdo é parecido com o que outras pessoas estão postando',
-          quality: 'arriscado',
-          feedback:
-            'Postar algo só porque é parecido com o que os outros postam não considera se aquilo realmente representa o que você quer mostrar.',
+          t: 'Se os amigos vão curtir a legenda',
+          q: 'aceitavel',
+          porque: 'Os amigos são só parte do público. Post público alcança bem mais gente.',
         },
       ],
-      principle: 'A mesma publicação pode ser vista de formas diferentes dependendo de quem a vê. Pensar na audiência faz parte de postar com consciência.',
-      next: 'm5-s2',
+      regra: 'Post público tem público de verdade: pense em quem pode ver.',
+      saibaMais: 'Dá para postar depois, quando você já saiu do lugar.',
     },
     {
-      id: 'm5-s2',
-      module: 5,
-      env: 'cidade-m5',
-      setup: [{ text: 'O personagem olha pro próprio perfil: fotos, bio, comentários, interações.' }],
-      prompt: 'Se alguém te conhecesse só por esse perfil, que impressão teria?',
-      choices: [
+      id: 'm5-c2',
+      modulo: 5,
+      verbo: 'REPRESENTAR',
+      tipo: 'escolha',
+      mock: { from: 'Seu perfil', body: 'Você apagou um post ontem. Hoje alguém manda no grupo um print dele.' },
+      pergunta: 'O que isso mostra?',
+      opcoes: [
         {
           id: 'a',
-          text: 'Não importa, porque um perfil não representa quem a pessoa é de verdade',
-          quality: 'arriscado',
-          feedback:
-            'Um perfil não conta a história toda de alguém, mas ainda assim forma uma impressão real pra quem só conhece você por ali.',
+          t: 'Que apagar resolve: depois que apago, some',
+          q: 'arriscado',
+          porque: 'Quem viu pode ter salvo ou printado antes. Apagar ajuda, mas não garante.',
         },
         {
           id: 'b',
-          text: 'A impressão exata que eu quero passar, sempre',
-          quality: 'arriscado',
-          feedback:
-            'Nem sempre a impressão que passamos é exatamente a que planejamos — pequenas escolhas se somam de um jeito que a gente nem sempre percebe.',
+          t: 'Que apagar ajuda, mas o melhor é pensar antes de postar',
+          q: 'melhor',
+          porque: 'Não existe botão de voltar total. Pensar antes é o que realmente protege.',
         },
         {
           id: 'c',
-          text: 'Uma impressão formada por várias escolhas pequenas, nem sempre a que eu imaginava',
-          quality: 'melhor',
-          feedback:
-            'Isso mesmo. A identidade digital se constrói aos poucos, por várias escolhas pequenas — não por uma publicação isolada. Não precisa ser perfeita, só consciente.',
-        },
-        {
-          id: 'd',
-          text: 'Melhor nem pensar nisso, só postar o que der vontade',
-          quality: 'arriscado',
-          feedback:
-            'Não pensar nisso significa deixar essa impressão se formar sem nenhuma intenção — o que também é uma escolha, só que sem controle.',
+          t: 'Que é melhor não postar mais nada',
+          q: 'exagero',
+          porque: 'Postar não é o problema. O hábito de pensar antes já faz diferença.',
         },
       ],
-      principle: 'Você não precisa parecer perfeito online. Precisa ter consciência do que está construindo, aos poucos, com cada escolha.',
-      next: null,
+      regra: 'O que você posta continua representando você, mesmo depois de apagar.',
+      saibaMais: 'Se alguém repostou algo seu sem querer, peça para apagar e denuncie na rede.',
+    },
+    {
+      id: 'm5-c3',
+      modulo: 5,
+      verbo: 'CUIDAR',
+      tatica: '"é um conhecido"',
+      tipo: 'mensagem',
+      mock: {
+        from: 'Bia (perfil novo)',
+        time: '20:12',
+        body: 'Perdi meu antigo acesso! Segue esse perfil novo e me manda teu número pra eu te adicionar.',
+        legenda: 'Fotos da Bia · 3 amigos em comum',
+      },
+      pergunta: 'Como ter certeza de que é a Bia?',
+      opcoes: [
+        {
+          id: 'a',
+          t: 'Comparo as fotos e os amigos em comum',
+          q: 'aceitavel',
+          porque: 'Fotos e amigos em comum podem ser copiados. Tudo isso fica dentro do perfil suspeito.',
+        },
+        {
+          id: 'b',
+          t: 'Chamo de vídeo pelo perfil novo',
+          q: 'aceitavel',
+          porque: 'Ajuda, mas continua dentro do perfil suspeito. Melhor confirmar fora dele.',
+        },
+        {
+          id: 'c',
+          t: 'Falo com ela por um contato que eu já tinha',
+          q: 'melhor',
+          porque: 'Confirmar por um canal que você já conhecia não depende do perfil novo.',
+        },
+      ],
+      regra: 'Perfil novo de conhecido? Confirme por um contato que você já tinha.',
+      saibaMais: 'Se for golpe, avise a Bia e denuncie o perfil: você ajuda outras pessoas.',
     },
   ],
-  deepDive: {
-    title: 'Isso ainda está online?',
-    body: 'Depois que você compartilha algo, nem sempre dá pra controlar completamente onde aquilo vai parar — outras pessoas podem salvar, printar ou repassar antes de você apagar. Isso não quer dizer que tudo fica pra sempre, mas que vale pensar nisso antes de publicar, não só depois.',
-  },
+  pratica: [
+    'Post público tem público de verdade.',
+    'Apagar ajuda, mas não desfaz: pense antes.',
+    'Perfil novo de conhecido? Confirme por outro contato.',
+  ],
 };

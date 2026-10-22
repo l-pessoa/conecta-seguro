@@ -1,0 +1,10 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "graphify-out": true,
+    "next-env.d.ts": true,
+    "*.tsbuildinfo": true,
+    "package-lock.json": true
+  }
+}

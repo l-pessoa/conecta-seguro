@@ -1,0 +1,31 @@
+/* animacoes em passos (steps): so transform e opacity. 1 unidade de translate = 1 pixel de arte (4 px). */
+.f1, .f2, .sway, .bob, .look, .tilt, .blip, .cursor, .beat, .breath, .r1, .r2, .r3 { transform-box: view-box; }
+.f1 { animation: f1 1.2s steps(1) infinite; }
+.f2 { animation: f2 1.2s steps(1) infinite; }
+@keyframes f1 { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes f2 { 0% { opacity: 0; } 50% { opacity: 1; } }
+.sway { animation: sway 1.6s steps(1) infinite; }
+@keyframes sway { 0% { transform: translateX(0); } 25% { transform: translateX(1px); } 50% { transform: translateX(0); } 75% { transform: translateX(-1px); } }
+.bob { animation: bob 1.4s steps(1) infinite; }
+@keyframes bob { 0% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
+.look { animation: look 3s steps(1) infinite; }
+@keyframes look { 0% { transform: translateX(-2px); } 33% { transform: translateX(0); } 66% { transform: translateX(2px); } }
+.tilt { animation: bob 2s steps(1) infinite; }
+.blip { animation: blip 1.6s steps(1) infinite; }
+@keyframes blip { 0% { opacity: 1; } 70% { opacity: 0.45; } }
+.cursor { animation: cursor 3s steps(1) infinite; }
+@keyframes cursor { 0% { transform: translate(14px, 6px); } 30% { transform: translate(0, 0); } 45% { transform: translate(0, 1px); } 60% { transform: translate(0, 0); } 100% { transform: translate(14px, 6px); } }
+.beat { animation: beat 1.4s steps(1) infinite; }
+@keyframes beat { 0% { transform: translateY(0); } 40% { transform: translateY(-1px); } 60% { transform: translateY(0); } }
+.breath { animation: bob 3s steps(1) infinite; }
+.r1 { animation: r1 6s steps(1) infinite; }
+.r2 { animation: r2 6s steps(1) infinite; }
+.r3 { animation: r3 6s steps(1) infinite; }
+@keyframes r1 { 0% { opacity: 1; } 33% { opacity: 0; } 66% { opacity: 1; } }
+@keyframes r2 { 0% { opacity: 0; } 33% { opacity: 1; } 66% { opacity: 0; } }
+@keyframes r3 { 0% { opacity: 0; } 50% { opacity: 1; } 66% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .f1, .f2, .sway, .bob, .look, .tilt, .blip, .cursor, .beat, .breath, .r1, .r2, .r3 { animation: none; }
+  .f2, .r2, .r3 { opacity: 0; }
+}

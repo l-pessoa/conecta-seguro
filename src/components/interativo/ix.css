@@ -1,0 +1,49 @@
+/* Variaveis locais dos componentes interativos. Usam os tokens do DESIGN.md quando existem. */
+.ix {
+  --ix-ink: var(--ink, #0f1a0b);
+  --ix-bg: var(--bg, #f3f6ee);
+  --ix-surface: var(--surface, #ffffff);
+  --ix-surface2: var(--surface-2, #e7eddf);
+  --ix-muted: var(--muted, #4a5744);
+  --ix-edge: var(--edge, #7f8c75);
+  --ix-accent: var(--accent, #a3e86a);
+  --ix-on-accent: var(--on-accent, #0f1a0b);
+  --ix-link: var(--link, #2a6310);
+  --ix-good-bg: var(--good-bg, #dcf2cc);
+  --ix-good-fg: var(--good-fg, #1b5a0d);
+  --ix-mid-bg: var(--mid-bg, #fdefc0);
+  --ix-mid-fg: var(--mid-fg, #6a4700);
+  --ix-risk-bg: var(--risk-bg, #ffe2d6);
+  --ix-risk-fg: var(--risk-fg, #8a2a0b);
+  --ix-coral: #ff9f80;
+  --ix-sun: #ffd96a;
+  /* canto em degrau de 4 px (pixel art) para blocos sem foco */
+  --ix-clip: polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px));
+  --ix-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ix-font-display: var(--font-pixel, var(--font-display, ui-monospace, monospace));
+  --ix-font-body: var(--font-body, system-ui, sans-serif);
+  font-family: var(--ix-font-body);
+  color: var(--ix-ink);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .ix {
+    --ix-ink: var(--ink, #edf3e7);
+    --ix-bg: var(--bg, #0d130a);
+    --ix-surface: var(--surface, #172012);
+    --ix-surface2: var(--surface-2, #1f2b19);
+    --ix-muted: var(--muted, #a8b79f);
+    --ix-edge: var(--edge, #5f7254);
+    --ix-accent: var(--accent, #b4f27e);
+    --ix-link: var(--link, #b4f27e);
+    --ix-good-bg: var(--good-bg, #1e3a16);
+    --ix-good-fg: var(--good-fg, #c0eca4);
+    --ix-mid-bg: var(--mid-bg, #3a2f0c);
+    --ix-mid-fg: var(--mid-fg, #f2d789);
+    --ix-risk-bg: var(--risk-bg, #43211a);
+    --ix-risk-fg: var(--risk-fg, #ffbfa8);
+  }
+}
+.ix-sr {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}

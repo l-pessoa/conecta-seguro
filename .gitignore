@@ -8,3 +8,6 @@ build/
 *.log
 coverage/
 next-env.d.ts
+graphify-out/
+*.tsbuildinfo
+.vercel
