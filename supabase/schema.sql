@@ -1,4 +1,4 @@
--- ConectaSeguro: 3 tabelas. Cole no SQL Editor do Supabase e clique em Run.
+-- ConectaSeguro: 3 tabelas. Ja aplicado no projeto Supabase conecta-seguro (sa-east-1).
 -- Nenhum dado pessoal: so codigo pseudonimo (ex.: CS-7F3K).
 
 create table if not exists participants (
@@ -37,9 +37,12 @@ create table if not exists journey_events (
 alter table participants    enable row level security;
 alter table quiz_responses  enable row level security;
 alter table journey_events  enable row level security;
+revoke all on participants, quiz_responses, journey_events from anon, authenticated;
+
+create index if not exists journey_events_participant_idx on journey_events (participant_code);
 
 -- View pronta para a analise pre/pos (uma linha por pessoa).
-create or replace view analise_pre_pos as
+create or replace view analise_pre_pos with (security_invoker = on) as
 select p.code,
        p.session_tag,
        pre.score  as pre_acertos,
