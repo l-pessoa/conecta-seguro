@@ -1,12 +1,12 @@
 .raiz { margin: 0; display: grid; gap: 10px; }
-.cabecalho { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 0.9375rem; }
+.cabecalho { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: var(--fs-small, 1rem); }
 .avatar {
   width: 36px; height: 36px;  display: grid; place-items: center;
   background: var(--ix-accent); color: var(--ix-on-accent); font-family: var(--ix-font-display); font-weight: 800;
   flex: none;
 }
 .remetente { min-width: 0; overflow-wrap: anywhere; }
-.hora { margin-left: auto; color: var(--ix-muted); font-weight: 500; font-size: 0.8125rem; }
+.hora { margin-left: auto; color: var(--ix-muted); font-weight: 500; font-size: var(--fs-cap, 0.875rem); }
 .area { min-height: 64px; }
 .balao {
   background: var(--ix-surface2); clip-path: var(--ix-clip);
@@ -23,7 +23,7 @@
 .digitando i:nth-child(2) { animation-delay: 0.15s; }
 .digitando i:nth-child(3) { animation-delay: 0.3s; }
 @keyframes ponto { 0%, 70%, 100% { opacity: 0.3; transform: translateY(0); } 35% { opacity: 1; transform: translateY(-4px); } }
-.texto { margin: 0; line-height: 2.1; font-size: 1.0625rem; overflow-wrap: anywhere; }
+.texto { margin: 0; line-height: 2.1; font-size: var(--fs-body, 1.1875rem); overflow-wrap: anywhere; }
 
 /* trecho tocavel: padding vertical de 14px = caixa de toque >= 44px (so a area visual e menor, via ::after) */
 .parte {
@@ -57,9 +57,9 @@
 .neutro::after { opacity: 1; background: var(--ix-surface); outline: 2px dotted var(--ix-edge); animation: none; }
 
 .campo { margin-top: 10px; display: grid; gap: 4px; }
-.campoRotulo { font-size: 0.8125rem; font-weight: 600; color: var(--ix-muted); }
+.campoRotulo { font-size: var(--fs-cap, 0.875rem); font-weight: 600; color: var(--ix-muted); }
 .campoBox { height: 40px;  background: var(--ix-surface); border: 2px solid var(--ix-edge); }
-.legenda { color: var(--ix-muted); font-size: 0.9375rem; }
+.legenda { color: var(--ix-muted); font-size: var(--fs-small, 1rem); }
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
 @media (prefers-reduced-motion: reduce) {

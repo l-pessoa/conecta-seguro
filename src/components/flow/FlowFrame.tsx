@@ -12,7 +12,7 @@ interface FlowFrameProps {
   progress?: { total: number; at: number };
   label?: string;
   /** lista lateral (desktop): titulo e passos */
-  aside?: { title: string; steps: string[]; at: number };
+  aside?: { title: string; steps: string[]; at: number; lema?: string; art?: React.ReactNode };
   mood?: Mood;
   /** modulo (1 a 6): define a cor de destaque da tela */
   mod?: number;
@@ -29,7 +29,7 @@ export function FlowFrame({ back, close = '/modulos', progress, label, aside, mo
   }, []);
 
   return (
-    <div className="flow" data-mood={mood} style={mod ? ({ ['--mc']: `var(--m${mod})` } as React.CSSProperties) : undefined}>
+    <div className={`flow${aside ? ' has-aside' : ''}`} data-mood={mood} style={mod ? ({ ['--mc']: `var(--m${mod})` } as React.CSSProperties) : undefined}>
       <div className="mood" aria-hidden="true">
         <i className="m-calmo" />
         <i className="m-alerta" />
@@ -73,6 +73,8 @@ export function FlowFrame({ back, close = '/modulos', progress, label, aside, mo
                   </li>
                 ))}
               </ol>
+              {aside.lema && <p className="aside-lema">{aside.lema}</p>}
+              {aside.art && <div className="aside-art">{aside.art}</div>}
             </>
           )}
         </aside>

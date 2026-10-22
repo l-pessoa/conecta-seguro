@@ -33,6 +33,7 @@
   --ix-font-body: var(--font-body, system-ui, sans-serif);
   --ix-font-phone: var(--font-phone, var(--font-body, system-ui, sans-serif));
   font-family: var(--ix-font-body);
+  letter-spacing: 0.02em;
   color: var(--ix-ink);
 }
 /* Arte: painel claro (lavanda) com contorno escuro, para ler bem sobre o roxo escuro do site.

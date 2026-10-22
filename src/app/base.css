@@ -9,11 +9,13 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.5;
+  letter-spacing: 0.02em;
   overflow-x: hidden;
   font-smooth: never;
   -webkit-font-smoothing: none;
 }
-h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0; line-height: 1.3; margin: 0; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0; word-spacing: -0.35em; line-height: 1.35; margin: 0; text-wrap: balance; }
+p { max-width: 60ch; }
 p { margin: 0; }
 button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; border-radius: 0; }
 a { color: var(--link); }

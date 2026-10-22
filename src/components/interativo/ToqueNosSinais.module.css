@@ -1,6 +1,6 @@
 .raiz { display: grid; gap: 14px; }
 .barra { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.contador { margin: 0; font-size: 0.9375rem; color: var(--ix-muted); }
+.contador { margin: 0; font-size: var(--fs-small, 1rem); color: var(--ix-muted); }
 .contador strong { color: var(--ix-ink); font-family: var(--ix-font-display); font-size: 1.125rem; }
 .pontos { display: flex; gap: 6px; }
 .pontos i { width: 12px; height: 12px;  border: 2px solid var(--ix-edge); transition: transform 300ms steps(5), background 300ms; }

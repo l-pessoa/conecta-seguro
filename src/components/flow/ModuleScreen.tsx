@@ -14,6 +14,7 @@ import { ModuleArt } from '@/components/interativo';
 import { FlowFrame, type Mood } from './FlowFrame';
 import { SceneView, moodOf, useScene } from './SceneView';
 
+const lemaOf = (m: Modulo) => m.lema.map((w) => w.charAt(0) + w.slice(1).toLowerCase()).join(' · ');
 const STEPS = ['Abertura', 'Cena 1', 'Cena 2', 'Cena 3', 'Fecho'];
 
 function Cover({ m }: { m: Modulo }) {
@@ -53,7 +54,7 @@ function SceneStep({ m, passo }: { m: Modulo; passo: number }) {
       mood={mood}
       back={`/modulo/${m.id}/${passo - 1}`}
       progress={{ total: 5, at: passo }}
-      aside={{ title: m.titulo, steps: STEPS, at: passo }}
+      aside={{ title: m.titulo, steps: STEPS, at: passo, lema: lemaOf(m), art: <ModuleArt module={m.id} size="small" /> }}
       actions={
         answered ? (
           <Link className="btn btn--block btn--lg" href={next}>Continuar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>
@@ -83,7 +84,7 @@ function Closing({ m }: { m: Modulo }) {
       mood="alivio"
       back={`/modulo/${m.id}/3`}
       progress={{ total: 5, at: 4 }}
-      aside={{ title: m.titulo, steps: STEPS, at: 4 }}
+      aside={{ title: m.titulo, steps: STEPS, at: 4, lema: lemaOf(m), art: <ModuleArt module={m.id} size="small" /> }}
       actions={
         nextModule ? (
           <Link className="btn btn--block btn--lg" href={`/modulo/${nextModule.id}/0`}>Próximo módulo <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>
@@ -122,7 +123,7 @@ export function ModuleScreen({ id, passo }: { id: number; passo: number }) {
         mood="calmo"
         back="/modulos"
         progress={{ total: 5, at: 0 }}
-        aside={{ title: m.titulo, steps: STEPS, at: 0 }}
+        aside={{ title: m.titulo, steps: STEPS, at: 0, lema: lemaOf(m), art: <ModuleArt module={m.id} size="small" /> }}
         actions={<Link className="btn btn--block btn--lg" href={`/modulo/${m.id}/1`}>Começar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>}
       >
         <Cover m={m} />

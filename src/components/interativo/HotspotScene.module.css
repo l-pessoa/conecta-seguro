@@ -18,7 +18,7 @@
 .legenda { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   all: unset; box-sizing: border-box; min-height: 44px; padding: 0 16px; border-radius: 0; cursor: pointer;
-  border: 0; box-shadow: 0 -4px 0 0 var(--ix-edge), 0 4px 0 0 var(--ix-edge), -4px 0 0 0 var(--ix-edge), 4px 0 0 0 var(--ix-edge); margin: 4px; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 0.9375rem;
+  border: 0; box-shadow: 0 -4px 0 0 var(--ix-edge), 0 4px 0 0 var(--ix-edge), -4px 0 0 0 var(--ix-edge), 4px 0 0 0 var(--ix-edge); margin: 4px; display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: var(--fs-small, 1rem);
   background: var(--ix-surface); -webkit-tap-highlight-color: transparent;
 }
 .chip[aria-pressed='true'] { background: var(--ix-accent); color: var(--ix-on-accent); box-shadow: 0 -4px 0 0 var(--ix-ink), 0 4px 0 0 var(--ix-ink), -4px 0 0 0 var(--ix-ink), 4px 0 0 0 var(--ix-ink); }
