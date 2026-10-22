@@ -11,16 +11,11 @@ export async function POST(req: Request) {
 
   const db = getSupabase();
   if (!db) return ok({ saved: 0 });
-  try {
-    await db.from('participants').upsert({ code }, { onConflict: 'code', ignoreDuplicates: true });
-    const rows = events.map((e) => ({ participant_code: code, type: e.type, ref: e.ref, at: e.at }));
-    const { error } = await db
-      .from('journey_events')
-      .upsert(rows, { onConflict: 'participant_code,type,ref,at', ignoreDuplicates: true });
-    if (error) throw error;
-    return ok({ saved: rows.length });
-  } catch (e) {
-    console.error('[api/evento]', e);
+  // Reenvio da fila nao duplica (o banco ignora evento repetido).
+  const { data, error } = await db.rpc('cs_registrar_eventos', { p_code: code, p_events: events });
+  if (error) {
+    console.error('[api/evento]', error.message);
     return fail('servidor', 500);
   }
+  return ok({ saved: data as number });
 }

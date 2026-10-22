@@ -169,3 +169,18 @@ describe('pistas que entregam a resposta', () => {
     }
   });
 });
+
+describe('gabarito do banco (supabase/schema.sql)', () => {
+  it('bate exatamente com src/lib/server/gabarito.ts', async () => {
+    const { readFileSync } = await import('node:fs');
+    const sql = readFileSync(new URL('../supabase/schema.sql', import.meta.url), 'utf8');
+    const linhas = [...sql.matchAll(/\('([AB])','([a-z0-9-]+)','([A-D])','([^']+)'\)/g)];
+    const doBanco = Object.fromEntries(linhas.map(([, f, id, c, comp]) => [`${f}:${id}`, `${c}|${comp}`]));
+    const doCodigo = Object.fromEntries(
+      (['A', 'B'] as const).flatMap((f) =>
+        Object.entries(GABARITO[f]).map(([id, e]) => [`${f}:${id}`, `${e.correct}|${e.competency}`]),
+      ),
+    );
+    expect(doBanco).toEqual(doCodigo);
+  });
+});

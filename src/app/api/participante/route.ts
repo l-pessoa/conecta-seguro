@@ -14,30 +14,29 @@ export async function POST(req: Request) {
   const { code: given, sessionTag, consentAt } = parsed.data;
 
   const db = getSupabase();
+  // cs_registrar_participante devolve true se o codigo e novo no banco.
+  const registrar = async (code: string) => {
+    const { data, error } = await db!.rpc('cs_registrar_participante', {
+      p_code: code,
+      p_session_tag: sessionTag ?? null,
+      p_consent_at: consentAt ?? null,
+    });
+    if (error) throw error;
+    return data as boolean;
+  };
   try {
     if (given) {
-      // Codigo ja existe no navegador: so registra (ou atualiza) no banco.
-      let saved = false;
-      if (db) {
-        const row: Record<string, unknown> = { code: given };
-        if (sessionTag !== undefined) row.session_tag = sessionTag;
-        if (consentAt !== undefined) row.consent_at = consentAt;
-        const { error } = await db.from('participants').upsert(row, { onConflict: 'code' });
-        if (error) throw error;
-        saved = true;
-      }
-      return ok({ code: given, saved });
+      // Codigo ja existe no navegador: so registra (ou completa) no banco.
+      if (!db) return ok({ code: given, saved: false });
+      await registrar(given);
+      return ok({ code: given, saved: true });
     }
 
-    // Sem codigo: o servidor sorteia um (tenta de novo se repetir).
+    // Sem codigo: o servidor sorteia um (tenta de novo se ja existir).
     for (let i = 0; i < 5; i++) {
       const code = newCode();
       if (!db) return ok({ code, saved: false });
-      const { error } = await db
-        .from('participants')
-        .insert({ code, session_tag: sessionTag ?? null, consent_at: consentAt ?? null });
-      if (!error) return ok({ code, saved: true });
-      if (error.code !== '23505') throw error; // 23505 = codigo repetido
+      if (await registrar(code)) return ok({ code, saved: true });
     }
     return fail('servidor', 500);
   } catch (e) {

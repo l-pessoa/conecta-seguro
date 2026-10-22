@@ -93,20 +93,21 @@ npm run dev        # abre em http://localhost:3000
 npm test           # testes de conteúdo, quiz e correção
 ```
 
-Sem configurar nada, o site funciona inteiro, mas **não salva** as respostas.
+Sem configurar nada, o site já grava no banco do projeto. Para rodar sem gravar
+(testes locais), crie um `.env.local` com `SUPABASE_DESLIGADO=1`.
 
-### Salvar as respostas (Supabase)
+### Banco de dados (Supabase)
 
-1. Crie um projeto em [supabase.com](https://supabase.com) (região São Paulo).
-2. No **SQL Editor**, rode o arquivo [`supabase/schema.sql`](supabase/schema.sql).
-   Ele cria as tabelas já trancadas: só o servidor lê e escreve.
-3. Em **Project Settings > API**, copie a *Project URL* e a chave *service_role*.
-4. Copie `.env.example` para `.env.local` e preencha `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`.
-   No site publicado, as mesmas duas variáveis vão em **Vercel > Settings > Environment Variables**.
+O banco está descrito por inteiro em [`supabase/schema.sql`](supabase/schema.sql).
 
-A chave *service_role* é uma chave mestra: nunca coloque no código, no GitHub nem em print.
+- As tabelas são **trancadas**: ninguém de fora lê nada.
+- A única forma de gravar são 3 funções do banco, que conferem cada dado e corrigem o quiz com
+  o gabarito guardado lá dentro.
+- Por isso o site usa só a chave **pública** do Supabase. Não existe chave secreta para configurar
+  na Vercel nem para vazar.
 
-Para a análise pré/pós, rode `select * from analise_pre_pos;` no SQL Editor e baixe o CSV.
+Para a análise pré/pós: no Supabase, abra o **SQL Editor**, rode `select * from analise_pre_pos;`
+e clique em **Download CSV**.
 
 ### Estrutura
 
