@@ -15,12 +15,12 @@ export const consent: Consentimento = {
 
 export const introPre: IntroQuiz = {
   titulo: 'Antes da jornada',
-  corpo: '12 situações rápidas, só para ver o que você já sabe. Não vale nota. Se não souber, tudo bem: marque "Não sei".',
+  corpo: '6 situações rápidas, só para ver o que você já sabe. Não vale nota. Se não souber, tudo bem: marque "Não sei".',
   botao: 'Começar',
 };
 
 export const introPos: IntroQuiz = {
   titulo: 'Última etapa',
-  corpo: '12 situações novas, parecidas com as do início, mas com cenários diferentes. Sem nota e sem ranking.',
+  corpo: '6 situações novas, parecidas com as do início, mas com cenários diferentes. Sem nota e sem ranking.',
   botao: 'Começar',
 };

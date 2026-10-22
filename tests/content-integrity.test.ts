@@ -148,7 +148,7 @@ describe('alinhamento ensino e avaliacao', () => {
         expect(cenasById[id].modulo, `${item.id} -> ${id}`).toBe(item.modulo);
       }
     }
-    expect(Object.keys(COBERTURA).length).toBe(24);
+    expect(Object.keys(COBERTURA).length).toBe(12);
   });
 });
 

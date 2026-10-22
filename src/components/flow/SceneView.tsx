@@ -34,7 +34,8 @@ export function useScene(cena: Cena) {
   const saved: SceneAnswer | undefined = state.scenes[cena.id];
   const save = (a: SceneAnswer) => {
     answerScene(cena.id, a);
-    track(cena.id, a.pick ?? (a.skipped ? 'pulou' : (a.found ?? []).join(',') || 'nenhum'));
+    // ref = "<escolha>:<qualidade>" para o painel de analise (ex.: "b:melhor", "pulou:").
+    track(cena.id, `${a.pick ?? (a.skipped ? 'pulou' : (a.found ?? []).join(',') || 'nenhum')}:${a.q ?? ''}`);
   };
   return { saved, save };
 }

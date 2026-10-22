@@ -57,29 +57,17 @@ revoke all on participants, quiz_responses, journey_events, gabarito from anon, 
 
 insert into public.gabarito (form,item_id,correct,competency) values
 ('A','a-m1-1','A','Senhas'),
-('A','a-m1-2','D','Segurança de contas'),
-('A','a-m2-1','B','Verificação de links'),
 ('A','a-m2-2','C','QR Codes e destinos de links'),
 ('A','a-m3-1','D','Engenharia social'),
-('A','a-m3-2','A','Autenticação'),
-('A','a-m4-1','C','Exposição acidental'),
 ('A','a-m4-2','B','Permissões de aplicativos'),
 ('A','a-m5-1','D','Identidade digital'),
-('A','a-m5-2','A','Audiência e contexto em redes sociais'),
 ('A','a-m6-1','B','Golpes contextualizados'),
-('A','a-m6-2','C','Proteção e recuperação de acesso'),
 ('B','b-m1-1','B','Senhas'),
-('B','b-m1-2','C','Segurança de contas'),
-('B','b-m2-1','A','Verificação de links'),
 ('B','b-m2-2','D','QR Codes e destinos de links'),
 ('B','b-m3-1','C','Engenharia social'),
-('B','b-m3-2','B','Autenticação'),
-('B','b-m4-1','D','Exposição acidental'),
 ('B','b-m4-2','A','Permissões de aplicativos'),
 ('B','b-m5-1','B','Identidade digital'),
-('B','b-m5-2','C','Audiência e contexto em redes sociais'),
-('B','b-m6-1','D','Golpes contextualizados'),
-('B','b-m6-2','A','Proteção e recuperação de acesso')
+('B','b-m6-1','D','Golpes contextualizados')
 on conflict (form, item_id) do update set correct = excluded.correct, competency = excluded.competency;
 
 -- ============ FUNCOES (unica porta de escrita) ============
@@ -200,3 +188,76 @@ from participants p
 left join quiz_responses pre  on pre.participant_code  = p.code and pre.phase  = 'pre'
 left join quiz_responses post on post.participant_code = p.code and post.phase = 'post';
 revoke all on analise_pre_pos from anon, authenticated;
+
+-- ============ PAINEIS PARA OS GRAFICOS ============
+-- Tudo criado antes de config.inicio_coleta e teste e fica fora dos paineis (sem data, entra tudo).
+-- Para marcar o inicio da coleta: insert into config values ('inicio_coleta', '2026-11-03 00:00-03')
+--   on conflict (chave) do update set valor = excluded.valor;
+create table if not exists config (chave text primary key, valor text not null);
+alter table config enable row level security;
+revoke all on config from anon, authenticated;
+
+create or replace view participantes_validos with (security_invoker = on) as
+select * from participants
+ where created_at >= coalesce((select valor::timestamptz from config where chave = 'inicio_coleta'), '-infinity');
+
+-- Funil: quantos chegaram em cada etapa da jornada.
+create or replace view painel_funil with (security_invoker = on) as
+with p as (select code, consent_at from participantes_validos),
+     mods as (
+       select participant_code, count(distinct split_part(ref, ':', 1)) as modulos
+         from journey_events where type = 'modulo' group by participant_code)
+select 1 as ordem, 'Aceitaram participar' as etapa, (select count(*) from p where consent_at is not null) as pessoas
+union all select 2, 'Fizeram o diagnóstico (pré)',
+       (select count(*) from quiz_responses q join p on p.code = q.participant_code where phase = 'pre')
+union all select 3, 'Concluíram 1+ módulo', (select count(*) from mods join p on p.code = mods.participant_code where modulos >= 1)
+union all select 4, 'Concluíram 3+ módulos', (select count(*) from mods join p on p.code = mods.participant_code where modulos >= 3)
+union all select 5, 'Concluíram os 6 módulos', (select count(*) from mods join p on p.code = mods.participant_code where modulos >= 6)
+union all select 6, 'Fizeram a avaliação final (pós)',
+       (select count(*) from quiz_responses q join p on p.code = q.participant_code where phase = 'post');
+
+-- Acertos por competência, antes x depois (só quem fez os dois, para comparar o mesmo grupo).
+create or replace view painel_competencias with (security_invoker = on) as
+with ambos as (
+  select q.participant_code from quiz_responses q join participantes_validos p on p.code = q.participant_code
+   group by q.participant_code having count(distinct q.phase) = 2
+), c as (
+  select q.phase, kv.key as competencia,
+         (kv.value->>'correct')::int as acertos, (kv.value->>'total')::int as itens
+    from quiz_responses q join ambos a using (participant_code),
+         jsonb_each(q.by_competency) kv
+)
+select competencia,
+       round(100.0 * sum(acertos) filter (where phase = 'pre')  / nullif(sum(itens) filter (where phase = 'pre'), 0), 1) as pct_pre,
+       round(100.0 * sum(acertos) filter (where phase = 'post') / nullif(sum(itens) filter (where phase = 'post'), 0), 1) as pct_pos,
+       count(*) filter (where phase = 'pre') as pessoas
+  from c group by competencia order by competencia;
+
+-- Resumo geral (cards do slide).
+create or replace view painel_resumo with (security_invoker = on) as
+with v as (select a.* from analise_pre_pos a join participantes_validos p on p.code = a.code)
+select (select count(*) from v) as participantes,
+       (select count(*) from v where pre_acertos is not null and pos_acertos is not null) as fizeram_pre_e_pos,
+       round((select avg(pre_acertos) from v where pos_acertos is not null and pre_acertos is not null), 2) as media_pre,
+       round((select avg(pos_acertos) from v where pos_acertos is not null and pre_acertos is not null), 2) as media_pos,
+       (select count(*) from v where ganho > 0) as melhoraram,
+       (select count(*) from v where ganho = 0) as mantiveram,
+       (select count(*) from v where ganho < 0) as pioraram,
+       (select coalesce(sum(pre_nao_sei), 0) from v where pos_acertos is not null) as nao_sei_pre,
+       (select coalesce(sum(pos_nao_sei), 0) from v where pos_acertos is not null) as nao_sei_pos;
+
+-- Como decidiram nas cenas dos módulos (primeira escolha de cada pessoa, por qualidade).
+create or replace view painel_escolhas with (security_invoker = on) as
+select split_part(ref, ':', 1) as cena,
+       count(*) filter (where split_part(ref, ':', 3) = 'melhor')    as melhor,
+       count(*) filter (where split_part(ref, ':', 3) = 'aceitavel') as aceitavel,
+       count(*) filter (where split_part(ref, ':', 3) = 'arriscado') as arriscado,
+       count(*) filter (where split_part(ref, ':', 3) = 'exagero')   as exagero,
+       count(*) filter (where split_part(ref, ':', 2) = 'pulou')     as pulou
+  from (select distinct on (e.participant_code, split_part(e.ref, ':', 1)) e.participant_code, e.ref
+          from journey_events e join participantes_validos p on p.code = e.participant_code
+         where e.type = 'cena'
+         order by e.participant_code, split_part(e.ref, ':', 1), e.at) primeira
+ group by 1 order by 1;
+
+revoke all on participantes_validos, painel_funil, painel_competencias, painel_resumo, painel_escolhas from anon, authenticated;

@@ -8,7 +8,7 @@ export const result: Resultado = {
   oQueFez: [
     'Você passou por {modulos} de 6 módulos.',
     'Você decidiu em {cenas} situações do dia a dia.',
-    'Você respondeu 12 situações no início e 12 no fim.',
+    'Você respondeu 6 situações no início e 6 no fim.',
   ],
   niveis: {
     forte: 'Você já ia bem nesse tema',
@@ -24,7 +24,7 @@ export const result: Resultado = {
     { modulo: 5, acao: 'Antes do próximo post público, olhe o fundo da foto e a marcação de local.' },
     { modulo: 6, acao: 'Se errar: troque a senha pelo app, saia dos aparelhos e peça ajuda.' },
   ],
-  verExplicacoes: 'Ver as explicações das 12 situações',
+  verExplicacoes: 'Ver as explicações das 6 situações',
   ajuda: {
     texto: 'Se alguém ameaçar ou chantagear você na internet, fale com um adulto de confiança. A SaferNet atende por chat.',
     rotuloLink: 'Falar com a SaferNet',

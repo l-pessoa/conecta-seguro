@@ -21,9 +21,9 @@ function porModulo(items: FormaQuiz) {
 const media = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
 
 describe('formas do quiz', () => {
-  it('cada forma tem 12 itens, 2 por modulo, 4 opcoes A-D', () => {
+  it('cada forma tem 6 itens, 1 por modulo, 4 opcoes A-D', () => {
     for (const [nome, , form] of formas) {
-      expect(form.length, nome).toBe(12);
+      expect(form.length, nome).toBe(6);
       const m = porModulo(form);
       for (const id of MODULE_IDS) expect(m.get(id)?.length, `${nome} modulo ${id}`).toBe(ITEMS_PER_MODULE);
       for (const item of form) expect(item.opcoes.map((o) => o.id), item.id).toEqual(['A', 'B', 'C', 'D']);
@@ -74,11 +74,11 @@ describe('gabarito (servidor)', () => {
     }
   });
 
-  it('as corretas ficam 3 A, 3 B, 3 C, 3 D em cada forma', () => {
+  it('nenhuma letra correta aparece mais de 2 vezes por forma', () => {
     for (const [nome, chave] of formas) {
       const cont = { A: 0, B: 0, C: 0, D: 0 };
       for (const e of Object.values(GABARITO[chave])) cont[e.correct] += 1;
-      expect(cont, nome).toEqual({ A: 3, B: 3, C: 3, D: 3 });
+      for (const [letra, n] of Object.entries(cont)) expect(n, `${nome} letra ${letra}`).toBeLessThanOrEqual(2);
     }
   });
 
@@ -102,11 +102,11 @@ describe('gabarito (servidor)', () => {
         expect(razao, `${item.id} razao ${razao.toFixed(2)}`).toBeGreaterThanOrEqual(0.8);
         expect(razao, `${item.id} razao ${razao.toFixed(2)}`).toBeLessThanOrEqual(1.2);
       }
-      expect(maisLonga, `${nome}: correta e a mais longa em ${maisLonga} de 12`).toBeLessThanOrEqual(4);
+      expect(maisLonga, `${nome}: correta e a mais longa em ${maisLonga} de 6`).toBeLessThanOrEqual(2);
     }
   });
 
-  it('a correta tambem nao e a mais curta em mais de 4 itens por forma', () => {
+  it('a correta tambem nao e a mais curta em mais de 2 itens por forma', () => {
     for (const [nome, chave, form] of formas) {
       let maisCurta = 0;
       for (const item of form) {
@@ -114,7 +114,7 @@ describe('gabarito (servidor)', () => {
         const tam = item.opcoes.map((o) => o.t.length);
         if (item.opcoes.find((o) => o.id === certa)!.t.length <= Math.min(...tam)) maisCurta += 1;
       }
-      expect(maisCurta, `${nome}: correta e a mais curta em ${maisCurta} de 12`).toBeLessThanOrEqual(4);
+      expect(maisCurta, `${nome}: correta e a mais curta em ${maisCurta} de 6`).toBeLessThanOrEqual(2);
     }
   });
 });
