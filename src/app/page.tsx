@@ -117,7 +117,7 @@ export default function LandingPage() {
 
       <footer className="foot">
         <div className="wrap">
-          <span>ConectaSeguro, projeto de extensão universitária.</span>
+          <span>ConectaSeguro, projeto de extensão do curso de Análise e Desenvolvimento de Sistemas da Universidade São Judas Tadeu.</span>
         </div>
       </footer>
     </>

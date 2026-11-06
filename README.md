@@ -3,7 +3,8 @@
 **Pare, pense, escolha.** Uma jornada curta, em pixel art, sobre as decisões de segurança
 que adolescentes tomam no celular todo dia.
 
-> Projeto de extensão universitária.
+> Projeto de extensão do curso de Análise e Desenvolvimento de Sistemas (ADS) da
+> Universidade São Judas Tadeu.
 
 ---
 
