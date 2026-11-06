@@ -73,7 +73,7 @@ export function EscolhaScene({ cena, saved, save }: { cena: CenaEscolha; saved?:
       />
       {cena.mock.legenda && <p className="note">{cena.mock.legenda}</p>}
       <h1 className="q">{cena.pergunta}</h1>
-      {hint && !pickedId && <p className="scene-hint">O link é o caminho que a mensagem quer. Veja as opções abaixo.</p>}
+      {hint && !pickedId && <p className="scene-hint">Antes de tocar no link, veja as opções abaixo.</p>}
       <ChoiceList opcoes={cena.opcoes} picked={pickedId} onPick={choose} />
       {picked && cena.tipo === 'medidor' && picked.forca !== undefined && <ForcaReveal opcoes={cena.opcoes} picked={picked} />}
       <Celebrate trigger={fresh && picked?.q === 'melhor'} />

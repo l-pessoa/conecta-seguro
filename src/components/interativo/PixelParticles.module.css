@@ -1,0 +1,23 @@
+.camada { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; contain: layout paint; }
+.p {
+  position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); opacity: 0;
+  animation: voa var(--d) steps(14, end) var(--delay) infinite;
+}
+.p::before {
+  content: ''; position: absolute; inset: 0; background: var(--c); opacity: var(--o);
+  animation: pisca var(--b) steps(1, end) var(--delay) infinite;
+}
+@keyframes voa {
+  0% { transform: translate(0, 0); opacity: 0; }
+  15%, 80% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+@keyframes pisca { 0%, 55% { opacity: var(--o); } 56%, 100% { opacity: calc(var(--o) * 0.3); } }
+.camada[data-pausado='true'] .p, .camada[data-pausado='true'] .p::before { animation-play-state: paused; }
+
+/* celular: ate 12 (pouco) ou 24 (medio) */
+@media (max-width: 640px) {
+  .pouco .p:nth-child(n + 13) { display: none; }
+  .medio .p:nth-child(n + 25) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .camada { display: none; } }

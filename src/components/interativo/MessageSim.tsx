@@ -90,7 +90,7 @@ export function MessageSim({
           </div>
         ) : (
           <div className={`${s.balao} ${mostrarAnim ? s.entra : ''}`}>
-            <p className={s.texto}>{render(corpo.trechos)}</p>
+            <p className={`${s.texto} ${corpo.trechos.some((t) => t.parte !== undefined) ? s.comParte : ""}`}>{render(corpo.trechos)}</p>
             {mock.campo && (
               <div className={s.campo}>
                 <span className={s.campoRotulo}>{mock.campo}</span>

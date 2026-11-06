@@ -1,0 +1,9 @@
+.raiz { display: inline-block; vertical-align: middle; flex: none; pointer-events: none; animation: cintila 2.4s steps(1, end) infinite; }
+.raiz svg { display: block; }
+@keyframes cintila {
+  0% { transform: scale(0.5); opacity: 0.4; }
+  25% { transform: scale(0.75); opacity: 0.8; }
+  50% { transform: scale(1); opacity: 1; }
+  75% { transform: scale(0.75); opacity: 0.8; }
+}
+@media (prefers-reduced-motion: reduce) { .raiz { animation: none; opacity: 1; } }

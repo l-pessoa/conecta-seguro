@@ -28,7 +28,7 @@ por outro caminho e o que fazer se algo já deu errado.
 
 ```
 Entrar  →  Diagnóstico  →  6 módulos  →  Avaliação final  →  Resultado
-(código     (12 perguntas,   (3 situações    (12 perguntas      (o que você fez +
+(código     (6 perguntas,    (3 situações    (6 perguntas       (o que você fez +
  anônimo)    sem nota)        cada)           equivalentes)      plano de ação)
 ```
 

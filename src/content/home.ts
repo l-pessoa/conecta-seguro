@@ -8,7 +8,7 @@ export const home: Home = {
     body: 'Vaga rápida! Só hoje: presente surpresa pra quem clicar antes que acabe.',
     pergunta: 'O que você faria?',
     acoes: ['Clicar logo', 'Parar e olhar'],
-    revelacao: 'Nem precisa responder agora. É esse tipo de decisão que a gente treina aqui, sem pressão.',
+    revelacao: 'Qualquer das duas é uma escolha. É esse tipo de decisão que a gente treina aqui, sem pressão e sem bronca.',
   },
   fatos: ['6 módulos curtos', 'Sem nota e sem ranking', 'Pelo celular, no seu ritmo'],
   temas: [

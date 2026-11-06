@@ -1,4 +1,5 @@
 import { Alert, Lightbulb, Mouse } from '@nsmr/pixelart-react';
+import { Brilho } from '@/components/interativo';
 
 /** Titulo com entrada palavra a palavra e pilulas-icone. So CSS: sem JS no hero. */
 export function HeroHeading() {
@@ -16,6 +17,7 @@ export function HeroHeading() {
       <span className="line">
         <span className="hw"><span style={{ ['--i' as string]: 2 }}>escolha.</span></span>
         <span className="pill pill--soft" style={{ ['--i' as string]: 2 }}><Mouse {...iconProps} /></span>
+        <Brilho tamanho={18} atraso={900} />
       </span>
     </h1>
   );

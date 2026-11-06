@@ -11,11 +11,11 @@ export const result: Resultado = {
     'Você respondeu 6 situações no início e 6 no fim.',
   ],
   niveis: {
-    forte: 'Você já ia bem nesse tema',
-    evoluiu: 'Você evoluiu nesse tema',
+    forte: 'Você foi bem nesse tema',
+    evoluiu: 'Você acertou parte desse tema',
     rever: 'Vale rever esse módulo',
   },
-  aviso: 'São só 2 situações por tema: veja como uma dica, não como nota.',
+  aviso: 'Isso mostra só as suas escolhas nas cenas de cada tema: veja como uma dica, não como nota.',
   plano: [
     { modulo: 1, acao: 'Troque a senha do seu e-mail por uma frase longa e ligue a verificação em duas etapas.' },
     { modulo: 2, acao: 'Na próxima mensagem com link, abra o app ou site em vez de tocar no link.' },

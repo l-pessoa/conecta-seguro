@@ -5,7 +5,7 @@ export const module3: Modulo = {
   titulo: 'Golpes e truques',
   linha: 'Conheça o truque antes de cair nele.',
   lema: ['RECONHECER', 'QUESTIONAR', 'CONFIRMAR'],
-  gancho: 'Todo golpe usa um truque para você não pensar. Conhecer o truque é a melhor defesa.',
+  gancho: 'Todo golpe usa um truque para você não pensar. Conhecer o truque ajuda a não cair.',
   retomada: 'Pressa + pedido sensível: pare e confirme. Código é só seu.',
   cenas: [
     {

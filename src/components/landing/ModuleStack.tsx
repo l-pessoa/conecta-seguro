@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'motion/react';
 import { ArrowRight } from '@nsmr/pixelart-react';
+import { Aparicao } from '@/components/interativo';
 import type { Modulo } from '@/content/types';
 
 function Card({ m, i, n, progress, reduce }: { m: Modulo; i: number; n: number; progress: MotionValue<number>; reduce: boolean }) {
@@ -11,6 +12,7 @@ function Card({ m, i, n, progress, reduce }: { m: Modulo; i: number; n: number; 
   return (
     <li style={{ ['--k' as string]: i, ['--mc' as string]: `var(--m${m.id})` }}>
       <motion.div style={reduce ? undefined : { scale }}>
+        <Aparicao atraso={(i % 3) * 80} limite={0.3}>
         <Link href="/entrar" className="card-mod">
           <span>
             <span className="n">{m.id}</span>
@@ -22,6 +24,7 @@ function Card({ m, i, n, progress, reduce }: { m: Modulo; i: number; n: number; 
             <span className="go">Abrir <ArrowRight aria-hidden="true" /></span>
           </span>
         </Link>
+        </Aparicao>
       </motion.div>
     </li>
   );

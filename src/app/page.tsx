@@ -7,6 +7,7 @@ import { ThemeMarquee } from '@/components/landing/ThemeMarquee';
 import { ScrubText } from '@/components/landing/ScrubText';
 import { ModuleStack } from '@/components/landing/ModuleStack';
 import { Reveal } from '@/components/landing/Reveal';
+import { Aparicao, PixelParticles } from '@/components/interativo';
 import { Cart, Notification } from '@nsmr/pixelart-react';
 
 export default function LandingPage() {
@@ -21,14 +22,17 @@ export default function LandingPage() {
 
       <main>
         <section className="hero">
+          <PixelParticles densidade="medio" />
           <div className="wrap hero-grid">
             <div>
               <HeroHeading />
               <p className="hero-sub rise" style={{ ['--i' as string]: 0 }}>{home.subtitulo}</p>
               <div className="hero-cta rise" style={{ ['--i' as string]: 1 }}>
-                <Link className="btn btn--lg" href="/entrar">
-                  {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
-                </Link>
+                <Aparicao destaque burst={false} className="cta-wrap">
+                  <Link className="btn btn--lg" href="/entrar">
+                    {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
+                  </Link>
+                </Aparicao>
               </div>
             </div>
             <div className="chat-wrap rise" style={{ ['--i' as string]: 2 }}>
@@ -99,11 +103,14 @@ export default function LandingPage() {
         </section>
 
         <section className="final">
+          <PixelParticles densidade="pouco" />
           <div className="wrap">
             <h2>Bora começar?</h2>
-            <Link className="btn btn--lg" href="/entrar">
-              {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
-            </Link>
+            <Aparicao destaque className="cta-wrap">
+              <Link className="btn btn--lg" href="/entrar">
+                {home.cta} <ArrowRight className="btn-arrow" aria-hidden="true" />
+              </Link>
+            </Aparicao>
           </div>
         </section>
       </main>

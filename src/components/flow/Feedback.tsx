@@ -2,6 +2,7 @@
 
 import { Alert, Check, InfoBox, Minus } from '@nsmr/pixelart-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { Aparicao } from '@/components/interativo';
 import { stepped } from '@/lib/steps';
 import { ROTULO_QUALIDADE, type Qualidade } from '@/content/types';
 
@@ -23,6 +24,8 @@ export function Feedback({ q, porque, regra, saibaMais }: { q: Qualidade; porque
         {ROTULO_QUALIDADE[q]}
       </motion.span>
       <p className="fb-why">{porque}</p>
+      {q === 'melhor' ? (
+        <Aparicao burst cores={['var(--good-fg)', 'var(--ink)']} atraso={350}>
       <motion.div
         className="rule"
         initial={reduce ? false : { opacity: 0, y: 12 }}
@@ -32,6 +35,18 @@ export function Feedback({ q, porque, regra, saibaMais }: { q: Qualidade; porque
         <b>Regra</b>
         <p>{regra}</p>
       </motion.div>
+        </Aparicao>
+      ) : (
+      <motion.div
+        className="rule"
+        initial={reduce ? false : { opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35, duration: 0.35, ease: stepped(4) }}
+      >
+        <b>Regra</b>
+        <p>{regra}</p>
+      </motion.div>
+      )}
       {saibaMais && (
         <details className="more">
           <summary>Saiba mais</summary>

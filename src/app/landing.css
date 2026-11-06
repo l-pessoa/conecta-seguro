@@ -164,3 +164,4 @@
 .final .btn { margin-top: var(--sp-5); }
 .foot { border-top: var(--px) solid var(--edge); padding-block: var(--sp-5); color: var(--muted); font-size: var(--fs-small); }
 .foot .wrap { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); justify-content: space-between; }
+.hero, .final { position: relative; overflow: hidden; }

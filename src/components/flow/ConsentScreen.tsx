@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Check } from '@nsmr/pixelart-react';
 import { consent } from '@/content/modules';
 import { useJourney } from '@/lib/journey';
 import { getOrCreateParticipant, recordConsent } from '@/lib/participant';
@@ -39,7 +38,7 @@ export function ConsentScreen() {
       <h1>{consent.titulo}</h1>
       <ul className="facts">
         {consent.corpo.map((t) => (
-          <li key={t}><Check className="ico" aria-hidden="true" /><span>{t}</span></li>
+          <li key={t}><span className="fact-dot" aria-hidden="true" /><span>{t}</span></li>
         ))}
       </ul>
       <label className="check">

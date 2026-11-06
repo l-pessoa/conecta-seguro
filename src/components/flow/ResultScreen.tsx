@@ -7,7 +7,7 @@ import { stepped } from '@/lib/steps';
 import { modules, result } from '@/content/modules';
 import { useJourney } from '@/lib/journey';
 import { useConsentGuard } from '@/lib/guard';
-import { Celebrate } from '@/components/interativo';
+import { Celebrate, PixelParticles, Brilho, Aparicao } from '@/components/interativo';
 import { FlowFrame } from './FlowFrame';
 
 type Nivel = 'forte' | 'evoluiu' | 'rever';
@@ -37,6 +37,7 @@ export function ResultScreen() {
     <FlowFrame mood="alivio" back="/modulos" close="/" actions={<Link className="btn btn--block" href="/modulos">Voltar ao mapa</Link>}>
       <Celebrate trigger />
       <div className="sealbox">
+        <PixelParticles densidade="pouco" direcao="desce" />
         <motion.div
           className="seal"
           initial={reduce ? false : { scale: 0 }}
@@ -46,7 +47,7 @@ export function ResultScreen() {
           <Check size={56} aria-hidden="true" />
         </motion.div>
       </div>
-      <h1>{result.titulo}</h1>
+      <h1>{result.titulo} <Brilho tamanho={16} atraso={800} /></h1>
       <p className="lede">{result.frase}</p>
       <ul className="facts">
         {fez.map((t) => (
@@ -67,10 +68,12 @@ export function ResultScreen() {
 
       <h2 className="q">Seu plano</h2>
       <ul className="plan">
-        {plano.map((p) => (
-          <li key={p.modulo}>
-            <b>{modules.find((m) => m.id === p.modulo)?.titulo}</b>
-            <span>{p.acao}</span>
+        {plano.map((p, i) => (
+          <li key={p.modulo} style={{ ['--mc' as string]: `var(--m${p.modulo})` }}>
+            <Aparicao atraso={i * 90} limite={0.3} burst={false}>
+              <b>{modules.find((m) => m.id === p.modulo)?.titulo}</b>
+              <span>{p.acao}</span>
+            </Aparicao>
           </li>
         ))}
       </ul>

@@ -1,0 +1,30 @@
+.raiz { position: relative; max-width: 100%; }
+.espera { opacity: 0; }
+.on { animation: entra 320ms steps(4, end) both; }
+@keyframes entra {
+  0% { opacity: 0; transform: translateY(8px); }
+  50% { opacity: 1; transform: translateY(4px); }
+  100% { opacity: 1; transform: none; }
+}
+
+.burst { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.quad, .estrela { position: absolute; width: 6px; height: 6px; margin: -3px 0 0 -3px; opacity: 0; animation: solta 700ms steps(6, end) both; }
+.estrela { width: 8px; height: 8px; margin: -4px 0 0 -4px; clip-path: polygon(38% 0, 62% 0, 62% 38%, 100% 38%, 100% 62%, 62% 62%, 62% 100%, 38% 100%, 38% 62%, 0 62%, 0 38%, 38% 38%); }
+@keyframes solta {
+  0% { opacity: 1; transform: translate(0, 0); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+}
+
+.destaque { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.reflexo { position: absolute; inset: 0; overflow: hidden; }
+.reflexo i { position: absolute; top: 0; bottom: 0; left: 0; width: 14%; background: rgba(255, 255, 255, 0.16); animation: varre 6s steps(14, end) infinite; animation-delay: 1.2s; transform: translateX(-200%) skewX(-18deg); }
+@keyframes varre { 0% { transform: translateX(-200%) skewX(-18deg); } 24% { transform: translateX(800%) skewX(-18deg); } 100% { transform: translateX(800%) skewX(-18deg); } }
+.estrelaA { position: absolute; top: 4px; right: 4px; }
+.estrelaB { position: absolute; bottom: 4px; left: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .on { animation: fade 200ms linear both; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  .burst, .destaque { display: none; }
+}

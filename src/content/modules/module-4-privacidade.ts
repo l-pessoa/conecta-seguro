@@ -82,7 +82,7 @@ export const module4: Modulo = {
         },
       ],
       regra: 'Permissão não é obrigação. Pergunte: o app precisa disso para o que eu quero?',
-      saibaMais: 'Dá para mudar depois: Configurações > Apps > Permissões.',
+      saibaMais: 'Dá para mudar depois, nas configurações do celular (o caminho varia de aparelho).',
     },
     {
       id: 'm4-c3',

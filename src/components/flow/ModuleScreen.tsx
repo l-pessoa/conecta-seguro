@@ -10,7 +10,7 @@ import { useConsentGuard } from '@/lib/guard';
 import { getOrCreateParticipant } from '@/lib/participant';
 import { sendOrQueue } from '@/lib/syncQueue';
 import type { Modulo } from '@/content/types';
-import { ModuleArt } from '@/components/interativo';
+import { ModuleArt, PixelParticles, Brilho, Aparicao } from '@/components/interativo';
 import { FlowFrame, type Mood } from './FlowFrame';
 import { SceneView, moodOf, useScene } from './SceneView';
 
@@ -20,12 +20,14 @@ const STEPS = ['Abertura', 'Cena 1', 'Cena 2', 'Cena 3', 'Fecho'];
 function Cover({ m }: { m: Modulo }) {
   return (
     <div className="cover" role="img" aria-label={m.lema.join(', ')}>
+      <PixelParticles densidade="pouco" direcao="sobe" />
       <div className="art" aria-hidden="true">
         <ModuleArt module={m.id} size="cover" />
       </div>
       {m.lema.map((w) => (
         <span className="word" key={w}>{w.charAt(0) + w.slice(1).toLowerCase()}.</span>
       ))}
+      <span className="cover-sparkle" aria-hidden="true"><Brilho tamanho={18} cor="var(--on-accent)" atraso={500} /></span>
     </div>
   );
 }
@@ -57,7 +59,11 @@ function SceneStep({ m, passo }: { m: Modulo; passo: number }) {
       aside={{ title: m.titulo, steps: STEPS, at: passo, lema: lemaOf(m), art: <ModuleArt module={m.id} size="small" /> }}
       actions={
         answered ? (
-          <Link className="btn btn--block btn--lg" href={next}>Continuar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>
+          saved?.q === 'melhor' ? (
+            <Aparicao destaque burst={false} className="cta-wrap cta-block"><Link className="btn btn--block btn--lg" href={next}>Continuar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link></Aparicao>
+          ) : (
+            <Link className="btn btn--block btn--lg" href={next}>Continuar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>
+          )
         ) : (
           <button type="button" className="btn btn--text" onClick={() => { save({ skipped: true, done: false }); router.push(next); }}>
             Pular
@@ -124,7 +130,7 @@ export function ModuleScreen({ id, passo }: { id: number; passo: number }) {
         back="/modulos"
         progress={{ total: 5, at: 0 }}
         aside={{ title: m.titulo, steps: STEPS, at: 0, lema: lemaOf(m), art: <ModuleArt module={m.id} size="small" /> }}
-        actions={<Link className="btn btn--block btn--lg" href={`/modulo/${m.id}/1`}>Começar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link>}
+        actions={<Aparicao destaque burst={false} className="cta-wrap cta-block"><Link className="btn btn--block btn--lg" href={`/modulo/${m.id}/1`}>Começar <ArrowRight className="btn-arrow" aria-hidden="true" /></Link></Aparicao>}
       >
         <Cover m={m} />
         <h1>{m.titulo}</h1>

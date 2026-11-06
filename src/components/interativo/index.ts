@@ -9,3 +9,6 @@ export { Explicacao } from './Explicacao';
 export { estimarSenha, formatarTempo } from './estimarSenha';
 export { ART_IDS, type ArtId } from './ilustracoes';
 export { useReducedMotion } from './useReducedMotion';
+export { PixelParticles, type PixelParticlesProps } from './PixelParticles';
+export { Aparicao, type AparicaoProps } from './Aparicao';
+export { Brilho, type BrilhoProps } from './Brilho';
