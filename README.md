@@ -94,8 +94,9 @@ npm run dev        # abre em http://localhost:3000
 npm test           # testes de conteúdo, quiz e correção
 ```
 
-Sem configurar nada, o site já grava no banco do projeto. Para rodar sem gravar
-(testes locais), crie um `.env.local` com `SUPABASE_DESLIGADO=1`.
+No computador o site **não grava** no banco, para testes não virarem participantes falsos.
+Ele só grava publicado na Vercel. Para testar a gravação localmente de propósito, crie um
+`.env.local` com `SUPABASE_GRAVAR_LOCAL=1`.
 
 ### Banco de dados (Supabase)
 

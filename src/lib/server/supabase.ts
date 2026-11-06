@@ -10,12 +10,19 @@ const SUPABASE_CHAVE_PUBLICA = 'sb_publishable_q0Jtl-a3uDZnXZbs7OTpXw_fqY2tZAs';
 
 let client: SupabaseClient | null | undefined;
 
-/** Devolve o cliente Supabase, ou null se SUPABASE_DESLIGADO=1 (ex.: testes locais sem gravar). */
+/**
+ * Devolve o cliente Supabase, ou null quando nao deve gravar.
+ * So grava rodando na Vercel (VERCEL=1): testes no computador (npm run dev/start, prints,
+ * auditorias automaticas) nao criam "alunos" falsos no banco da coleta.
+ * Para testar a gravacao localmente de proposito: SUPABASE_GRAVAR_LOCAL=1.
+ */
 export function getSupabase(): SupabaseClient | null {
   if (client !== undefined) return client;
+  const naVercel = process.env.VERCEL === '1';
+  const gravarLocal = process.env.SUPABASE_GRAVAR_LOCAL === '1';
   client =
-    process.env.SUPABASE_DESLIGADO === '1'
-      ? null
-      : createClient(SUPABASE_URL, SUPABASE_CHAVE_PUBLICA, { auth: { persistSession: false } });
+    naVercel || gravarLocal
+      ? createClient(SUPABASE_URL, SUPABASE_CHAVE_PUBLICA, { auth: { persistSession: false } })
+      : null;
   return client;
 }
