@@ -261,3 +261,13 @@ select split_part(ref, ':', 1) as cena,
  group by 1 order by 1;
 
 revoke all on participantes_validos, painel_funil, painel_competencias, painel_resumo, painel_escolhas from anon, authenticated;
+
+-- ============ MANTER ATIVO ============
+-- Chamada 1x/dia pelo cron da Vercel (vercel.json -> /api/manter-ativo) para o projeto
+-- gratuito nao pausar por 7 dias sem acesso. Nao le nem grava dados.
+create or replace function public.cs_ping()
+returns timestamptz
+language sql security definer set search_path = ''
+as $$ select now() $$;
+revoke all on function public.cs_ping() from public, authenticated;
+grant execute on function public.cs_ping() to anon;
